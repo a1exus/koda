@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(hf --version)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   }
 }

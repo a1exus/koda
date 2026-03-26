@@ -1,8 +1,8 @@
-# Qwen3.5-27B Claude 4.6 Opus Reasoning Distilled — Local Inference
+# Local LLM Inference via llama.cpp
 
-Run [Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled](https://huggingface.co/Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled) locally via llama.cpp.
+Run GGUF models locally using llama.cpp with an OpenAI-compatible API server.
 
-A 27B reasoning model distilled from Claude 4.6 Opus trajectories, with structured `<think>` blocks, native tool calling, and up to 262K context.
+**Current model:** [Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled](https://huggingface.co/Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled) — a 27B reasoning model distilled from Claude 4.6 Opus trajectories, with structured `<think>` blocks, native tool calling, and up to 262K context.
 
 ## Requirements
 
