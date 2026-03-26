@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(hf --version)",
+      "WebFetch(domain:github.com)"
+    ]
+  }
+}
