@@ -2,6 +2,14 @@
 
 This guide explains how to use your local LLM server from within Visual Studio Code.
 
+## GitHub Copilot (Note)
+
+The official GitHub Copilot extension does **not** natively support custom OpenAI-compatible endpoints. 
+
+**Recommended Alternatives:**
+- Use **[Continue](#continue)** or **[Roo Cline](#roo-cline)** (below) for the best "Copilot-like" experience using your local server.
+- These extensions provide similar autocomplete, chat, and edit features but are designed to work with local LLMs.
+
 ## Recommended Extensions
 
 Since the server is OpenAI-compatible, you can use several popular extensions:
@@ -36,14 +44,6 @@ Roo Cline is an autonomous coding agent that supports OpenAI-compatible backends
 3.  **API Provider:** Select **OpenAI Compatible**.
 4.  **Base URL:** Enter `http://localhost:8080/v1`.
 5.  **Model ID:** Enter the model name from your `.env` file (e.g., `qwen3.5-27b`).
-
-### GitHub Copilot (Note)
-
-The official GitHub Copilot extension does **not** natively support custom OpenAI-compatible endpoints. 
-
-**Recommended Alternatives:**
-- Use **[Continue](#continue)** or **[Roo Cline](#roo-cline)** (above) for the best "Copilot-like" experience using your local server.
-- These extensions provide similar autocomplete, chat, and edit features but are designed to work with local LLMs.
 
 ## Manual Interaction
 
