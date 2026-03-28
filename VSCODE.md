@@ -4,11 +4,11 @@ This guide explains how to use your local LLM server from within Visual Studio C
 
 ## GitHub Copilot Chat
 
-As of early 2026, GitHub Copilot Chat natively supports local LLMs through the **"Bring Your Own Model" (BYOM)** feature.
+GitHub Copilot Chat supports local LLMs through the **"Bring Your Own Model" (BYOM)** feature.
 
 ### 1. Using OpenAI-Compatible Providers (koda)
 
-Since this project provides an OpenAI-compatible API, you can add it directly to Copilot Chat:
+To add your local server to Copilot Chat:
 
 1.  **Start your local server:** Ensure you have a model running (e.g., `make serve ENV=.env-Qwen3.5-27B.Q4_K_M`).
 2.  **Configure VS Code Settings:**
