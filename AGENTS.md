@@ -25,11 +25,12 @@ Defaults are defined in the root `.env` file and loaded by the `Makefile`. Model
 | `CTX` | `0` | Context window size (`0` = model native) |
 | `HOST` | `0.0.0.0` | Server bind address |
 | `PORT` | `8080` | Server port |
-| `GPU_LAYERS` | `99` | Layers offloaded to GPU |
+| `GPU_LAYERS` | `-1` | Offload as many layers as possible to GPU |
 | `PROMPT_FORMAT` | `jinja` | Use the model's embedded chat template by default |
 | `RPC` | empty | Pass through `--rpc` for remote RPC backends |
 | `BATCH` | `512` | Prompt batch size |
 | `UBATCH` | `512` | Prompt micro-batch size |
+| `METRICS` | `0` | Set to `1` to append `--metrics` to `llama-server` |
 | `DOWNLOAD_INCLUDE` | `$(MODEL_FILE)` | Download pattern for sharded GGUF models |
 
 ## Running the Model
@@ -54,6 +55,7 @@ llama.cpp is pre-built via Homebrew. There is nothing to compile or install beyo
 - Uses the GGUF model's embedded Jinja chat template by default (`--jinja`)
 - Falls back to an explicit template only when `PROMPT_FORMAT=template`
 - Optional RPC offload is exposed via `RPC=<host:port>` and passed through as `--rpc`
+- Optional metrics exposure is exposed via `METRICS=1` and passed through as `--metrics`
 - Reasoning output appears in `<think>...</think>` blocks before the final answer
 - Recommended sampling: `--temp 0.6 --top-p 0.95`
 - `make serve` is the newbie path: it exposes both the browser WebUI and the OAI-compatible API

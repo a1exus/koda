@@ -29,6 +29,7 @@ Overrides can be passed inline to any `make` target:
 - `CTX=0`: Use model's native context size (default).
 - `CTX=16384`: Set a specific context window size to save RAM.
 - `GPU_LAYERS=0`: Disable GPU offloading.
+- `METRICS=1`: Enable `llama-server` metrics.
 - `PROMPT_FORMAT=template`: Use an explicit chat template instead of the model's embedded Jinja template.
 - `RPC=10.0.0.12:50052`: Pass a remote RPC backend through as `--rpc`.
 - `SERVER_EXTRA_ARGS='...'`: Append advanced `llama-server` flags without editing the Makefile.
@@ -38,6 +39,7 @@ Overrides can be passed inline to any `make` target:
 - **Adding Models:** Create `.env-<name>.<quant>` with `HF_REPO`, `MODEL_DIR`, and `MODEL_FILE`. Add `DOWNLOAD_INCLUDE` for sharded GGUF models.
 - **Integrations:**
   - [OpenCode](./OPENCODE.md)
+  - [Tailscale + Koda](./TAILSCALE.md)
   - [VS Code](./VSCODE.md) (Continue, Roo Code)
 - **Learning:**
   - [Bundled Profiles](./PROFILES.md)
@@ -51,5 +53,6 @@ Overrides can be passed inline to any `make` target:
 
 - `PROMPT_FORMAT=jinja` uses the GGUF model's embedded chat template by default
 - `RPC` is empty by default and only applied when explicitly set
+- `METRICS=0` keeps metrics off unless explicitly enabled
 - `BATCH=512` and `UBATCH=512` are conservative server batching defaults
 - `CTX=0` keeps the model's native context window unless explicitly overridden

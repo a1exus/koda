@@ -31,6 +31,10 @@ ifneq ($(strip $(RPC)),)
 RPC_ARGS := --rpc $(RPC)
 endif
 
+ifeq ($(METRICS),1)
+METRICS_ARGS := --metrics
+endif
+
 SERVER_ARGS := $(strip $(SERVER_EXTRA_ARGS))
 CHAT_ARGS := $(strip $(CHAT_EXTRA_ARGS))
 
@@ -82,6 +86,7 @@ serve:
 	  --port $(PORT) \
 	  $(PROMPT_ARGS) \
 	  $(RPC_ARGS) \
+	  $(METRICS_ARGS) \
 	  -ngl $(GPU_LAYERS) \
 	  $(SERVER_ARGS)
 

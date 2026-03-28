@@ -24,7 +24,7 @@ Runtime variables from `.env` can be overridden inline alongside `ENV`.
 
 Three-layer configuration system:
 
-1. **`.env`** — Global defaults applied to all commands (`CTX=0`, `HOST=0.0.0.0`, `PORT=8080`, `GPU_LAYERS=99`, `PROMPT_FORMAT=jinja`, `CHAT_TPL=chatml`, `RPC=`, `BATCH=512`, `UBATCH=512`, `TEMP=0.6`, `TOP_P=0.95`)
+1. **`.env`** — Global defaults applied to all commands (`CTX=0`, `HOST=0.0.0.0`, `PORT=8080`, `GPU_LAYERS=-1`, `PROMPT_FORMAT=jinja`, `CHAT_TPL=chatml`, `RPC=`, `BATCH=512`, `UBATCH=512`, `METRICS=0`, `TEMP=0.6`, `TOP_P=0.95`)
 2. **`.env-<model>.<quant>`** — Model-specific profile defining `HF_REPO`, `MODEL_DIR`, `MODEL_FILE`, and optionally `DOWNLOAD_INCLUDE`
 3. **Inline overrides** — Command-line variable assignments override both layers
 
@@ -39,8 +39,10 @@ Profiles follow the naming convention `.env-<ModelName>.<Quantization>`. Current
 - **Reasoning models**: Output appears in `<think>...</think>` blocks before the final answer
 - **Context window**: `CTX=0` uses the model's native window; set explicitly to constrain RAM/VRAM
 - **GPU offload**: `GPU_LAYERS=99` offloads all layers; set to `0` to run on CPU only
+- **GPU offload**: `GPU_LAYERS=-1` asks `llama.cpp` to offload as many layers as possible; set `0` to run on CPU only
 - **Prompt format**: Koda prefers the GGUF model's embedded Jinja template by default; set `PROMPT_FORMAT=template` to force `CHAT_TPL`
 - **RPC offload**: Set `RPC=<host:port>` to pass `--rpc` through to `llama-server` or `llama-cli`
+- **Metrics**: Set `METRICS=1` to expose `llama-server` metrics
 - **Batching**: `BATCH=512` and `UBATCH=512` are conservative server defaults that can be tuned per machine
 - **Advanced flags**: Use `SERVER_EXTRA_ARGS` or `CHAT_EXTRA_ARGS` instead of editing the Makefile when you need extra llama.cpp options
 
@@ -52,6 +54,7 @@ Profiles follow the naming convention `.env-<ModelName>.<Quantization>`. Current
 | `PROFILES.md` | Bundled model catalog, source links, and profile-specific caveats |
 | `AGENTS.md` | Technical reference for agents/automation |
 | `GGUF.md` | Explainer: what GGUF is and why to run locally |
+| `TAILSCALE.md` | Private tailnet access and multi-machine RPC pooling with Tailscale |
 | `OPENCODE.md` | Integration with OpenCode IDE |
 | `VSCODE.md` | Integration with VS Code (Copilot Chat BYOM, Continue, Roo Cline) |
 | `GEMINI.md` | Agent context and instructions for Gemini CLI |

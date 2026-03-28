@@ -32,5 +32,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `RPC` passthrough support so `make serve` and `make chat` can use llama.cpp RPC backends
 - Split bundled model/profile documentation into `PROFILES.md`
 - Simplified `README.md` into a shorter quick-start and runtime guide
+- Changed the default GPU offload from `99` to `-1` to match modern llama.cpp usage better
+- Added `METRICS=1` support for exposing llama-server metrics
+- Added deployment guidance to keep exposed servers behind a reverse proxy or gateway
+- Added `TAILSCALE.md` for private tailnet access and multi-machine RPC pooling guidance
 
 [Unreleased]: https://github.com/change/me/compare/HEAD

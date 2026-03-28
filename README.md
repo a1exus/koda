@@ -35,6 +35,7 @@ Common overrides:
 
 ```bash
 make serve ENV=.env-Qwen3.5-27B.Q4_K_M PORT=9090
+make serve ENV=.env-Qwen3.5-27B.Q4_K_M METRICS=1
 make serve ENV=.env-gpt-oss-120b.MXFP4 RPC=10.0.0.12:50052
 make chat  ENV=.env-gpt-oss-120b.MXFP4 RPC=10.0.0.12:50052
 ```
@@ -70,7 +71,8 @@ Koda keeps the public interface small and wraps the useful `llama.cpp` defaults 
 - `PROMPT_FORMAT=jinja` uses the GGUF model's embedded chat template by default
 - `CTX=0` uses the model's native context size
 - `BATCH=512` and `UBATCH=512` provide a conservative starting point for server throughput
-- `GPU_LAYERS=99` offloads as much as possible by default
+- `GPU_LAYERS=-1` tells `llama.cpp` to offload as many layers as possible by default
+- `METRICS=0` keeps Prometheus metrics off unless explicitly enabled
 
 If a model needs an explicit template, switch to `PROMPT_FORMAT=template` and set `CHAT_TPL=<name>`.
 
@@ -87,12 +89,13 @@ Set in the env file or inline. Model-specific variables (`HF_REPO`, `MODEL_DIR`,
 | `CTX` | `0` | Context window size (`0` = model native) |
 | `HOST` | `0.0.0.0` | Server bind address |
 | `PORT` | `8080` | Server port |
-| `GPU_LAYERS` | `99` | Layers offloaded to GPU |
+| `GPU_LAYERS` | `-1` | Offload as many layers as possible to GPU |
 | `PROMPT_FORMAT` | `jinja` | `jinja` uses the GGUF's embedded chat template; `template` uses `CHAT_TPL` |
 | `CHAT_TPL` | `chatml` | Fallback explicit chat template when `PROMPT_FORMAT=template` |
 | `RPC` | empty | Value passed to `llama-server` / `llama-cli` as `--rpc ...` for remote RPC backends |
 | `BATCH` | `512` | Prompt processing batch size |
 | `UBATCH` | `512` | Micro-batch size used during prompt processing |
+| `METRICS` | `0` | Set to `1` to append `--metrics` to `llama-server` |
 | `TEMP` | `0.6` | Sampling temperature (chat) |
 | `TOP_P` | `0.95` | Top-p sampling (chat) |
 | `SERVER_EXTRA_ARGS` | empty | Extra flags appended to `llama-server` |
@@ -101,6 +104,11 @@ Set in the env file or inline. Model-specific variables (`HF_REPO`, `MODEL_DIR`,
 > **Note on CTX:** Setting `CTX=0` (default) uses the model's native context window. You can manually set this to a lower value to save RAM/VRAM, or a higher value if the model and your hardware support it. Use inline overrides to test different sizes: `make serve ENV=.env-file CTX=16384`.
 
 > **Note on memory:** You do not need to fit the full model in VRAM to get useful performance. If you run into memory pressure, lower `CTX` first and then tune `GPU_LAYERS`, `BATCH`, or `UBATCH`.
+
+## Deployment Notes
+
+- If you expose `llama-server` beyond localhost, put it behind a reverse proxy or API gateway that enforces rate limits, timeouts, and request size limits.
+- Enable metrics with `METRICS=1` if you want Prometheus-compatible monitoring from `llama-server`.
 
 ## Bundled Profiles
 
@@ -111,11 +119,15 @@ The bundled profile catalog lives in [PROFILES.md](./PROFILES.md). That file inc
 - sharding and quantization notes
 - practical caveats for heavyweight profiles like `gpt-oss-120b` and `Kimi-K2.5`
 
+## Learning Resources
+
+- [What is GGUF and Why Run Locally?](./GGUF.md)
+
 ## Integrations
 
 - [OpenCode Integration](./OPENCODE.md)
+- [Tailscale + Koda](./TAILSCALE.md)
 - [VS Code Integration](./VSCODE.md)
-- [What is GGUF and Why Run Locally?](./GGUF.md)
 
 ## License
 
