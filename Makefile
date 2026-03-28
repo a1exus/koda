@@ -14,7 +14,7 @@ $(error MODEL_FILE is not set. Example: make $(MAKECMDGOALS) ENV=.env-Qwen3.5-27
 endif
 endif
 
-CTX        ?= 8192
+CTX        ?= 0
 HOST       ?= 0.0.0.0
 PORT       ?= 8080
 GPU_LAYERS ?= 99
