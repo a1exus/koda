@@ -39,28 +39,18 @@ Example:
 
 The head node serves the WebUI and OAI-compatible API. The workers only provide backend compute.
 
-## Install Tailscale
+## Prerequisites
 
-Install and join all machines to the same tailnet:
+This guide assumes you have already [installed Tailscale](https://tailscale.com/download) and joined all machines to the same tailnet.
 
-```bash
-brew install --cask tailscale
-```
-
-or use the package instructions for Linux from Tailscale docs.
-
-After login, verify connectivity between nodes:
+Verify connectivity between nodes before proceeding:
 
 ```bash
 tailscale status
-tailscale ping linux-4090-1
-tailscale ping linux-4090-2
+tailscale ping <hostname>
 ```
 
-Prefer MagicDNS hostnames if enabled. Otherwise use the machines' Tailscale IPs from the `100.64.0.0/10` range.
-
-Source:
-- [Tailscale reserved IP docs](https://tailscale.com/docs/reference/reserved-ip-addresses)
+Prefer MagicDNS hostnames for stable addressing.
 
 ## Private Tailnet Access to Koda
 
