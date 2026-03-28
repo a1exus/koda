@@ -37,8 +37,8 @@ Common overrides:
 ```bash
 make serve ENV=.env-Qwen3.5-27B.Q4_K_M PORT=9090
 make serve ENV=.env-Qwen3.5-27B.Q4_K_M METRICS=1
-make serve ENV=.env-gpt-oss-120b.MXFP4 RPC=10.0.0.12:50052
-make chat  ENV=.env-gpt-oss-120b.MXFP4 RPC=10.0.0.12:50052
+make serve ENV=.env-gpt-oss-120b.MXFP4 RPC=10.0.0.12:50052,10.0.0.13:50052
+make chat  ENV=.env-gpt-oss-120b.MXFP4 RPC=10.0.0.12:50052,10.0.0.13:50052
 ```
 
 ## Primary Environments
