@@ -4,7 +4,7 @@ ifdef ENV
 -include $(ENV)
 endif
 
-ifneq ($(filter-out help,$(or $(MAKECMDGOALS),help)),)
+ifneq ($(filter-out help check,$(or $(MAKECMDGOALS),help)),)
 ifndef HF_REPO
 $(error HF_REPO is not set. Example: make $(MAKECMDGOALS) ENV=.env-Qwen3.5-27B.Q4_K_M)
 endif

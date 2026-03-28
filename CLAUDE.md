@@ -25,14 +25,14 @@ Runtime variables from `.env` can be overridden inline alongside `ENV`.
 Three-layer configuration system:
 
 1. **`.env`** — Global defaults applied to all commands (`CTX=0`, `HOST=0.0.0.0`, `PORT=8080`, `GPU_LAYERS=99`, `PROMPT_FORMAT=jinja`, `CHAT_TPL=chatml`, `RPC=`, `BATCH=512`, `UBATCH=512`, `TEMP=0.6`, `TOP_P=0.95`)
-2. **`.env-<model>.<quant>`** — Model-specific profile defining `HF_REPO`, `MODEL_DIR`, `MODEL_FILE`
+2. **`.env-<model>.<quant>`** — Model-specific profile defining `HF_REPO`, `MODEL_DIR`, `MODEL_FILE`, and optionally `DOWNLOAD_INCLUDE`
 3. **Inline overrides** — Command-line variable assignments override both layers
 
-The Makefile validates that `HF_REPO`, `MODEL_DIR`, and `MODEL_FILE` are always set before running any target.
+The Makefile validates that `HF_REPO`, `MODEL_DIR`, and `MODEL_FILE` are set for `serve`, `chat`, and `download`; `check` only verifies local dependencies.
 
 ## Bundled Model Profiles
 
-Profiles follow the naming convention `.env-<ModelName>.<Quantization>`. Currently bundled: Qwen3.5 variants at 9B, 27B, and 35B-A3B sizes, in Q4_K_M and Q8_0 quantizations. The 27B is a Claude 4.6 Opus reasoning distillation; 9B and 35B-A3B use uncensored HauhauCS variants alongside official Qwen variants.
+Profiles follow the naming convention `.env-<ModelName>.<Quantization>`. Currently bundled: Qwen3.5 variants at 9B, 27B, and 35B-A3B sizes, plus `gpt-oss-20b`, `gpt-oss-120b`, `DeepSeek-R1-Distill-Qwen-32B`, and `Kimi-K2.5`. Sharded GGUF models use `DOWNLOAD_INCLUDE` to fetch all required parts.
 
 ## Key Behaviors
 

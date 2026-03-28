@@ -20,7 +20,7 @@ All commands require an `ENV` variable pointing to a model's `.env` file.
 | `make download ENV=<file>` | Downloads the model file from HuggingFace. |
 | `make serve ENV=<file>` | Starts the built-in WebUI and OpenAI-compatible HTTP server. |
 | `make chat ENV=<file>` | Launches an interactive terminal chat session. |
-| `make check ENV=<file>` | Verifies required binaries are installed and on `PATH`. |
+| `make check` | Verifies required binaries are installed and on `PATH`. |
 
 ### Common Overrides
 
@@ -35,7 +35,7 @@ Overrides can be passed inline to any `make` target:
 
 ## Development & Integrations
 
-- **Adding Models:** Create `.env-<name>.<quant>` with `HF_REPO`, `MODEL_DIR`, and `MODEL_FILE`.
+- **Adding Models:** Create `.env-<name>.<quant>` with `HF_REPO`, `MODEL_DIR`, and `MODEL_FILE`. Add `DOWNLOAD_INCLUDE` for sharded GGUF models.
 - **Integrations:**
   - [OpenCode](./OPENCODE.md)
   - [VS Code](./VSCODE.md) (Continue, Roo Code)

@@ -41,7 +41,7 @@ Use `make` targets — do not invoke `llama-cli` or `llama-server` directly:
 | `make download` | Download the model via hf CLI |
 | `make check` | Verify required binaries are installed and on `PATH` |
 
-All targets require an env file: `make serve ENV=.env-Qwen3.5-27B.Q4_K_M`
+`make serve`, `make chat`, and `make download` require an env file: `make serve ENV=.env-Qwen3.5-27B.Q4_K_M`
 
 ## No Build Steps
 

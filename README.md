@@ -54,7 +54,7 @@ DOWNLOAD_INCLUDE=<glob-pattern>
 make serve    ENV=.env-Qwen3.5-27B.Q4_K_M   # start API server + WebUI
 make chat     ENV=.env-Qwen3.5-27B.Q4_K_M   # interactive terminal chat
 make download ENV=.env-Qwen3.5-27B.Q4_K_M   # download the model
-make check    ENV=.env-Qwen3.5-27B.Q4_K_M   # verify required binaries are installed
+make check                                # verify required binaries are installed
 ```
 
 Inline overrides also work:
@@ -153,7 +153,7 @@ Practical caveats:
 
 ### Runtime variables
 
-Set in the env file or inline. Model-specific variables (`HF_REPO`, `MODEL_DIR`, `MODEL_FILE`) are required and have no defaults.
+Set in the env file or inline. Model-specific variables (`HF_REPO`, `MODEL_DIR`, `MODEL_FILE`) are required for `make download`, `make serve`, and `make chat`, and have no defaults.
 
 | Variable | Default | Description |
 | --- | --- | --- |
