@@ -35,6 +35,8 @@ Overrides can be passed inline to any `make` target:
 - **Integrations:**
   - [OpenCode](./OPENCODE.md)
   - [VS Code](./VSCODE.md) (Continue, Roo Code)
+- **Learning:**
+  - [GGUF & Local LLMs](./GGUF.md)
 
 ## Dependencies
 

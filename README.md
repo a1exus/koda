@@ -1,6 +1,6 @@
 # Local LLM Inference via llama.cpp
 
-Run GGUF models locally using llama.cpp with an OpenAI-compatible API server.
+Run [GGUF models](./GGUF.md) locally using llama.cpp with an OpenAI-compatible API server.
 
 ## Requirements
 
@@ -71,6 +71,10 @@ Set in the env file or inline. Model-specific variables (`HF_REPO`, `MODEL_DIR`,
 | `TOP_P` | `0.95` | Top-p sampling (chat) |
 
 > **Note on CTX:** Setting `CTX=0` (default) uses the model's native context window. You can manually set this to a lower value to save RAM/VRAM, or a higher value if the model and your hardware support it. Use inline overrides to test different sizes: `make serve ENV=.env-file CTX=16384`.
+
+## Learning Resources
+
+- [What is GGUF and Why Run Locally?](./GGUF.md)
 
 ## Integrations
 
