@@ -30,5 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `make check` and friendlier missing-binary errors for `llama-server`, `llama-cli`, and `hf`
 - Added `DOWNLOAD_INCLUDE` support so `make download` can fetch sharded GGUF models
 - Added `RPC` passthrough support so `make serve` and `make chat` can use llama.cpp RPC backends
+- Split bundled model/profile documentation into `PROFILES.md`
+- Simplified `README.md` into a shorter quick-start and runtime guide
 
 [Unreleased]: https://github.com/change/me/compare/HEAD
