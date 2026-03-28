@@ -39,6 +39,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `METRICS=1` support for exposing llama-server metrics
 - Added deployment guidance to keep exposed servers behind a reverse proxy or gateway
 - Added `TAILSCALE.md` for private tailnet access and multi-machine RPC pooling guidance
-- Added an explicit environment support matrix to `README.md`
+- Clarified that the primary target environments are macOS on Apple Silicon and Linux with NVIDIA GPUs
 
 [Unreleased]: https://github.com/change/me/compare/HEAD

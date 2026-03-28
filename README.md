@@ -2,6 +2,8 @@
 
 Run [GGUF models](./GGUF.md) locally using llama.cpp with a built-in browser WebUI and an OpenAI-compatible API server.
 
+The main path is the local/dev `Makefile` workflow. Koda also includes a Docker Compose deployment path with Traefik support for more production-style setups.
+
 ## Quick Start
 
 ```bash
@@ -22,21 +24,14 @@ When `make serve` is running:
 - `llama.cpp`: [installation docs](https://github.com/ggml-org/llama.cpp/blob/master/docs/install.md)
 - `hf` CLI: [installation docs](https://huggingface.co/docs/huggingface_hub/en/guides/cli)
 
-## Support Matrix
+## Primary Environments
 
-| Environment | Status | Notes |
-| --- | --- | --- |
-| macOS on Apple Silicon | First-class | Mainline Koda path. Homebrew-installed `llama.cpp` is the default assumption. |
-| Linux with NVIDIA GPU | First-class | Good fit for larger GGUF profiles and RPC worker nodes. |
-| Linux CPU-only | Supported | Works for smaller models and validation flows, but throughput may be limited. |
-| Linux with AMD GPU | Best effort | Depends on your `llama.cpp` build and backend maturity. |
-| Windows | Best effort | Not a primary Koda target today; docs and examples are not Windows-first. |
+Koda is mainly built for the big-boy local inference setups:
 
-Support policy:
+- macOS on Apple Silicon
+- Linux with NVIDIA GPU
 
-- first-class means Koda docs and examples are written with that environment in mind
-- supported means the workflow should work, but it is not the main optimization target
-- best effort means the project does not promise polished setup or troubleshooting coverage
+Those are the environments the docs and examples are written around. Other setups may work, but they are not the primary target.
 
 ## Commands
 

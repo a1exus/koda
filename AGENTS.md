@@ -6,7 +6,7 @@ Provides commands and configuration for running GGUF models locally via llama.cp
 
 The main user guide is `README.md`. Bundled model catalog and profile-specific caveats live in `PROFILES.md`.
 
-The project support matrix is documented in `README.md`. Treat macOS Apple Silicon and Linux with NVIDIA GPUs as the primary target environments.
+Treat macOS on Apple Silicon and Linux with NVIDIA GPUs as the primary target environments.
 
 ## Key Binaries
 
