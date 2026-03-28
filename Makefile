@@ -1,22 +1,39 @@
-ENV ?= .env
-
+ifdef ENV
 -include $(ENV)
+endif
 
-QUANT        ?= Q4_K_M
-MODEL_DIR    ?= $(HOME)/models/qwen3.5-27b-distilled
-MODEL_FILE   ?= Qwen3.5-27B.$(QUANT).gguf
-HF_REPO      ?= Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-GGUF
-CTX          ?= 8192
-HOST         ?= 0.0.0.0
-PORT         ?= 8080
-GPU_LAYERS   ?= 99
-CHAT_TPL     ?= chatml
-TEMP         ?= 0.6
-TOP_P        ?= 0.95
+ifneq ($(filter-out help,$(or $(MAKECMDGOALS),help)),)
+ifndef HF_REPO
+$(error HF_REPO is not set. Example: make $(MAKECMDGOALS) ENV=.env-Qwen3.5-27B.Q4_K_M)
+endif
+ifndef MODEL_DIR
+$(error MODEL_DIR is not set. Example: make $(MAKECMDGOALS) ENV=.env-Qwen3.5-27B.Q4_K_M)
+endif
+ifndef MODEL_FILE
+$(error MODEL_FILE is not set. Example: make $(MAKECMDGOALS) ENV=.env-Qwen3.5-27B.Q4_K_M)
+endif
+endif
+
+CTX        ?= 8192
+HOST       ?= 0.0.0.0
+PORT       ?= 8080
+GPU_LAYERS ?= 99
+CHAT_TPL   ?= chatml
+TEMP       ?= 0.6
+TOP_P      ?= 0.95
 
 MODEL := $(MODEL_DIR)/$(MODEL_FILE)
 
-.PHONY: download serve chat
+.PHONY: help download serve chat
+
+help:
+	@echo "Usage: make <target> ENV=<file>"
+	@echo ""
+	@echo "  serve     Start OpenAI-compatible API server (http://localhost:$(PORT)/v1)"
+	@echo "  chat      Interactive terminal chat"
+	@echo "  download  Download model via hf CLI"
+	@echo ""
+	@echo "  ENV=<file>  Env file to load (e.g. ENV=.env-Qwen3.5-27B.Q4_K_M)"
 
 download:
 	hf download $(HF_REPO) \

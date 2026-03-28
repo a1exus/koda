@@ -9,11 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Initial project setup for local inference with Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled
-- `Makefile` with `serve`, `chat`, and `download` targets
-- `.env.q4_k_m` and `.env.q8` configuration profiles; switch with `make serve ENV=.env.q8`
-- `hf download` command for fetching GGUF quantized weights
-- Quantization reference table (Q2_K through Q8_0)
-- opencode provider config pointing to llama-server at `http://127.0.0.1:8080/v1`
+- Generic llama.cpp local inference setup with OpenAI-compatible API server
+- `Makefile` with `serve`, `chat`, and `download` targets; `make` alone shows usage
+- Env files named `.env-<model>.<quant>` — no default, always explicit
+- Required variables (`HF_REPO`, `MODEL_DIR`, `MODEL_FILE`) must be set via env file — no hardcoded defaults
+- opencode provider config at `~/.config/opencode/opencode.json` pointing to `http://127.0.0.1:8080/v1`
+- Bundled profiles: Qwen3.5-27B (distilled), Qwen3.5-35B-A3B (Qwen + HauhauCS uncensored), Qwen3.5-9B (HauhauCS uncensored)
 
 [Unreleased]: https://github.com/change/me/compare/HEAD
