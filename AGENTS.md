@@ -4,6 +4,8 @@
 
 Provides commands and configuration for running GGUF models locally via llama.cpp. No application code — just inference tooling and documentation.
 
+The main user guide is `README.md`. Bundled model catalog and profile-specific caveats live in `PROFILES.md`.
+
 ## Key Binaries
 
 Installed via Homebrew at `/opt/homebrew/bin/`:
