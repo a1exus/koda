@@ -41,6 +41,14 @@ make serve ENV=.env-gpt-oss-120b.MXFP4 RPC=10.0.0.12:50052,10.0.0.13:50052
 make chat  ENV=.env-gpt-oss-120b.MXFP4 RPC=10.0.0.12:50052,10.0.0.13:50052
 ```
 
+## Docker Compose
+
+The `compose.yaml` provides a containerized path. To check status without errors:
+```bash
+docker compose ps
+```
+See [GEMINI.md](./GEMINI.md) for detailed Docker usage instructions.
+
 ## Primary Environments
 
 Koda is mainly built for:

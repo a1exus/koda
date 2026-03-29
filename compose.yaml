@@ -14,6 +14,7 @@ services:
       - ${ENV_FILE:-/dev/null}
     volumes:
       - ${MODEL_DIR:?set MODEL_DIR in .env or your shell}:/models:ro
+      - ~/.cache/huggingface:/root/.cache/huggingface:ro
       - ./scripts/compose-entrypoint.sh:/entrypoints/compose-entrypoint.sh:ro
     expose:
       - "8080"

@@ -26,7 +26,7 @@ Runtime variables from `.env` can be overridden inline alongside `ENV`.
 
 Three-layer configuration system:
 
-1. **`.env`** — Global defaults applied to all commands (`CTX=0`, `HOST=0.0.0.0`, `PORT=8080`, `GPU_LAYERS=-1`, `PROMPT_FORMAT=jinja`, `CHAT_TPL=chatml`, `RPC=`, `BATCH=512`, `UBATCH=512`, `METRICS=0`, `TEMP=0.6`, `TOP_P=0.95`)
+1. **`.env`** — Global defaults applied to all commands (`CTX=0`, `HOST=0.0.0.0`, `PORT=8080`, `GPU_LAYERS=-1`, `PROMPT_FORMAT=jinja`, `CHAT_TPL=chatml`, `BATCH=512`, `UBATCH=512`, `METRICS=0`, `TEMP=0.6`, `TOP_P=0.95`)
 2. **`.env-<model>.<quant>`** — Model-specific profile defining `HF_REPO`, `MODEL_DIR`, `MODEL_FILE`, and optionally `DOWNLOAD_INCLUDE`
 3. **Inline overrides** — Command-line variable assignments override both layers
 

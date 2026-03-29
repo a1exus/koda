@@ -23,6 +23,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added Traefik labels for the Compose deployment path
 - Simplified the Compose deployment path to rely on `.env`, `expose`, and the external `traefik` network
 
+- Added Hugging Face cache volume to `compose.yaml` to share models from the default cache location
+- Added default `MODEL_DIR` and `MODEL_FILE` to `.env` to fix Docker Compose interpolation errors
+
 ### Changed
 
 - `make serve` is now documented as the main entrypoint for both the built-in WebUI and the OpenAI-compatible API

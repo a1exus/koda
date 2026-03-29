@@ -2,15 +2,33 @@
 
 This project provides a standardized environment and set of commands for running GGUF models locally using `llama.cpp` with a built-in browser WebUI and an OpenAI-compatible API server.
 
-## Project Overview
+## Docker Compose Usage
 
-- **Core Technology:** `llama.cpp` (`llama-cli` and `llama-server`).
-- **Model Distribution:** HuggingFace GGUF models via `hf` CLI.
-- **Configuration:** 
-  - `Makefile`: Central orchestration.
-  - `compose.yaml`: Containerized deployment path with Traefik labels on the external `traefik` network.
-  - `.env`: Global defaults.
-  - `.env-<model>.<quant>`: Model-specific settings.
+Koda provides a containerized deployment path via `compose.yaml`.
+
+### 1. Default Startup
+With the defaults in `.env`, you can check the status or start the default model:
+```bash
+docker compose ps
+docker compose up
+```
+
+### 2. Using Model Profiles
+To run a specific model profile via Docker Compose, you must provide both `MODEL_DIR` and `MODEL_FILE` as environment variables for the host-side volume mapping and container-side model selection:
+
+```bash
+MODEL_DIR=~/models/qwen3.5-27b-distilled MODEL_FILE=Qwen3.5-27B.Q4_K_M.gguf docker compose up
+```
+
+Alternatively, you can use the `--env-file` flag (requires Docker Compose 2.24.0+):
+```bash
+docker compose --env-file .env --env-file .env-Qwen3.5-27B.Q4_K_M up
+```
+
+### 3. Volume Sharing
+The `compose.yaml` now mounts two key directories:
+- `/models`: Mapped to `${MODEL_DIR}` from your host.
+- `/root/.cache/huggingface`: Mapped to your host's default Hugging Face cache (`~/.cache/huggingface`).
 
 ## Key Commands
 
