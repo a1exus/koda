@@ -4,6 +4,16 @@ Koda is a lightweight configuration and orchestration layer for running GGUF mod
 
 ---
 
+## 📖 Table of Contents
+- [🚀 Quick Start (3 Minutes)](#-quick-start-3-minutes)
+- [🛠️ Key Workflows](#️-key-workflows)
+- [🐳 Docker Compose](#-docker-compose)
+- [🛡️ Security & Privacy](#️-security--privacy)
+- [📚 Documentation Index](#-documentation-index)
+- [🏗️ Built On](#️-built-on)
+
+---
+
 ## 🚀 Quick Start (3 Minutes)
 
 Get up and running on macOS or Linux in just a few commands.
