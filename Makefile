@@ -22,7 +22,9 @@ $(error MODEL_FILE is not set. Example: make $(MAKECMDGOALS) ENV=.env-Qwen3.5-27
 endif
 endif
 
-MODEL := $(MODEL_DIR)/$(MODEL_FILE)
+# Tilde expansion for paths
+EXP_MODEL_DIR := $(shell echo "$(MODEL_DIR)" | sed "s|^~|$$HOME|")
+MODEL := $(EXP_MODEL_DIR)/$(MODEL_FILE)
 DOWNLOAD_INCLUDE ?= $(MODEL_FILE)
 
 .PHONY: help check download serve chat list select export-opencode export-vscode
@@ -52,14 +54,15 @@ API_KEY_ARGS := --api-key $(API_KEY)
 endif
 
 # Advanced Performance & Multimodal detection
-ifneq ($(wildcard $(MODEL_DIR)/mmproj*),)
-MMPROJ_FILE := $(firstword $(wildcard $(MODEL_DIR)/mmproj*))
+# We use the expanded model directory for wildcard checks
+ifneq ($(wildcard $(EXP_MODEL_DIR)/mmproj*),)
+MMPROJ_FILE := $(firstword $(wildcard $(EXP_MODEL_DIR)/mmproj*))
 MMPROJ_ARGS := --mmproj $(MMPROJ_FILE)
 endif
 
 # Speculative Decoding
 ifneq ($(strip $(DRAFT_MODEL)),)
-DRAFT_ARGS := -md $(DRAFT_MODEL)
+DRAFT_ARGS := -md $(shell echo "$(DRAFT_MODEL)" | sed "s|^~|$$HOME|")
 endif
 
 # Context Shifting & Embeddings
@@ -114,7 +117,7 @@ download:
 	$(call require_cmd,hf,huggingface-cli)
 	hf download $(HF_REPO) \
 	  --include "$(DOWNLOAD_INCLUDE)" \
-	  --local-dir $(MODEL_DIR)
+	  --local-dir $(EXP_MODEL_DIR)
 
 list:
 	@echo "Available model profiles in profiles/:"
@@ -129,12 +132,25 @@ list:
 select:
 	@if command -v fzf >/dev/null 2>&1; then \
 	  profile=$$(ls profiles/.env-* | xargs -n1 basename | fzf --header "Select a model profile" --preview "cat profiles/{}"); \
-	  [ -n "$$profile" ] && $(MAKE) serve ENV=$$profile; \
+	  if [ -n "$$profile" ]; then \
+	    $(MAKE) check-model ENV=$$profile || exit 1; \
+	    $(MAKE) serve ENV=$$profile; \
+	  fi; \
 	elif command -v gum >/dev/null 2>&1; then \
 	  profile=$$(ls profiles/.env-* | xargs -n1 basename | gum choose --header "Select a model profile"); \
-	  [ -n "$$profile" ] && $(MAKE) serve ENV=$$profile; \
+	  if [ -n "$$profile" ]; then \
+	    $(MAKE) check-model ENV=$$profile || exit 1; \
+	    $(MAKE) serve ENV=$$profile; \
+	  fi; \
 	else \
 	  echo "Error: fzf or gum is required for 'make select'."; \
+	  exit 1; \
+	fi
+
+check-model:
+	@if [ ! -f "$(MODEL)" ]; then \
+	  echo "Error: Model file not found at $(MODEL)"; \
+	  echo "Run 'make download ENV=$(ENV)' first."; \
 	  exit 1; \
 	fi
 
