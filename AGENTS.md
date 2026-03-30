@@ -22,7 +22,7 @@ Installed via Homebrew at `/opt/homebrew/bin/`:
 
 ## Configuration & Defaults
 
-Defaults are defined in the root `.env` file and loaded by the `Makefile`. Model-specific settings are in `.env-<model>.<quant>` files.
+Defaults are defined in the root `.env` file and loaded by the `Makefile`. Model-specific settings are in `.env-<model>.<quant>` files located in the `profiles/` directory.
 
 | Variable | Default | Description |
 | --- | --- | --- |
@@ -36,9 +36,13 @@ Defaults are defined in the root `.env` file and loaded by the `Makefile`. Model
 | `UBATCH` | `512` | Prompt micro-batch size |
 | `METRICS` | `0` | Set to `1` to append `--metrics` to `llama-server` |
 | `ALIAS` | empty | Set the model ID reported by the OpenAI-compatible API |
+| `API_KEY` | empty | Set an API key for the server |
 | `TEMP` | `0.6` | Sampling temperature |
 | `TOP_P` | `0.95` | Top-p sampling |
 | `CHAT_TPL` | `chatml` | Explicit chat template (used when `PROMPT_FORMAT=template`) |
+| `DRAFT_MODEL`| empty | Path to a draft model for speculative decoding |
+| `EMBEDDINGS` | empty | Set to `1` to enable embeddings support |
+| `CTX_SHIFT`  | empty | Set to `1` to enable context shifting |
 | `DOWNLOAD_INCLUDE` | `$(MODEL_FILE)` | Download pattern for sharded GGUF models |
 | `SERVER_EXTRA_ARGS` | empty | Advanced flags for `llama-server` |
 | `CHAT_EXTRA_ARGS` | empty | Advanced flags for `llama-cli` |
@@ -60,9 +64,11 @@ Use `make` targets — do not invoke `llama-cli` or `llama-server` directly:
 | `make serve` | Start the built-in WebUI and OpenAI-compatible API server on port 8080 |
 | `make chat` | Interactive terminal chat |
 | `make download` | Download the model via hf CLI |
+| `make list` | List all profiles in `profiles/` |
+| `make select` | Interactively select a profile (requires `fzf` or `gum`) |
 | `make check` | Verify required binaries are installed and on `PATH` |
 
-`make serve`, `make chat`, and `make download` require an env file: `make serve ENV=.env-Qwen3.5-27B.Q4_K_M`
+`make serve`, `make chat`, and `make download` require an env file: `make serve ENV=.env-Qwen3.5-27B.Q4_K_M` (Koda prepends `profiles/` for you).
 
 ## No Build Steps
 
@@ -79,6 +85,9 @@ llama.cpp is pre-built via Homebrew. There is nothing to compile or install beyo
 - `make serve` is the newbie path: it exposes both the browser WebUI and the OAI-compatible API
 - Context window: uses native size by default (`CTX=0`). Use `CTX=` as an inline override to adjust for RAM/VRAM constraints.
 - Memory tuning: if a model is too heavy, lower `CTX` first, then tune `GPU_LAYERS`, `BATCH`, or `UBATCH`.
+- **Multimodal:** Koda automatically detects `mmproj` files in the model directory and enables multimodal support.
+- **Speculative Decoding:** Enabled via `DRAFT_MODEL`.
+- **Context Shifting:** Enabled via `CTX_SHIFT=1`.
 - Bundled `gpt-oss-20b` profile: `.env-gpt-oss-20b.MXFP4` using `ggml-org/gpt-oss-20b-GGUF` and `gpt-oss-20b-mxfp4.gguf`
 - Bundled `gpt-oss-120b` profile: `.env-gpt-oss-120b.MXFP4` using `ggml-org/gpt-oss-120b-GGUF` and the `gpt-oss-120b-mxfp4-*.gguf` shard set
 - Bundled DeepSeek profile: `.env-DeepSeek-R1-Distill-Qwen-32B.Q8_0` using `ggml-org/DeepSeek-R1-Distill-Qwen-32B-Q8_0-GGUF`; this is a practical local stand-in for the full `DeepSeek-R1` release

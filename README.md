@@ -20,7 +20,7 @@ Get up and running on macOS or Linux in just a few commands.
 
 ### 1. Install Dependencies
 ```bash
-brew install llama.cpp huggingface-cli
+brew install llama.cpp huggingface-cli fzf
 ```
 
 ### 2. Verify Environment
@@ -29,24 +29,28 @@ make check
 ```
 
 ### 3. Download & Serve
-Pick a model profile (see [PROFILES.md](./PROFILES.md)) and start the server:
+Pick a model profile (see [PROFILES.md](./PROFILES.md)) and start the server. Profiles are located in the `profiles/` directory, but the `Makefile` handles the path for you:
 ```bash
 make download ENV=.env-Qwen3.5-27B.Q4_K_M
 make serve    ENV=.env-Qwen3.5-27B.Q4_K_M
 ```
 *Your server is now live at `http://localhost:8080` with an OpenAI-compatible API at `/v1`.*
 
+**Tip:** Use `make list` to see all profiles or `make select` for an interactive picker.
+
 ---
 
 ## 🛠️ Key Workflows
 
-Koda is built around a simple `make` workflow. Every command requires an `ENV` file pointing to a model profile.
+Koda is built around a simple `make` workflow. Every command requires an `ENV` file pointing to a model profile in `profiles/`.
 
 | Command | What it does |
 | :--- | :--- |
 | `make serve` | Starts the **WebUI** and **OpenAI-compatible API** server. |
 | `make chat` | Launches an **interactive terminal session** with the model. |
 | `make download` | Fetches the model weights from Hugging Face using `hf-cli`. |
+| `make list` | Lists all available model profiles in `profiles/`. |
+| `make select` | Interactively select a model profile (requires `fzf` or `gum`). |
 | `make check` | Verifies your local environment and required binaries. |
 
 ### Common Overrides
@@ -55,25 +59,25 @@ You can tune the performance directly from the command line:
 # Change the port or restrict the context window
 make serve ENV=.env-Qwen3.5-27B.Q4_K_M PORT=9090 CTX=8192
 
-# Enable metrics for monitoring
-make serve ENV=.env-Qwen3.5-27B.Q4_K_M METRICS=1
+# Enable metrics and set an API key
+make serve ENV=.env-Qwen3.5-27B.Q4_K_M METRICS=1 API_KEY=my-secret
 
-# Offload to a remote RPC worker (distributed inference)
-make serve ENV=.env-gpt-oss-120b.MXFP4 RPC=10.0.0.12:50052
+# Enable advanced features like speculative decoding or multimodal support
+make serve ENV=.env-Qwen3.5-27B.Q4_K_M DRAFT_MODEL=./draft.gguf
 ```
 
 ---
 
 ## 🐳 Docker Compose
 
-For a "set it and forget it" deployment (e.g., on a home server), use the provided `compose.yaml`:
+For a "set it and forget it" deployment (e.g., on a home server), use the provided `compose.yaml`. Note that the `ENV_FILE` path should point to the `profiles/` directory:
 
 ```bash
 # Start the default model
 docker compose up -d
 
 # Run a specific profile
-ENV_FILE=.env-Qwen3.5-27B.Q4_K_M docker compose up -d
+ENV_FILE=profiles/.env-Qwen3.5-27B.Q4_K_M docker compose up -d
 ```
 *See [GEMINI.md](./GEMINI.md) for advanced Docker volume and image mapping notes.*
 

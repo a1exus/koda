@@ -9,6 +9,8 @@ services:
     # image: ${LLAMA_CPP_IMAGE:-ghcr.io/ggml-org/llama.cpp:server-rocm}
     restart: unless-stopped
     entrypoint: ["/bin/sh", "/entrypoints/compose-entrypoint.sh"]
+    environment:
+      - API_KEY=${API_KEY:-}
     env_file:
       - .env
       - ${ENV_FILE:-/dev/null}
@@ -18,6 +20,12 @@ services:
       - ./scripts/compose-entrypoint.sh:/entrypoints/compose-entrypoint.sh:ro
     expose:
       - "8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
     networks:
       - default
       - traefik

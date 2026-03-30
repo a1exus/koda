@@ -30,6 +30,10 @@ if [ -n "${ALIAS:-}" ]; then
   set -- "$@" --alias "${ALIAS}"
 fi
 
+if [ -n "${API_KEY:-}" ]; then
+  set -- "$@" --api-key "${API_KEY}"
+fi
+
 if [ -n "${SERVER_EXTRA_ARGS:-}" ]; then
   # Intentionally allow shell-style word splitting for advanced llama-server flags.
   # shellcheck disable=SC2086

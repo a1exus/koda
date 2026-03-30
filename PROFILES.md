@@ -1,6 +1,6 @@
 # Bundled Profiles
 
-This file is the catalog of bundled Koda model profiles. Each profile maps to a `.env-*` file that works with `make download`, `make serve`, and `make chat`.
+This file is the catalog of bundled Koda model profiles. Each profile maps to a `.env-*` file in the `profiles/` directory that works with `make download`, `make serve`, and `make chat`.
 
 ## At a Glance
 
