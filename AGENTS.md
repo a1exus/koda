@@ -4,7 +4,7 @@
 
 Provides commands and configuration for running GGUF models locally via llama.cpp. No application code — just inference tooling and documentation.
 
-The main user guide is `README.md`. Bundled model catalog and profile-specific caveats live in `PROFILES.md`.
+The main user guide is `README.md`. Bundled model catalog and profile-specific caveats live in `profiles/README.md`.
 
 Treat macOS on Apple Silicon, Linux with NVIDIA GPUs (CUDA), and Linux with AMD GPUs (ROCm/OpenCL) as the primary target environments.
 

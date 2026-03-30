@@ -29,7 +29,7 @@ make check
 ```
 
 ### 3. Download & Serve
-Pick a model profile (see [PROFILES.md](./PROFILES.md)) and start the server. Profiles are located in the `profiles/` directory, but the `Makefile` handles the path for you:
+Pick a model profile (see [profiles/README.md](./profiles/README.md)) and start the server. Profiles are located in the `profiles/` directory, but the `Makefile` handles the path for you:
 ```bash
 make download ENV=profiles/.env-Qwen3.5-27B.Q4_K_M
 make serve    ENV=profiles/.env-Qwen3.5-27B.Q4_K_M
@@ -96,7 +96,7 @@ Koda is **local-first**. Your data never leaves your machine.
 
 | File | Purpose |
 | :--- | :--- |
-| [**PROFILES.md**](./PROFILES.md) | Catalog of bundled models, download links, and hardware notes. |
+| [**profiles/README.md**](./profiles/README.md) | Catalog of bundled models, download links, and hardware notes. |
 | [**AGENTS.md**](./AGENTS.md) | Technical reference for developers and AI agents. |
 | [**OPENCODE.md**](./OPENCODE.md) | Step-by-step guide for [OpenCode](https://opencode.ai) integration. |
 | [**VSCODE.md**](./VSCODE.md) | How to use Koda with VS Code (Copilot BYOM, Continue, Roo). |

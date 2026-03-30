@@ -54,7 +54,7 @@ Profiles follow the naming convention `.env-<ModelName>.<Quantization>`. Current
 | File | Purpose |
 |------|---------|
 | `README.md` | Primary user guide, quick start, commands, runtime variables reference |
-| `PROFILES.md` | Bundled model catalog, source links, and profile-specific caveats |
+| `profiles/README.md` | Bundled model catalog, source links, and profile-specific caveats |
 | `AGENTS.md` | Technical reference for agents/automation |
 | `GGUF.md` | Explainer: what GGUF is and why to run locally |
 | `compose.yaml` | Docker Compose deployment with Traefik labels on the external `traefik` network |

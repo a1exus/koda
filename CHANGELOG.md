@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added sampling variables `TEMP` (default 0.6) and `TOP_P` (default 0.95) as structured overrides in the `Makefile`
 - Added `CHAT_TPL` (default `chatml`) for explicit template control when `PROMPT_FORMAT=template`
 - Added `CHAT_EXTRA_ARGS` as an escape hatch for `llama-cli` flags
-- Updated `GEMINI.md`, `AGENTS.md`, `PROFILES.md`, and `OPENCODE.md` with the latest configuration variables and integration guidance
+- Updated `GEMINI.md`, `AGENTS.md`, `profiles/README.md`, and `OPENCODE.md` with the latest configuration variables and integration guidance
 - Fixed the `OPENCODE.md` integration guide to use the correct `provider` record and `options` schema required by OpenCode
 - Fixed a corrupted `Makefile` that was causing syntax errors during `make serve`
 - Added GitHub Action workflow for Trivy security scanning of the repository
@@ -43,7 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `make check` and friendlier missing-binary errors for `llama-server`, `llama-cli`, and `hf`
 - Added `DOWNLOAD_INCLUDE` support so `make download` can fetch sharded GGUF models
 - Added `RPC` passthrough support so `make serve` and `make chat` can use llama.cpp RPC backends
-- Split bundled model/profile documentation into `PROFILES.md`
+- Split bundled model/profile documentation into `profiles/README.md`
 - Simplified `README.md` into a shorter quick-start and runtime guide
 - Changed the default GPU offload from `99` to `-1` to match modern llama.cpp usage better
 - Added `METRICS=1` support for exposing llama-server metrics

@@ -80,7 +80,7 @@ Overrides can be passed inline to any `make` target:
   - [Tailscale + Koda (via llama.cpp)](./TAILSCALE.md)
   - [VS Code](./VSCODE.md) (Continue, Roo Code)
 - **Learning:**
-  - [Bundled Profiles](./PROFILES.md)
+  - [Bundled Profiles](./profiles/README.md)
   - [GGUF & Local LLMs](./GGUF.md)
 
 ## Dependencies
