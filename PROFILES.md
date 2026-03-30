@@ -4,20 +4,24 @@ This file is the catalog of bundled Koda model profiles. Each profile maps to a 
 
 ## At a Glance
 
-| File | Model | Notes |
-| --- | --- | --- |
-| `.env-Qwen3.5-27B.Q4_K_M` | [Qwen3.5-27B Claude 4.6 Opus Reasoning Distilled](https://huggingface.co/Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled) | Smaller local reasoning profile |
-| `.env-Qwen3.5-27B.Q8_0` | [Qwen3.5-27B Claude 4.6 Opus Reasoning Distilled](https://huggingface.co/Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled) | Higher-memory variant |
-| `.env-Qwen3.5-35B-A3B.Q4_K_M` | [Qwen3.5-35B-A3B Uncensored](https://huggingface.co/HauhauCS/Qwen3.5-35B-A3B-Uncensored-HauhauCS-Aggressive) | HauhauCS variant |
-| `.env-Qwen3.5-35B-A3B.Q8_0` | [Qwen3.5-35B-A3B Uncensored](https://huggingface.co/HauhauCS/Qwen3.5-35B-A3B-Uncensored-HauhauCS-Aggressive) | Higher-memory variant |
-| `.env-Qwen3.5-35B-A3B-Qwen.Q4_K_M` | [Qwen3.5-35B-A3B](https://huggingface.co/Qwen/Qwen3.5-35B-A3B) | Official Qwen variant |
-| `.env-Qwen3.5-35B-A3B-Qwen.Q8_0` | [Qwen3.5-35B-A3B](https://huggingface.co/Qwen/Qwen3.5-35B-A3B) | Higher-memory variant |
-| `.env-Qwen3.5-9B.Q4_K_M` | [Qwen3.5-9B Uncensored](https://huggingface.co/HauhauCS/Qwen3.5-9B-Uncensored-HauhauCS-Aggressive) | Smallest bundled Qwen profile |
-| `.env-Qwen3.5-9B.Q8_0` | [Qwen3.5-9B Uncensored](https://huggingface.co/HauhauCS/Qwen3.5-9B-Uncensored-HauhauCS-Aggressive) | Higher-memory variant |
-| `.env-gpt-oss-20b.MXFP4` | [gpt-oss-20b GGUF](https://huggingface.co/ggml-org/gpt-oss-20b-GGUF) | Official `llama.cpp` GGUF |
-| `.env-gpt-oss-120b.MXFP4` | [gpt-oss-120b GGUF](https://huggingface.co/ggml-org/gpt-oss-120b-GGUF) | Official sharded `llama.cpp` GGUF |
-| `.env-DeepSeek-R1-Distill-Qwen-32B.Q8_0` | [DeepSeek-R1-Distill-Qwen-32B GGUF](https://huggingface.co/ggml-org/DeepSeek-R1-Distill-Qwen-32B-Q8_0-GGUF) | Practical local stand-in for DeepSeek-R1 |
-| `.env-Kimi-K2.5.Q4_X` | [Kimi-K2.5 GGUF (Q4_X)](https://huggingface.co/AesSedai/Kimi-K2.5-GGUF) | Very large sharded GGUF |
+| File | Model | ALIAS | Notes |
+| --- | --- | --- | --- |
+| `.env-Qwen3.5-27B.Q4_K_M` | [Qwen3.5-27B Claude 4.6 Opus Reasoning Distilled](https://huggingface.co/Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled) | `qwen3.5-27b` | Smaller local reasoning profile |
+| `.env-Qwen3.5-27B.Q8_0` | [Qwen3.5-27B Claude 4.6 Opus Reasoning Distilled](https://huggingface.co/Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled) | `qwen3.5-27b` | Higher-memory variant |
+| `.env-Qwen3.5-35B-A3B.Q4_K_M` | [Qwen3.5-35B-A3B Uncensored](https://huggingface.co/HauhauCS/Qwen3.5-35B-A3B-Uncensored-HauhauCS-Aggressive) | `qwen3.5-35b-a3b` | HauhauCS variant |
+| `.env-Qwen3.5-35B-A3B.Q8_0` | [Qwen3.5-35B-A3B Uncensored](https://huggingface.co/HauhauCS/Qwen3.5-35B-A3B-Uncensored-HauhauCS-Aggressive) | `qwen3.5-35b-a3b` | Higher-memory variant |
+| `.env-Qwen3.5-35B-A3B-Qwen.Q4_K_M` | [Qwen3.5-35B-A3B](https://huggingface.co/Qwen/Qwen3.5-35B-A3B) | `qwen3.5-35b-a3b` | Official Qwen variant |
+| `.env-Qwen3.5-35B-A3B-Qwen.Q8_0` | [Qwen3.5-35B-A3B](https://huggingface.co/Qwen/Qwen3.5-35B-A3B) | `qwen3.5-35b-a3b` | Higher-memory variant |
+| `.env-Qwen3.5-9B.Q4_K_M` | [Qwen3.5-9B Uncensored](https://huggingface.co/HauhauCS/Qwen3.5-9B-Uncensored-HauhauCS-Aggressive) | `qwen3.5-9b` | Smallest bundled Qwen profile |
+| `.env-Qwen3.5-9B.Q8_0` | [Qwen3.5-9B Uncensored](https://huggingface.co/HauhauCS/Qwen3.5-9B-Uncensored-HauhauCS-Aggressive) | `qwen3.5-9b` | Higher-memory variant |
+| `.env-gpt-oss-20b.MXFP4` | [gpt-oss-20b GGUF](https://huggingface.co/ggml-org/gpt-oss-20b-GGUF) | `gpt-oss-20b` | Official `llama.cpp` GGUF |
+| `.env-gpt-oss-120b.MXFP4` | [gpt-oss-120b GGUF](https://huggingface.co/ggml-org/gpt-oss-120b-GGUF) | `gpt-oss-120b` | Official sharded `llama.cpp` GGUF |
+| `.env-DeepSeek-R1-Distill-Qwen-32B.Q8_0` | [DeepSeek-R1-Distill-Qwen-32B GGUF](https://huggingface.co/ggml-org/DeepSeek-R1-Distill-Qwen-32B-Q8_0-GGUF) | `deepseek-r1-distill-qwen-32b` | Practical local stand-in for DeepSeek-R1 |
+| `.env-Kimi-K2.5.Q4_X` | [Kimi-K2.5 GGUF (Q4_X)](https://huggingface.co/AesSedai/Kimi-K2.5-GGUF) | `kimi-k2.5` | Very large sharded GGUF |
+
+## API Identity (Aliases)
+
+Koda profiles use the `ALIAS` variable to ensure a consistent model ID is reported via the OpenAI-compatible API, regardless of the underlying GGUF filename. This allows external tools like OpenCode or VS Code to maintain a stable configuration even if you switch between different quantizations (e.g., from Q4 to Q8) of the same model family.
 
 ## Recommended Starting Points
 
@@ -103,3 +107,7 @@ Practical caveats:
 Sources:
 - [moonshotai/Kimi-K2.5](https://huggingface.co/moonshotai/Kimi-K2.5)
 - [AesSedai/Kimi-K2.5-GGUF](https://huggingface.co/AesSedai/Kimi-K2.5-GGUF)
+
+---
+
+Curated by **[DimkaNYC](https://huggingface.co/DimkaNYC)**.

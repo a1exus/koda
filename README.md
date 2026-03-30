@@ -37,6 +37,7 @@ Common overrides:
 ```bash
 make serve ENV=.env-Qwen3.5-27B.Q4_K_M PORT=9090
 make serve ENV=.env-Qwen3.5-27B.Q4_K_M METRICS=1
+make serve ENV=.env-Qwen3.5-27B.Q4_K_M ALIAS=my-model
 make serve ENV=.env-gpt-oss-120b.MXFP4 RPC=10.0.0.12:50052,10.0.0.13:50052
 make chat  ENV=.env-gpt-oss-120b.MXFP4 RPC=10.0.0.12:50052,10.0.0.13:50052
 ```
@@ -62,6 +63,17 @@ Koda is mainly built for:
 - Linux with NVIDIA GPU (via CUDA)
 - Linux with AMD GPU (via ROCm/OpenCL)
 
+## Ecosystem & Alternatives
+
+Koda is a thin wrapper designed for a `Makefile` and `docker compose` workflow. If you are looking for a more "app-like" experience or different integration patterns, the [llama.cpp](https://github.com/ggml-org/llama.cpp) ecosystem is vast:
+
+- **[Ollama](https://ollama.com/)** — the most popular CLI and local daemon for running GGUF models with a simple `run` command.
+- **[Jan.ai](https://jan.ai/)** — an open-source, local-first desktop chat application (cross-platform).
+- **[LM Studio](https://lmstudio.ai/)** — a polished desktop GUI for discovering and running GGUF models (proprietary).
+- **[KoboldCPP](https://github.com/LostRuins/koboldcpp)** — a feature-rich GGUF server often used for creative writing and roleplay.
+- **[LocalAI](https://localai.io/)** — a multi-backend containerized API server that supports GGUF, Whisper, and more.
+- **[GPT4All](https://gpt4all.io/)** — an easy-to-use desktop chat client with a focus on privacy and local documents.
+
 ## Docs
 
 Use the docs below depending on what you need:
@@ -86,3 +98,7 @@ Use the docs below depending on what you need:
 ## License
 
 Model weights: see individual model pages.
+
+---
+
+Curated by **[DimkaNYC](https://huggingface.co/DimkaNYC)**.

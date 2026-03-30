@@ -7,9 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-
-- Generic llama.cpp local inference setup with OpenAI-compatible API server
+- Added `ALIAS` support to the `Makefile` and `compose-entrypoint.sh` to allow setting a consistent model ID for the OpenAI-compatible API
+- Updated all `.env-*` model profiles with a specific `ALIAS` (e.g., `qwen3.5-27b`) to match external tool configurations
+- Added sampling variables `TEMP` (default 0.6) and `TOP_P` (default 0.95) as structured overrides in the `Makefile`
+- Added `CHAT_TPL` (default `chatml`) for explicit template control when `PROMPT_FORMAT=template`
+- Added `CHAT_EXTRA_ARGS` as an escape hatch for `llama-cli` flags
+- Updated `GEMINI.md`, `AGENTS.md`, `PROFILES.md`, and `OPENCODE.md` with the latest configuration variables and integration guidance
+- Fixed the `OPENCODE.md` integration guide to use the correct `provider` record and `options` schema required by OpenCode
+- Fixed a corrupted `Makefile` that was causing syntax errors during `make serve`
 - `Makefile` with `serve`, `chat`, and `download` targets; `make` alone shows usage
 - Env files named `.env-<model>.<quant>` — no default, always explicit
 - Required variables (`HF_REPO`, `MODEL_DIR`, `MODEL_FILE`) must be set via env file — no hardcoded defaults

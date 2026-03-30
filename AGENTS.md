@@ -35,7 +35,21 @@ Defaults are defined in the root `.env` file and loaded by the `Makefile`. Model
 | `BATCH` | `512` | Prompt batch size |
 | `UBATCH` | `512` | Prompt micro-batch size |
 | `METRICS` | `0` | Set to `1` to append `--metrics` to `llama-server` |
+| `ALIAS` | empty | Set the model ID reported by the OpenAI-compatible API |
+| `TEMP` | `0.6` | Sampling temperature |
+| `TOP_P` | `0.95` | Top-p sampling |
+| `CHAT_TPL` | `chatml` | Explicit chat template (used when `PROMPT_FORMAT=template`) |
 | `DOWNLOAD_INCLUDE` | `$(MODEL_FILE)` | Download pattern for sharded GGUF models |
+| `SERVER_EXTRA_ARGS` | empty | Advanced flags for `llama-server` |
+| `CHAT_EXTRA_ARGS` | empty | Advanced flags for `llama-cli` |
+
+## Model Identity & API Aliases
+
+Integrating with external tools (OpenCode, VS Code, etc.) requires matching the model ID reported by the API with the ID expected by the client.
+
+- **The Problem:** By default, `llama-server` uses the model's filename as its ID, which is often messy (e.g., `Qwen3.5-27B.Q4_K_M.gguf`).
+- **The Solution:** Use the `ALIAS` variable in `.env-<model>.<quant>` files to set a clean, consistent ID (e.g., `qwen3.5-27b`).
+- **Grouping:** Group different quantizations (Q4, Q8, etc.) under the same `ALIAS` so that client configurations don't need to change when you swap quants.
 
 ## Running the Model
 

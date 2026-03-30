@@ -26,6 +26,10 @@ if [ "${METRICS:-0}" = "1" ]; then
   set -- "$@" --metrics
 fi
 
+if [ -n "${ALIAS:-}" ]; then
+  set -- "$@" --alias "${ALIAS}"
+fi
+
 if [ -n "${SERVER_EXTRA_ARGS:-}" ]; then
   # Intentionally allow shell-style word splitting for advanced llama-server flags.
   # shellcheck disable=SC2086

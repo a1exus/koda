@@ -11,29 +11,33 @@ This guide explains how to use OpenCode with the local inference server provided
    ```
    This starts both the browser WebUI at `http://localhost:8080` and the OpenAI-compatible API at `http://localhost:8080/v1`.
 
-2. **Open the OpenCode config file:**
-   Open your OpenCode configuration file in your favorite text editor:
-   ```bash
-   nano ~/.config/opencode/opencode.json
-   ```
-
 3. **Add the llama.cpp provider:**
-   Copy and paste the following snippet into the `providers` section of your `opencode.json` file. Ensure the `baseUrl` points to your local server:
+   Copy and paste the following snippet into the `provider` section of your `opencode.json` file. Ensure the `baseURL` points to your local server:
 
    ```json
    {
-     "name": "llama.cpp",
-     "provider": "openai",
-     "baseUrl": "http://127.0.0.1:8080/v1",
-     "apiKey": "local-no-key-required",
-     "models": [
-       {
-         "id": "qwen3.5-27b",
-         "name": "Qwen 3.5 27B (Local)"
+     "provider": {
+       "llama.cpp": {
+         "name": "llama.cpp",
+         "api": "openai",
+         "options": {
+           "baseURL": "http://127.0.0.1:8080/v1",
+           "apiKey": "local-no-key-required"
+         },
+         "models": {
+           "qwen3.5-9b": { "name": "Qwen 3.5 9B (Local)" },
+           "qwen3.5-27b": { "name": "Qwen 3.5 27B (Local)" },
+           "qwen3.5-35b-a3b": { "name": "Qwen 3.5 35B-A3B (Local)" },
+           "deepseek-r1-distill-qwen-32b": { "name": "DeepSeek R1 Distill Qwen 32B (Local)" },
+           "kimi-k2.5": { "name": "Kimi K2.5 (Local)" },
+           "gpt-oss-20b": { "name": "GPT-OSS 20B (Local)" },
+           "gpt-oss-120b": { "name": "GPT-OSS 120B (Local)" }
+         }
        }
-     ]
+     }
    }
    ```
+
 
 4. **Restart OpenCode:**
    Launch or restart the OpenCode application.

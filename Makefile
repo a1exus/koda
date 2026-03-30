@@ -31,8 +31,14 @@ ifneq ($(strip $(RPC)),)
 RPC_ARGS := --rpc $(RPC)
 endif
 
+ifneq ($(strip $(METRICS)),0)
 ifeq ($(METRICS),1)
 METRICS_ARGS := --metrics
+endif
+endif
+
+ifneq ($(strip $(ALIAS)),)
+ALIAS_ARGS := --alias $(ALIAS)
 endif
 
 SERVER_ARGS := $(strip $(SERVER_EXTRA_ARGS))
@@ -87,6 +93,7 @@ serve:
 	  $(PROMPT_ARGS) \
 	  $(RPC_ARGS) \
 	  $(METRICS_ARGS) \
+	  $(ALIAS_ARGS) \
 	  -ngl $(GPU_LAYERS) \
 	  $(SERVER_ARGS)
 
