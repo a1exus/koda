@@ -99,5 +99,5 @@ Koda is a thin layer standing on the shoulders of giants:
 
 ---
 
-**Curated by [DimkaNYC](https://huggingface.co/DimkaNYC)**  
+**Curated by [DimkaNYC](https://huggingface.co/DimkaNYC)** | **[Instagram](https://www.instagram.com/p/DWPRNjmj6R9/)**  
 *License: Model weights belong to their respective creators; Koda tooling is open-source.*
