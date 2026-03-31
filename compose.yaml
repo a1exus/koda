@@ -11,9 +11,19 @@ services:
     entrypoint: ["/bin/sh", "/entrypoints/compose-entrypoint.sh"]
     environment:
       - API_KEY=${API_KEY:-}
+      - MODEL_FILE=${MODEL_FILE:-}
+      - CTX=${CTX:-0}
+      - UBATCH=${UBATCH:-512}
+      - BATCH=${BATCH:-512}
+      - GPU_LAYERS=${GPU_LAYERS:--1}
+      - PROMPT_FORMAT=${PROMPT_FORMAT:-jinja}
+      - CHAT_TPL=${CHAT_TPL:-chatml}
+      - RPC=${RPC:-}
+      - METRICS=${METRICS:-0}
+      - ALIAS=${ALIAS:-}
+      - SERVER_EXTRA_ARGS=${SERVER_EXTRA_ARGS:-}
     env_file:
       - .env
-      - ${ENV_FILE:-/dev/null}
     volumes:
       - ${MODEL_DIR:?set MODEL_DIR in .env or your shell}:/models:ro
       - ~/.cache/huggingface:/root/.cache/huggingface:ro

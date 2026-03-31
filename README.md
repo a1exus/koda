@@ -73,16 +73,15 @@ make serve ENV=profiles/.env-Qwen3.5-27B.Q4_K_M DRAFT_MODEL=./draft.gguf
 
 ## 🐳 Docker Compose
 
-For a "set it and forget it" deployment (e.g., on a home server), use the provided `compose.yaml`. Note that the `ENV_FILE` path should point to the `profiles/` directory:
+For a "set it and forget it" deployment (e.g., on a home server), use the provided `compose.yaml`:
 
 ```bash
 # Start the default model
 docker compose up -d
 
 # Run a specific profile
-ENV_FILE=profiles/.env-Qwen3.5-27B.Q4_K_M docker compose up -d
+docker compose --env-file profiles/.env-Qwen3.5-27B.Q4_K_M up -d
 ```
-*See [GEMINI.md](./GEMINI.md) for advanced Docker volume and image mapping notes.*
 
 ---
 

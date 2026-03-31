@@ -17,10 +17,12 @@ make download ENV=.env-<model>.<quant>   # Download model from HuggingFace
 make list                                 # List all available model profiles
 make select                               # Interactively select a profile (fzf/gum)
 make check                                # Verify required binaries are on PATH
+make export-opencode ENV=.env-<model>.<quant>  # Print OpenCode config snippet for current profile
+make export-vscode   ENV=.env-<model>.<quant>  # Print VS Code config snippet for current profile
 ```
 *Note: Koda automatically prepends `profiles/` to the `ENV` path if not provided.*
 
-**External dependencies:** `llama-server`, `llama-cli`, `hf` (huggingface-cli), `fzf` (optional)
+**External dependencies:** `llama-server`, `llama-cli`, `hf` (huggingface-cli), `fzf` or `gum` (optional, for `make select`)
 
 ## Architecture
 
