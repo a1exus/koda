@@ -17,8 +17,9 @@ To add your local server to Copilot Chat:
    - Search for `github.copilot.chat.customOAIModels`.
    - Click **"Add Item"** and enter your local server details:
      - **Endpoint:** `http://localhost:8080/v1`
-     - **Model:** `qwen3.5-27b` (or your model's name)
+     - **Model:** the `ALIAS` of the running profile (e.g. `gemma-4-31b-it`, `nemotron-nano-3-30b`, `qwen3.5-27b`)
      - **Name:** `koda (Local)`
+   - See [profiles/README.md](./profiles/README.md) for the full list of available aliases.
 3. **Select the Model in Chat:**
    - Open the **Copilot Chat** panel (`Cmd+Shift+I`).
    - Click on the model name at the top (e.g., "GPT-4o").
