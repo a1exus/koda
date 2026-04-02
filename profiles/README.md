@@ -161,7 +161,3 @@ NVIDIA's 121B Nemotron H MoE model. Single-file GGUF from ggml-org. Requires sub
 ## API Identity (Aliases)
 
 Profiles set `ALIAS` to give the model a clean, stable ID in the OpenAI-compatible API. This lets external tools (OpenCode, VS Code Copilot) keep a fixed config even when you swap quantizations — the alias stays the same across Q4 and Q8 variants of the same model.
-
----
-
-Curated by **[DimkaNYC](https://huggingface.co/DimkaNYC)**.

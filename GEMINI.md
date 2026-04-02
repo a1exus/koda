@@ -108,5 +108,3 @@ Overrides can be passed inline to any `make` target:
 - `CTX=0` keeps the model's native context window unless explicitly overridden.
 
 ---
-
-**Curated by [DimkaNYC](https://huggingface.co/DimkaNYC)**
