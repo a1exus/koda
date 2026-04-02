@@ -99,5 +99,6 @@ llama.cpp is pre-built via Homebrew. There is nothing to compile or install beyo
 - Bundled `gpt-oss-120b` profile: `.env-gpt-oss-120b.MXFP4` using `ggml-org/gpt-oss-120b-GGUF` and the `gpt-oss-120b-mxfp4-*.gguf` shard set
 - Bundled DeepSeek profile: `.env-DeepSeek-R1-Distill-Qwen-32B.Q8_0` using `ggml-org/DeepSeek-R1-Distill-Qwen-32B-Q8_0-GGUF`; this is a practical local stand-in for the full `DeepSeek-R1` release
 - Bundled Kimi profile: `.env-Kimi-K2.5.Q4_X` using `AesSedai/Kimi-K2.5-GGUF`; it downloads the `Q4_X/Kimi-K2.5-Q4_X-*.gguf` shard set and serves from the first shard
+- Bundled Qwen3.5-27B profiles: `.env-Qwen3.5-27B.Q4_K_M` (16.6 GB) and `.env-Qwen3.5-27B.Q8_0` (28.7 GB) using `Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-GGUF`; reasoning-focused 27B distill
 - Bundled Gemma 4 profiles: `.env-gemma-4-E2B-it.Q8_0` (4.97 GB) and `.env-gemma-4-E2B-it.F16` (9.31 GB) using `ggml-org/gemma-4-E2B-it-GGUF`; official ggml-org GGUF of Google's Gemma 4 5B instruct model
 - Bundled Nemotron profile: `.env-Nemotron-3-Super-120B.Q4_K` (69.9 GB) using `ggml-org/Nemotron-3-Super-120B-GGUF`; NVIDIA's 121B Nemotron H MoE model

@@ -26,7 +26,7 @@ This guide explains how to use OpenCode with the local inference server provided
          },
          "models": {
            "qwen3.5-9b": { "name": "Qwen 3.5 9B (Local)" },
-           "qwen3.5-27b": { "name": "Qwen 3.5 27B (Local)" },
+           "qwen3.5-27b": { "name": "Qwen 3.5 27B Reasoning Distilled (Local)" },
            "qwen3.5-35b-a3b": { "name": "Qwen 3.5 35B-A3B (Local)" },
            "deepseek-r1-distill-qwen-32b": { "name": "DeepSeek R1 Distill Qwen 32B (Local)" },
            "kimi-k2.5": { "name": "Kimi K2.5 (Local)" },

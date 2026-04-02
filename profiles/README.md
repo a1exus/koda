@@ -67,7 +67,15 @@ Alibaba's Qwen3.5 family in two sizes. Both are converted to GGUF by HauhauCS an
 
 #### Qwen3.5-27B · Claude 4.6 Opus Reasoning Distilled
 
-> ⚠️ **No bundled profile.** The source repo ([Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled](https://huggingface.co/Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled)) publishes safetensors only. Community GGUF conversions are linked from the model card. Once you have a GGUF source, create a profile following the pattern of the other `.env-*` files.
+Reasoning-focused 27B distill. GGUF published by Jackrong alongside the original weights.
+
+| Profile | Size | Format |
+| --- | --- | --- |
+| `.env-Qwen3.5-27B.Q4_K_M` | 16.6 GB | Q4_K_M |
+| `.env-Qwen3.5-27B.Q8_0` | 28.7 GB | Q8_0 |
+
+**ALIAS:** `qwen3.5-27b`
+**Source:** [Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-GGUF](https://huggingface.co/Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-GGUF) · [Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled](https://huggingface.co/Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled)
 
 ---
 

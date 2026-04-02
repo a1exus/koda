@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Added Qwen3.5-27B profiles: `.env-Qwen3.5-27B.Q4_K_M` and `.env-Qwen3.5-27B.Q8_0` using `Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-GGUF`
 - Added Nemotron 3 Super 120B profile: `.env-Nemotron-3-Super-120B.Q4_K` using `ggml-org/Nemotron-3-Super-120B-GGUF` (69.9 GB, NVIDIA Nemotron H MoE)
 - Added Gemma 4 E2B Instruct profiles: `.env-gemma-4-E2B-it.Q8_0` and `.env-gemma-4-E2B-it.F16` using `ggml-org/gemma-4-E2B-it-GGUF`
 - Added all remaining bundled profiles: Qwen3.5-9B, Qwen3.5-35B-A3B (HauhauCS), gpt-oss-20b, gpt-oss-120b, DeepSeek-R1-Distill-Qwen-32B, Kimi-K2.5
