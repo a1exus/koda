@@ -24,6 +24,10 @@ make export-vscode   ENV=.env-<model>.<quant>  # Print VS Code config snippet fo
 
 **External dependencies:** `llama-server`, `llama-cli`, `hf` (huggingface-cli), `fzf` or `gum` (optional, for `make select`)
 
+**Windows:** use `winget install ggml-org.llama.cpp`, `winget install Python.Python.3`, `pip install huggingface_hub[cli]`. `make` requires Git Bash, MSYS2, or WSL.
+
+**Docker:** `docker compose --env-file profiles/.env-<model>.<quant> up -d` — no local binaries needed. GPU works on NVIDIA/AMD Linux only; Apple Silicon and Windows are CPU-only in Docker and require the native `make` path for GPU acceleration.
+
 ## Architecture
 
 Three-layer configuration system:
@@ -42,7 +46,9 @@ Primary targets are Apple Silicon (macOS), NVIDIA (CUDA), and AMD (ROCm/OpenCL).
 - **Context window**: `CTX=0` uses the model's native window.
 - **GPU offload**: `GPU_LAYERS=-1` offloads maximum layers to GPU.
 - **Prompt format**: Prefers embedded Jinja templates; set `PROMPT_FORMAT=template` to force `CHAT_TPL`.
-- **Docker Compose**: Uses a healthcheck to ensure the model is loaded before reporting "healthy".
+- **Docker Compose**: Uses a healthcheck to ensure the model is loaded before reporting "healthy". GPU passthrough works on NVIDIA/AMD Linux; Apple Silicon and Windows are CPU-only in Docker.
+- **Multimodal**: Koda auto-detects `mmproj` files in `MODEL_DIR`. For multimodal profiles, `DOWNLOAD_INCLUDE` fetches both the model and mmproj in one `make download` call.
+- **Bundled profiles**: See `profiles/README.md` for the full catalog (Gemma 4, Qwen3.5, GPT-OSS, DeepSeek, Nemotron, Kimi-K2.5). Hardware tiers from 8 GB to 192 GB (Mac Studio Ultra) are covered.
 
 ## Documentation Files
 

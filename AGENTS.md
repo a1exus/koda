@@ -12,13 +12,24 @@ There is also a Compose deployment path in `compose.yaml`, intended for reverse-
 
 ## Key Binaries
 
-Installed via Homebrew at `/opt/homebrew/bin/`:
+**macOS / Linux** — installed via Homebrew:
 
 | Binary | Purpose |
 | --- | --- |
 | `llama-cli` | Interactive terminal chat |
 | `llama-server` | OpenAI-compatible HTTP server |
 | `hf` | HuggingFace model downloader |
+
+**Windows** — installed via winget + pip:
+```powershell
+winget install ggml-org.llama.cpp
+winget install junegunn.fzf
+winget install Python.Python.3
+pip install huggingface_hub[cli]
+```
+`make` requires Git Bash, MSYS2, or WSL on Windows.
+
+**Docker** — no binaries required. See `compose.yaml` and `GEMINI.md`. GPU passthrough works on NVIDIA/AMD Linux only; Apple Silicon and Windows are CPU-only in Docker.
 
 ## Configuration & Defaults
 
@@ -74,8 +85,10 @@ Use `make` targets — do not invoke `llama-cli` or `llama-server` directly:
 | `make list` | List all profiles in `profiles/` |
 | `make select` | Interactively select a profile (requires `fzf` or `gum`) |
 | `make check` | Verify required binaries are installed and on `PATH` |
+| `make export-opencode` | Print OpenCode provider config snippet for the current profile |
+| `make export-vscode` | Print VS Code `customOAIModels` snippet for the current profile |
 
-`make serve`, `make chat`, and `make download` require an env file: `make serve ENV=profiles/.env-Qwen3.5-27B.Q4_K_M` (Koda prepends `profiles/` for you).
+`make serve`, `make chat`, and `make download` require an env file: `make serve ENV=profiles/.env-gemma-4-31B-it.Q4_K_M` (Koda prepends `profiles/` for you).
 
 ## No Build Steps
 
@@ -92,13 +105,26 @@ llama.cpp is pre-built via Homebrew. There is nothing to compile or install beyo
 - `make serve` is the newbie path: it exposes both the browser WebUI and the OAI-compatible API
 - Context window: uses native size by default (`CTX=0`). Use `CTX=` as an inline override to adjust for RAM/VRAM constraints.
 - Memory tuning: if a model is too heavy, lower `CTX` first, then tune `GPU_LAYERS`, `BATCH`, or `UBATCH`.
-- **Multimodal:** Koda automatically detects `mmproj` files in the model directory and enables multimodal support.
+- **Multimodal:** Koda automatically detects `mmproj` files in the model directory and enables multimodal support. For profiles that include an mmproj, `DOWNLOAD_INCLUDE` is set to fetch both the model and mmproj in one `make download` call.
 - **Speculative Decoding:** Enabled via `DRAFT_MODEL`.
 - **Context Shifting:** Enabled via `CTX_SHIFT=1`.
-- Bundled `gpt-oss-20b` profile: `.env-gpt-oss-20b.MXFP4` using `ggml-org/gpt-oss-20b-GGUF` and `gpt-oss-20b-mxfp4.gguf`
-- Bundled `gpt-oss-120b` profile: `.env-gpt-oss-120b.MXFP4` using `ggml-org/gpt-oss-120b-GGUF` and the `gpt-oss-120b-mxfp4-*.gguf` shard set
-- Bundled DeepSeek profile: `.env-DeepSeek-R1-Distill-Qwen-32B.Q8_0` using `ggml-org/DeepSeek-R1-Distill-Qwen-32B-Q8_0-GGUF`; this is a practical local stand-in for the full `DeepSeek-R1` release
-- Bundled Kimi profile: `.env-Kimi-K2.5.Q4_X` using `AesSedai/Kimi-K2.5-GGUF`; it downloads the `Q4_X/Kimi-K2.5-Q4_X-*.gguf` shard set and serves from the first shard
-- Bundled Qwen3.5-27B profiles: `.env-Qwen3.5-27B.Q4_K_M` (16.6 GB) and `.env-Qwen3.5-27B.Q8_0` (28.7 GB) using `Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-GGUF`; reasoning-focused 27B distill
-- Bundled Gemma 4 profiles: E2B-it, E4B-it, 26B-A4B-it, 31B-it — all multimodal (mmproj auto-detected), official ggml-org GGUFs; Q4_K_M/Q8_0/F16 variants
-- Bundled Nemotron profiles: Nano-30B Q4_K_M/Q8_0 (`ggml-org/Nemotron-Nano-3-30B-A3B-GGUF`) and Super-120B Q4_K (`ggml-org/Nemotron-3-Super-120B-GGUF`); Mamba-2 MoE hybrid architecture
+
+## Bundled Profiles
+
+Full catalog with sizes and hardware notes lives in `profiles/README.md`. Summary:
+
+| Profile | HF Repo | Size | Notes |
+| --- | --- | --- | --- |
+| `.env-Qwen3.5-9B.Q4_K_M` / `Q8_0` | `HauhauCS/Qwen3.5-9B-Uncensored-HauhauCS-Aggressive` | ~5–10 GB | Multimodal (mmproj) |
+| `.env-Qwen3.5-27B.Q4_K_M` / `Q8_0` | `Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-GGUF` | 17–29 GB | Reasoning distill |
+| `.env-Qwen3.5-35B-A3B.Q4_K_M` / `Q8_0` | `HauhauCS/Qwen3.5-35B-A3B-Uncensored-HauhauCS-Aggressive` | ~20–37 GB | MoE, multimodal (mmproj) |
+| `.env-gemma-4-E2B-it.Q8_0` / `F16` | `ggml-org/gemma-4-E2B-it-GGUF` | 5–9 GB | Multimodal (mmproj) |
+| `.env-gemma-4-E4B-it.Q4_K_M` / `Q8_0` / `F16` | `ggml-org/gemma-4-E4B-it-GGUF` | 5–15 GB | Multimodal (mmproj) |
+| `.env-gemma-4-26B-A4B-it.Q4_K_M` / `Q8_0` / `F16` | `ggml-org/gemma-4-26B-A4B-it-GGUF` | 17–51 GB | MoE, multimodal (mmproj) |
+| `.env-gemma-4-31B-it.Q4_K_M` / `Q8_0` / `F16` | `ggml-org/gemma-4-31B-it-GGUF` | 19–61 GB | Multimodal (mmproj) |
+| `.env-gpt-oss-20b.MXFP4` | `ggml-org/gpt-oss-20b-GGUF` | 12.1 GB | Harmony-style prompting |
+| `.env-gpt-oss-120b.MXFP4` | `ggml-org/gpt-oss-120b-GGUF` | 63.4 GB | 3 shards, harmony-style |
+| `.env-DeepSeek-R1-Distill-Qwen-32B.Q8_0` | `ggml-org/DeepSeek-R1-Distill-Qwen-32B-Q8_0-GGUF` | 34.8 GB | Reasoning, `<think>` blocks |
+| `.env-Nemotron-Nano-3-30B.Q4_K_M` / `Q8_0` | `ggml-org/Nemotron-Nano-3-30B-A3B-GGUF` | 25–34 GB | Mamba-2 MoE hybrid |
+| `.env-Nemotron-3-Super-120B.Q4_K` | `ggml-org/Nemotron-3-Super-120B-GGUF` | 69.9 GB | Mamba-2 MoE hybrid |
+| `.env-Kimi-K2.5.Q4_X` | `AesSedai/Kimi-K2.5-GGUF` | 544 GiB | 14 shards, extreme scale |
