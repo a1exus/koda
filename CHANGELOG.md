@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Added Gemma 4 E2B Instruct profiles: `.env-gemma-4-E2B-it.Q8_0` and `.env-gemma-4-E2B-it.F16` using `ggml-org/gemma-4-E2B-it-GGUF`
 - Added `ALIAS` support to the `Makefile` and `compose-entrypoint.sh` to allow setting a consistent model ID for the OpenAI-compatible API
 - Updated all `.env-*` model profiles with a specific `ALIAS` (e.g., `qwen3.5-27b`) to match external tool configurations
 - Added sampling variables `TEMP` (default 0.6) and `TOP_P` (default 0.95) as structured overrides in the `Makefile`
