@@ -32,7 +32,10 @@ winget install junegunn.fzf
 winget install Python.Python.3
 pip install huggingface_hub[cli]
 ```
-> `make` is required on Windows. Use [Git Bash](https://gitforwindows.org/), [MSYS2](https://www.msys2.org/), or [WSL](https://learn.microsoft.com/windows/wsl/).
+> `make` is required on Windows. Use [WSL](https://learn.microsoft.com/windows/wsl/), then inside WSL:
+> ```bash
+> sudo apt install git make
+> ```
 
 **Docker (no local binaries needed)**
 ```bash
