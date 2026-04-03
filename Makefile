@@ -10,7 +10,7 @@ ifdef ENV
   -include $(ENV)
 endif
 
-ifneq ($(filter-out help check list select export-opencode export-vscode,$(or $(MAKECMDGOALS),help)),)
+ifneq ($(filter-out help check cache list select export-opencode export-vscode,$(or $(MAKECMDGOALS),help)),)
 ifndef HF_REPO
 $(error HF_REPO is not set. Example: make $(MAKECMDGOALS) ENV=.env-Qwen3.5-27B.Q4_K_M)
 endif
@@ -33,7 +33,7 @@ MODEL := $(shell \
 	fi)
 DOWNLOAD_INCLUDE ?= $(MODEL_FILE)
 
-.PHONY: help check download serve chat list select export-opencode export-vscode
+.PHONY: help check check-model cache download serve chat list select export-opencode export-vscode
 
 ifeq ($(PROMPT_FORMAT),jinja)
 PROMPT_ARGS := --jinja
@@ -100,18 +100,26 @@ define require_cmd
 endef
 
 help:
-	@echo "Usage: make <target> ENV=<file>"
+	@echo "Usage: make <target> [ENV=<profile>]"
 	@echo ""
+	@echo "Run a model:"
 	@echo "  serve            Start OpenAI-compatible API server + built-in WebUI"
 	@echo "  chat             Interactive terminal chat"
+	@echo ""
+	@echo "Manage models:"
 	@echo "  download         Download model via hf CLI"
-	@echo "  check            Verify required binaries are installed and on PATH"
 	@echo "  list             List all available model profiles in profiles/"
-	@echo "  select           Interactively select a model profile (requires fzf or gum)"
+	@echo "  select           Interactively select and serve a profile (requires fzf or gum)"
+	@echo "  cache            Show what models are in the Hugging Face cache"
+	@echo ""
+	@echo "Utilities:"
+	@echo "  check            Verify required binaries are installed and on PATH"
+	@echo "  check-model      Verify the model file for ENV is present"
 	@echo "  export-opencode  Print OpenCode configuration snippet for current profile"
 	@echo "  export-vscode    Print VS Code configuration snippet for current profile"
 	@echo ""
-	@echo "  ENV=<file>  Env file to load (e.g. ENV=.env-Qwen3.5-27B.Q4_K_M)"
+	@echo "  ENV=<profile>  Profile to load, e.g. ENV=.env-gemma-4-31B-it.Q4_K_M"
+	@echo "                 Koda automatically prepends profiles/ if omitted."
 
 check:
 	$(call require_cmd,llama-server,llama.cpp)
@@ -155,11 +163,18 @@ select:
 	fi
 
 check-model:
-	@if [ ! -f "$(MODEL)" ]; then \
-	  echo "Error: Model file not found."; \
-	  echo "Run 'make download ENV=$(ENV)' first."; \
+	@if [ -z "$(MODEL)" ] || [ ! -f "$(MODEL)" ]; then \
+	  echo ""; \
+	  echo "Error: model not found — $(MODEL_FILE)"; \
+	  echo ""; \
+	  echo "Run:  make download ENV=$(ENV)"; \
+	  echo ""; \
 	  exit 1; \
 	fi
+
+cache:
+	$(call require_cmd,hf,huggingface-cli)
+	hf cache ls
 
 export-opencode:
 	@echo "Copy this into your ~/.config/opencode/opencode.json 'models' record:"
@@ -173,6 +188,7 @@ export-vscode:
 
 serve:
 	$(call require_cmd,llama-server,llama.cpp)
+	@$(MAKE) check-model ENV=$(ENV) --no-print-directory
 	llama-server \
 	  -m $(MODEL) \
 	  -c $(CTX) \
@@ -194,6 +210,7 @@ serve:
 
 chat:
 	$(call require_cmd,llama-cli,llama.cpp)
+	@$(MAKE) check-model ENV=$(ENV) --no-print-directory
 	llama-cli \
 	  -m $(MODEL) \
 	  -c $(CTX) \
