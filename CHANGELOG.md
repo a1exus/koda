@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2026-04-03]
+
 ### Added
 - Added Gemma 4 E4B-it, 26B-A4B-it, and 31B-it profiles (Q4_K_M/Q8_0/F16) with mmproj multimodal support via `ggml-org`
 - Added Nemotron-Nano-3-30B profiles (Q4_K_M/Q8_0) via `ggml-org/Nemotron-Nano-3-30B-A3B-GGUF`
@@ -81,5 +83,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed default GPU offload from `99` to `-1` to match modern llama.cpp usage better
 - Added `METRICS=1` support for exposing llama-server metrics
 
-[Unreleased]: https://github.com/a1exus/koda/compare/2026-03-27...HEAD
+[Unreleased]: https://github.com/a1exus/koda/compare/2026-04-03...HEAD
+[2026-04-03]: https://github.com/a1exus/koda/compare/2026-03-27...2026-04-03
 [2026-03-27]: https://github.com/a1exus/koda/releases/tag/2026-03-27
