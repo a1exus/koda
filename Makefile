@@ -131,7 +131,7 @@ check:
 download:
 	$(call require_cmd,hf,huggingface-cli)
 	hf download $(HF_REPO) \
-	  --include "$(DOWNLOAD_INCLUDE)" \
+	  $(foreach f,$(DOWNLOAD_INCLUDE),--include "$(f)") \
 	  --local-dir $(EXP_MODEL_DIR)
 
 list:
