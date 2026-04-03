@@ -29,12 +29,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `make export-opencode` and `make export-vscode` to generate configuration snippets
 - Added healthcheck and `API_KEY` support to `compose.yaml` and `compose-entrypoint.sh`
 - Added curation credit to DimkaNYC across the documentation
+- Added `make cache` target (`hf cache ls`) for inspecting the local Hugging Face model cache
+- Added `make check-model` guard to `make serve` and `make chat` — fails immediately with a clear error if the model file is not found, preventing cryptic `invalid argument` errors
+- Added `CURSOR.md` integration guide — covers HTTPS requirement, setup steps (Traefik lowest-friction), and all 13 model aliases
+- Added "Adding a New Model Profile" checklist to `AGENTS.md` listing all 8 files that must be updated in sync
+- Added HuggingFace source URL as a comment (`# https://huggingface.co/...`) to the first line of every profile in `profiles/`
+- Updated `~/.config/opencode/opencode.json` and `chatLanguageModels.json` to include all 13 model aliases (Gemma 4, Qwen3.5, GPT-OSS, DeepSeek, Nemotron, Kimi-K2.5)
 
 ### Changed
 - Reorganized documentation: moved `PROFILES.md` to `profiles/README.md` for better directory-level discoverability
 - Moved all model profile `.env-*` files into the `profiles/` directory
 - Rewrote `README.md` for significantly better human readability, including a new Table of Contents and "Built On" section
 - Updated all integration guides (`OPENCODE.md`, `VSCODE.md`, `GEMINI.md`, `AGENTS.md`) with the latest configuration variables and `profiles/` paths
+- Updated `VSCODE.md` to document the `chatLanguageModels.json` format (`customoai` vendor) with all 13 individual model entries
+- Replaced Mac Studio-specific hardware tier references with generic RAM/VRAM tier descriptions in `profiles/README.md`
+- Fixed `make download` to pass each filename in `DOWNLOAD_INCLUDE` as a separate `--include` flag (via `$(foreach)`) — previously all filenames were passed as one quoted string and no files were fetched
 
 ### Fixed
 - Fixed the `OPENCODE.md` integration guide to use the correct `provider` record and `options` schema required by OpenCode

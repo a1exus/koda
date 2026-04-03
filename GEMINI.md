@@ -68,6 +68,7 @@ If the model isn't found in either location, `make serve`/`make chat` will fail 
 | `make check` | Verifies required binaries are installed and on `PATH`. |
 | `make export-opencode` | Prints OpenCode configuration snippet for current profile. |
 | `make export-vscode` | Prints VS Code configuration snippet for current profile. |
+| `make cache` | Lists the local Hugging Face model cache (`hf cache ls`). |
 
 ### Common Overrides
 
@@ -100,6 +101,7 @@ Overrides can be passed inline to any `make` target:
   - [OpenCode](./OPENCODE.md)
   - [Tailscale + Koda (via llama.cpp)](./TAILSCALE.md)
   - [VS Code](./VSCODE.md) (Continue, Roo Code)
+  - [Cursor](./CURSOR.md) (requires HTTPS — Traefik in `compose.yaml` is the lowest-friction option)
 - **Learning:**
   - [Bundled Profiles](./profiles/README.md)
 
