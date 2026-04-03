@@ -109,6 +109,19 @@ llama.cpp is pre-built via Homebrew. There is nothing to compile or install beyo
 - **Speculative Decoding:** Enabled via `DRAFT_MODEL`.
 - **Context Shifting:** Enabled via `CTX_SHIFT=1`.
 
+## Adding a New Model Profile
+
+When adding a new `.env-*` profile, update these files to keep everything in sync:
+
+1. **`profiles/README.md`** — add a subsection under the appropriate model family with a variant table, ALIAS, and Sources links
+2. **`AGENTS.md`** — add a row to the Bundled Profiles table below
+3. **`OPENCODE.md`** — add an entry to the `models` block in the JSON snippet
+4. **`VSCODE.md`** — add an entry to the `chatLanguageModels.json` snippet
+5. **`CURSOR.md`** — add a row to the Available Model Aliases table
+6. **`CHANGELOG.md`** — add an entry under `[Unreleased] > Added`
+7. **`~/.config/opencode/opencode.json`** — add the alias to the live config
+8. **`~/Library/Application Support/Code - Insiders/User/chatLanguageModels.json`** — add the model entry
+
 ## Bundled Profiles
 
 Full catalog with sizes and hardware notes lives in `profiles/README.md`. Summary:

@@ -60,5 +60,6 @@ Primary targets are Apple Silicon (macOS), NVIDIA (CUDA), and AMD (ROCm/OpenCL).
 | `GEMINI.md` | Detailed Docker usage and agent-specific instructions. |
 | `OPENCODE.md` | Verified configuration guide for OpenCode. |
 | `VSCODE.md` | Integration guide for VS Code extensions. |
+| `CURSOR.md` | Integration guide for Cursor (HTTPS required). |
 | `TAILSCALE.md` | Guide for private access and multi-machine RPC pooling. |
 | `CHANGELOG.md` | Version history (Keep a Changelog format). |

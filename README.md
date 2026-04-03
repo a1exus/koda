@@ -129,6 +129,7 @@ Koda is **local-first**. Your data never leaves your machine.
 | [**AGENTS.md**](./AGENTS.md) | Technical reference for developers and AI agents. |
 | [**OPENCODE.md**](./OPENCODE.md) | Step-by-step guide for [OpenCode](https://opencode.ai) integration. |
 | [**VSCODE.md**](./VSCODE.md) | How to use Koda with VS Code (Copilot BYOM, Continue, Roo). |
+| [**CURSOR.md**](./CURSOR.md) | How to use Koda with Cursor (requires HTTPS — see Tailscale). |
 | [**TAILSCALE.md**](./TAILSCALE.md) | Private remote access and multi-machine RPC pooling. |
 
 ---
