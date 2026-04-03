@@ -26,11 +26,13 @@ git clone https://github.com/a1exus/koda.git && cd koda
 
 ### 2. Install Dependencies
 
+<a name="macos-linux"></a>
 **macOS / Linux**
 ```bash
 brew install llama.cpp huggingface-cli fzf
 ```
 
+<a name="windows"></a>
 **Windows**
 ```powershell
 winget install ggml-org.llama.cpp
@@ -43,6 +45,7 @@ pip install huggingface_hub[cli]
 > sudo apt install git make
 > ```
 
+<a name="docker"></a>
 **Docker (no local binaries needed)**
 ```bash
 docker compose --env-file profiles/.env-Qwen3.5-27B.Q4_K_M up -d
