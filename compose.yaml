@@ -30,6 +30,10 @@ services:
       - ./scripts/compose-entrypoint.sh:/entrypoints/compose-entrypoint.sh:ro
     expose:
       - "8080"
+    deploy:
+      resources:
+        reservations:
+          memory: ${MEM_RESERVE:-4g}
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
       interval: 30s
