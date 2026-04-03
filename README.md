@@ -168,6 +168,7 @@ Koda is a thin layer standing on the shoulders of giants:
 | **[gum](https://github.com/charmbracelet/gum)** | Interactive profile picker — alternative backend for `make select` if fzf is not installed |
 | **[Docker Compose](https://docs.docker.com/compose/)** | Containerized deployment path — no local binaries required |
 | **[Traefik](https://traefik.io/)** | Reverse proxy — provides HTTPS termination in the Docker Compose path |
+| **[Caddy](https://github.com/caddyserver/caddy)** | Reverse proxy — simple HTTPS termination for the native `make serve` path |
 | **[Tailscale](https://tailscale.com/)** | Private network — secure remote access and multi-machine RPC pooling |
 | **[Trivy](https://github.com/aquasecurity/trivy)** | Security scanning — automated vulnerability checks via GitHub Actions |
 

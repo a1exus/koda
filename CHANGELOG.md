@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Added Caddy to the Built On table in README.md as the HTTPS reverse proxy option for the native `make serve` path
+
+### Changed
+- Clarified CURSOR.md HTTPS options table with a "Works with" column — Traefik is Docker-only; Tailscale and Caddy work with both `make serve` and Docker
+
 ## [2026-04-03]
 
 ### Added
