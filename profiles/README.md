@@ -133,12 +133,12 @@ Official Alibaba weights in GGUF via Unsloth. Unified vision-language model with
 
 #### Qwen3.5-27B · Claude 4.6 Opus Reasoning Distilled
 
-Reasoning-focused 27B distill. GGUF published by Jackrong alongside the original weights.
+Reasoning-focused 27B distill. Includes a vision encoder (`mmproj-BF16.gguf`) — Koda auto-detects it for multimodal use. GGUF published by Jackrong alongside the original weights.
 
 | Profile | Size | Format |
 | --- | --- | --- |
-| `.env-Qwen3.5-27B.Q4_K_M` | 16.6 GB | Q4_K_M |
-| `.env-Qwen3.5-27B.Q8_0` | 28.7 GB | Q8_0 |
+| `.env-Qwen3.5-27B.Q4_K_M` | 16.5 GB | Q4_K_M |
+| `.env-Qwen3.5-27B.Q8_0` | 28.6 GB | Q8_0 |
 
 **ALIAS:** `qwen3.5-27b`
 **Source:** [Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-GGUF](https://huggingface.co/Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-GGUF) · [Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled](https://huggingface.co/Jackrong/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled)
