@@ -45,23 +45,7 @@ Repeat for each model you want available in Cursor. The model name must exactly 
 
 ## Available Model Aliases
 
-| Alias | Model |
-| --- | --- |
-| `gemma-4-e2b-it` | Gemma 4 E2B Instruct |
-| `gemma-4-e4b-it` | Gemma 4 E4B Instruct |
-| `gemma-4-26b-a4b-it` | Gemma 4 26B-A4B Instruct |
-| `gemma-4-31b-it` | Gemma 4 31B Instruct |
-| `qwen3.5-9b` | Qwen 3.5 9B |
-| `qwen3.5-27b` | Qwen 3.5 27B Reasoning Distilled |
-| `qwen3.5-35b-a3b` | Qwen 3.5 35B-A3B |
-| `gpt-oss-20b` | GPT-OSS 20B |
-| `gpt-oss-120b` | GPT-OSS 120B |
-| `deepseek-r1-distill-qwen-32b` | DeepSeek R1 Distill Qwen 32B |
-| `nemotron-nano-3-30b` | Nemotron Nano 3 30B |
-| `nemotron-3-super-120b` | Nemotron 3 Super 120B |
-| `kimi-k2.5` | Kimi K2.5 |
-
-See [profiles/README.md](./profiles/README.md) for sizes and hardware requirements.
+See [profiles/README.md](./profiles/README.md#api-identity-aliases) for the full alias list, model sizes, and hardware requirements.
 
 ---
 
@@ -69,4 +53,3 @@ See [profiles/README.md](./profiles/README.md) for sizes and hardware requiremen
 
 - Cursor stores one active model at a time. Switch models in the model picker as you swap `make serve` profiles.
 - Reasoning models (DeepSeek, Qwen3.5-27B) output `<think>...</think>` blocks before the final answer — Cursor displays these in the chat.
-- Koda defaults to the model's embedded Jinja chat template, so no extra prompt-format configuration is needed.

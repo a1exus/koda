@@ -53,6 +53,4 @@ This guide explains how to use OpenCode with the local inference server provided
 
 ### Compatibility
 
-Since the server is OpenAI-compatible, any client can use the same base URL (`http://localhost:8080/v1`) with any non-empty API key to interact with the running model.
-
-Koda defaults to the GGUF model's embedded Jinja chat template, so most models do not need extra prompt-format configuration in OpenCode.
+Any OpenAI-compatible client can use `http://localhost:8080/v1` with any non-empty API key. See [README.md](./README.md#-quick-start) for server defaults and override options.

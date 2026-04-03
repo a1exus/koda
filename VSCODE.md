@@ -73,4 +73,4 @@ curl http://localhost:8080/v1/chat/completions \
   }'
 ```
 
-Koda defaults to the GGUF model's embedded Jinja template, so most models work without extra prompt-template setup in VS Code clients.
+Any OpenAI-compatible client can use `http://localhost:8080/v1` with any non-empty API key. See [README.md](./README.md#-quick-start) for server defaults and override options.
