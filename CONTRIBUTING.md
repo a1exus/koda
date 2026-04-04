@@ -38,6 +38,7 @@
 - Always include the HuggingFace source URL as a comment on the first line.
 - Use the same `ALIAS` across all quant variants of the same model so client configs don't need to change when you swap quants.
 - Run `sh scripts/validate-profiles.sh` before opening a PR to catch missing fields.
+- Run `lychee '**/*.md'` before opening a PR to catch broken links (requires `brew install lychee`).
 
 ## Reporting Issues
 
