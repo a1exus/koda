@@ -12,7 +12,7 @@ Works with [OpenCode](./OPENCODE.md), [VS Code Copilot](./VSCODE.md), [Cursor](.
 - [🐳 Docker Compose](#-docker-compose)
 - [🛡️ Security & Privacy](#️-security--privacy)
 - [📚 Documentation Index](#-documentation-index)
-- [🏗️ Built On](#️-built-on)
+- [🏗️ Built With](#️-built-with)
 
 ---
 
@@ -157,7 +157,7 @@ Koda is **local-first** — your data never leaves your machine.
 
 ---
 
-## 🏗️ Built On
+## 🏗️ Built With
 
 Koda is a thin layer standing on the shoulders of giants:
 
