@@ -110,7 +110,7 @@ Overrides can be passed inline to any `make` target:
   - [OpenCode](./OPENCODE.md)
   - [Tailscale + Koda (via llama.cpp)](./TAILSCALE.md)
   - [VS Code](./VSCODE.md) (Continue, Roo Code)
-  - [Cursor](./CURSOR.md) (requires HTTPS — Traefik in `compose.yaml` is the lowest-friction option)
+  - [Cursor](./CURSOR.md) (requires HTTPS — see [CADDY.md](./CADDY.md) for native, [TAILSCALE.md](./TAILSCALE.md) for remote)
 - **Learning:**
   - [Bundled Profiles](./profiles/README.md)
 

@@ -7,6 +7,30 @@ and this project uses [Calendar Versioning](https://calver.org/) (`YYYY-MM-DD`).
 
 ## [Unreleased]
 
+## [2026-04-03.1]
+
+### Added
+- Added `.gitignore` — ignores model weights (`*.gguf`, `*.safetensors`, etc.), local env overrides, macOS metadata, editor files, and Trivy cache
+- Added `CONTRIBUTING.md` — profile creation guide, 8-file update checklist, and pre-PR validation steps (`validate-profiles.sh`, `lychee`)
+- Added `scripts/validate-profiles.sh` — checks all profiles for required fields and warns on duplicate aliases
+- Added `compose.traefik.yml` override — Traefik network join and labels separated from base `compose.yaml`; base now uses `expose` only with no external network dependency
+- Added `CADDY.md` — HTTPS guide for native `make serve` (local/LAN without Tailscale); clarifies when to use Caddy vs Tailscale vs Traefik
+- Added `make smoke-test` target — hits `/health` on `HOST:PORT` and verifies `{"status":"ok"}`
+- Added `dependabot.yml` — weekly automated PRs to keep GitHub Actions versions current
+- Added memory reservation to `compose.yaml` (`MEM_RESERVE`, default `4g`) via `deploy.resources.reservations`
+- Added CI: profile validation workflow (`.github/workflows/validate-profiles.yml`)
+- Added CI: shellcheck workflow for `scripts/` (`.github/workflows/shellcheck.yml`)
+- Added CI: link checker workflow using lychee (`.github/workflows/link-check.yml`)
+
+### Changed
+- Updated Trivy action from `@master` to `v0.35.0` (latest; also adopts `v`-prefixed tag per aquasecurity's supply chain security migration)
+- `make serve` now warns when `HOST` is not `127.0.0.1` and `API_KEY` is empty
+- Traefik integration is now opt-in via `compose.traefik.yml` override — `docker compose up` no longer requires an external Traefik network
+- CURSOR.md HTTPS options table updated: Tailscale noted as having built-in HTTPS; Caddy scoped to local/LAN only
+- CHANGELOG versioning corrected from SemVer to CalVer
+- Linked Apache 2.0 LICENSE by name in README footer
+- `MEM_RESERVE` and `make smoke-test` added to AGENTS.md reference tables
+
 ## [2026-04-03]
 
 ### Added
@@ -89,6 +113,7 @@ and this project uses [Calendar Versioning](https://calver.org/) (`YYYY-MM-DD`).
 - Changed default GPU offload from `99` to `-1` to match modern llama.cpp usage better
 - Added `METRICS=1` support for exposing llama-server metrics
 
-[Unreleased]: https://github.com/a1exus/koda/compare/2026-04-03...HEAD
+[Unreleased]: https://github.com/a1exus/koda/compare/2026-04-03.1...HEAD
+[2026-04-03.1]: https://github.com/a1exus/koda/compare/2026-04-03...2026-04-03.1
 [2026-04-03]: https://github.com/a1exus/koda/compare/2026-03-27...2026-04-03
 [2026-03-27]: https://github.com/a1exus/koda/releases/tag/2026-03-27

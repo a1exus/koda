@@ -57,6 +57,7 @@ Defaults are defined in the root `.env` file and loaded by the `Makefile`. Model
 | `DOWNLOAD_INCLUDE` | `$(MODEL_FILE)` | Download pattern for sharded GGUF models |
 | `SERVER_EXTRA_ARGS` | empty | Advanced flags for `llama-server` |
 | `CHAT_EXTRA_ARGS` | empty | Advanced flags for `llama-cli` |
+| `MEM_RESERVE` | `4g` | Docker Compose only — memory reservation for the container |
 
 ## Model Identity & API Aliases
 
@@ -85,6 +86,7 @@ Use `make` targets — do not invoke `llama-cli` or `llama-server` directly:
 | `make list` | List all profiles in `profiles/` |
 | `make select` | Interactively select a profile (requires `fzf` or `gum`) |
 | `make check` | Verify required binaries are installed and on `PATH` |
+| `make smoke-test` | Hit `/health` on `HOST:PORT` and verify the server is responding |
 | `make export-opencode` | Print OpenCode provider config snippet for the current profile |
 | `make export-vscode` | Print VS Code `customOAIModels` snippet for the current profile |
 
