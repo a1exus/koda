@@ -1,8 +1,19 @@
 # Koda: Local LLM Orchestrator 🎛️
 
-Koda is a lightweight orchestration layer for running GGUF models locally via [llama.cpp](https://github.com/ggml-org/llama.cpp). Pick a model profile, run `make serve`, and get an OpenAI-compatible API at `http://localhost:8080/v1` plus a built-in browser chat — no cloud, no telemetry, no complex CLI flags to remember.
+Run AI models on your own machine. Pick a model, run one command, get a chat interface and an API — no cloud, no accounts, no data leaving your device.
 
 Works with [OpenCode](./OPENCODE.md), [VS Code Copilot](./VSCODE.md), [Cursor](./CURSOR.md), and any OpenAI-compatible client.
+
+<details>
+<summary>Technical overview</summary>
+
+Koda is a thin Makefile orchestration layer over [llama.cpp](https://github.com/ggml-org/llama.cpp). It manages a three-layer configuration system (`.env` defaults → `profiles/.env-<model>.<quant>` → inline overrides) and resolves model paths without triggering implicit downloads — checking `MODEL_DIR` first, then falling back to the Hugging Face cache via `find`.
+
+`make serve` starts `llama-server`, which exposes both a built-in browser WebUI at `http://localhost:8080` and an OpenAI-compatible HTTP API at `http://localhost:8080/v1`. The `ALIAS` variable pins a stable model ID for external tool compatibility regardless of quantization swap.
+
+Deployment paths: native `make` (full GPU via Metal/CUDA/ROCm) or Docker Compose using the official `ghcr.io/ggml-org/llama.cpp` image (GPU on NVIDIA/AMD Linux only). Traefik HTTPS is opt-in via `compose.traefik.yml`; Caddy or Tailscale cover the native path.
+
+</details>
 
 ---
 
