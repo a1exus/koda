@@ -18,18 +18,12 @@ Works with [OpenCode](./OPENCODE.md), [VS Code Copilot](./VSCODE.md), [Cursor](.
 
 ## 🚀 Quick Start
 
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/a1exus/koda.git && cd koda
-```
-
-### 2. Install Dependencies
+### 1. Install Dependencies
 
 <a name="macos-linux"></a>
 **macOS / Linux**
 ```bash
-brew install llama.cpp huggingface-cli fzf
+brew install git llama.cpp huggingface-cli fzf
 ```
 
 <a name="windows"></a>
@@ -51,6 +45,12 @@ pip install huggingface_hub[cli]
 docker compose --env-file profiles/.env-Qwen3.5-27B.Q4_K_M up -d
 ```
 See [Docker Compose](#-docker-compose) for GPU support details.
+
+### 2. Clone the Repository
+
+```bash
+git clone https://github.com/a1exus/koda.git && cd koda
+```
 
 ### 3. Verify Environment
 ```bash
