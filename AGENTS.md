@@ -163,8 +163,17 @@ Full catalog with sizes and hardware notes lives in `profiles/README.md`. Summar
 | `.env-Nemotron-Nano-3-30B.F16` / `BF16` | `lmstudio-community` / `unsloth` | 63 GB | Mamba-2 MoE hybrid, 2 shards |
 | `.env-Nemotron-3-Super-120B.Q4_K` | `ggml-org/Nemotron-3-Super-120B-GGUF` | 69.9 GB | Mamba-2 MoE hybrid |
 | `.env-Nemotron-3-Super-120B.Q4_K_M` / `Q8_0` | `unsloth/NVIDIA-Nemotron-3-Super-120B-A12B-GGUF` | 83–129 GB | Mamba-2 MoE hybrid, 3–4 shards |
+| `.env-DeepSeek-R1-Distill-Qwen-1.5B.Q4_K_M` / `Q8_0` | `bartowski/DeepSeek-R1-Distill-Qwen-1.5B-GGUF` | 1.1–1.9 GB | Reasoning distill, `<think>` blocks |
+| `.env-DeepSeek-R1-Distill-Qwen-7B.Q4_K_M` / `Q8_0` | `bartowski/DeepSeek-R1-Distill-Qwen-7B-GGUF` | 4.7–8.1 GB | Reasoning distill |
+| `.env-DeepSeek-R1-Distill-Llama-8B.Q4_K_M` / `Q8_0` | `bartowski/DeepSeek-R1-Distill-Llama-8B-GGUF` | 4.9–8.5 GB | Reasoning distill, Llama base |
+| `.env-DeepSeek-R1-Distill-Qwen-14B.Q4_K_M` / `Q8_0` | `bartowski/DeepSeek-R1-Distill-Qwen-14B-GGUF` | 9–15.7 GB | Reasoning distill |
+| `.env-DeepSeek-R1-Distill-Qwen-32B.Q4_K_M` | `bartowski/DeepSeek-R1-Distill-Qwen-32B-GGUF` | 19.85 GB | Reasoning distill |
+| `.env-DeepSeek-R1-Distill-Qwen-32B.Q8_0` | `ggml-org/DeepSeek-R1-Distill-Qwen-32B-Q8_0-GGUF` | 34.8 GB | Reasoning distill |
+| `.env-DeepSeek-R1-Distill-Llama-70B.Q4_K_M` / `Q8_0` | `bartowski/DeepSeek-R1-Distill-Llama-70B-GGUF` | 43–75 GB | Reasoning distill, Q8_0 is 2 shards |
+| `.env-DeepSeek-R1-0528-Qwen3-8B.Q4_K_M` / `Q8_0` | `unsloth/DeepSeek-R1-0528-Qwen3-8B-GGUF` | 5–8.7 GB | Updated R1 distill on Qwen3-8B base |
 | `.env-DeepSeek-R1.UD-IQ1_S` | `unsloth/DeepSeek-R1-GGUF-UD` | 185 GB | 4 shards, 192 GB+ unified memory |
 | `.env-DeepSeek-R1.UD-IQ2_XXS` | `unsloth/DeepSeek-R1-GGUF-UD` | 216 GB | 5 shards, recommended minimum quality |
 | `.env-DeepSeek-R1.UD-Q2_K_XL` | `unsloth/DeepSeek-R1-GGUF-UD` | 250 GB | 6 shards, best quality under 256 GB |
 | `.env-DeepSeek-R1.Q3_K_M` | `bartowski/DeepSeek-R1-GGUF` | 319 GB | 9 shards, 3-bit sweet spot |
+| `.env-DeepSeek-R1-0528.Q4_K_M` | `lmstudio-community/DeepSeek-R1-0528-GGUF` | ~409 GB | 11 shards, updated 671B |
 | `.env-Kimi-K2.5.Q4_X` | `AesSedai/Kimi-K2.5-GGUF` | ~584 GB | 14 shards, extreme scale |

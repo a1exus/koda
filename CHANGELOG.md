@@ -9,6 +9,8 @@ and this project uses [Calendar Versioning](https://calver.org/) (`YYYY-MM-DD`).
 
 ### Added
 - Added DeepSeek-R1 671B profiles: `UD-IQ1_S` (185 GB, 4 shards), `UD-IQ2_XXS` (216 GB, 5 shards), `UD-Q2_K_XL` (250 GB, 6 shards) via `unsloth/DeepSeek-R1-GGUF-UD`; `Q3_K_M` (319 GB, 9 shards) via `bartowski/DeepSeek-R1-GGUF`
+- Added DeepSeek-R1-0528 671B profile: `Q4_K_M` (~409 GB, 11 shards) via `lmstudio-community/DeepSeek-R1-0528-GGUF`
+- Added DeepSeek-R1 distill profiles: Qwen-1.5B, Qwen-7B, Llama-8B, Qwen-14B, Qwen-32B Q4_K_M, Llama-70B (Q4_K_M/Q8_0) via `bartowski`; R1-0528-Qwen3-8B (Q4_K_M/Q8_0) via `unsloth`
 - Added IQ1_S, IQ2_XXS, and UD-\* format entries to quantization guide in `profiles/README.md`
 
 ## [2026-04-03]
