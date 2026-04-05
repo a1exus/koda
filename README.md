@@ -40,17 +40,13 @@ brew install git llama.cpp huggingface-cli fzf
 ```
 
 <a name="windows"></a>
-**Windows**
-```powershell
-winget install ggml-org.llama.cpp
-winget install junegunn.fzf
-winget install Python.Python.3
-pip install huggingface_hub[cli]
+**Windows** — [Docker](#docker) is the recommended path (no local binaries needed).
+
+For the native `make` path, use [WSL](https://learn.microsoft.com/windows/wsl/):
+```bash
+sudo apt update && sudo apt install git make
 ```
-> `make` is required on Windows. Use [WSL](https://learn.microsoft.com/windows/wsl/), then inside WSL:
-> ```bash
-> sudo apt update && sudo apt install git make
-> ```
+Then install `llama.cpp` and `huggingface-cli` inside WSL (e.g. via [Homebrew on Linux](https://docs.brew.sh/Homebrew-on-Linux)).
 
 <a name="docker"></a>
 **Docker (no local binaries needed)**

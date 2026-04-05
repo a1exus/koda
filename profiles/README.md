@@ -196,7 +196,7 @@ Unsloth Dynamic (`UD-*`) profiles use per-layer mixed precision — critical mat
 **Sampling:** `TEMP=0.6`, `TOP_P=0.95` (Koda defaults match DeepSeek's recommendation)
 **Sources:** [unsloth/DeepSeek-R1-GGUF-UD](https://huggingface.co/unsloth/DeepSeek-R1-GGUF-UD) · [bartowski/DeepSeek-R1-GGUF](https://huggingface.co/bartowski/DeepSeek-R1-GGUF) · [deepseek-ai/DeepSeek-R1](https://huggingface.co/deepseek-ai/DeepSeek-R1)
 
-#### DeepSeek-R1-0528 671B (MoE, updated May 2028)
+#### DeepSeek-R1-0528 671B (MoE, updated May 2025)
 
 Updated release of the full 671B model with improved reasoning. Same hardware requirements as the original R1 671B — 192 GB minimum. Sharded across 11 files.
 
@@ -273,7 +273,7 @@ Smaller distilled checkpoints from R1 671B — practical for most hardware. All 
 
 ##### DeepSeek-R1-0528-Qwen3-8B
 
-Distilled from the updated May 2028 R1. Uses Qwen3-8B as the student model — benefits from Qwen3's stronger base compared to earlier distills.
+Distilled from the updated May 2025 R1. Uses Qwen3-8B as the student model — benefits from Qwen3's stronger base compared to earlier distills.
 
 | Profile | Size | Format |
 | --- | --- | --- |
@@ -368,10 +368,10 @@ Instruct variant. Q4_K from ggml-org (official); Q4_K_M and Q8_0 from unsloth.
 | --- | --- |
 | Any machine (8 GB+) | `.env-gemma-4-E2B-it.Q8_0` (5 GB) · `.env-gemma-4-E4B-it.Q4_K_M` (5.3 GB) |
 | 16–24 GB VRAM / RAM | `.env-gpt-oss-20b.MXFP4` (12 GB) · `.env-gemma-4-26B-A4B-it.Q4_K_M` (17 GB) |
-| 8–16 GB VRAM / RAM | `.env-DeepSeek-R1-Distill-Qwen-1.5B.Q8_0` (1.9 GB) · `.env-DeepSeek-R1-Distill-Qwen-7B.Q4_K_M` (4.7 GB) · `.env-DeepSeek-R1-Distill-Llama-8B.Q4_K_M` (4.9 GB) · `.env-DeepSeek-R1-0528-Qwen3-8B.Q4_K_M` (5 GB) |
-| 8–16 GB VRAM / RAM (cont.) | `.env-Nemotron-3-Nano-4B.Q4_K_M` (2.8 GB) |
-| 16–24 GB VRAM / RAM | `.env-DeepSeek-R1-Distill-Qwen-14B.Q4_K_M` (9 GB) · `.env-gpt-oss-20b.MXFP4` (12 GB) · `.env-Nemotron-Cascade-2-30B.Q4_K_M` (25 GB) · `.env-gemma-4-26B-A4B-it.Q4_K_M` (17 GB) |
-| 32–48 GB VRAM / RAM | `.env-Qwen3.5-27B.Q4_K_M` (17 GB) · `.env-DeepSeek-R1-Distill-Qwen-32B.Q4_K_M` (20 GB) · `.env-gemma-4-31B-it.Q4_K_M` (19 GB) · `.env-DeepSeek-R1-Distill-Qwen-32B.Q8_0` (35 GB) |
+| 8–16 GB VRAM / RAM | `.env-Nemotron-3-Nano-4B.Q4_K_M` (2.8 GB) · `.env-DeepSeek-R1-Distill-Qwen-1.5B.Q8_0` (1.9 GB) · `.env-DeepSeek-R1-Distill-Qwen-7B.Q4_K_M` (4.7 GB) · `.env-DeepSeek-R1-Distill-Llama-8B.Q4_K_M` (4.9 GB) · `.env-DeepSeek-R1-0528-Qwen3-8B.Q4_K_M` (5 GB) |
+| 16–24 GB VRAM / RAM | `.env-DeepSeek-R1-Distill-Qwen-14B.Q4_K_M` (9 GB) · `.env-gpt-oss-20b.MXFP4` (12 GB) · `.env-gemma-4-26B-A4B-it.Q4_K_M` (17 GB) |
+| 24–32 GB VRAM / RAM | `.env-Nemotron-Cascade-2-30B.Q4_K_M` (25 GB) · `.env-Nemotron-Nano-3-30B.Q4_K_M` (25 GB) · `.env-DeepSeek-R1-Distill-Qwen-32B.Q4_K_M` (20 GB) |
+| 32–48 GB VRAM / RAM | `.env-Qwen3.5-27B.Q4_K_M` (17 GB) · `.env-gemma-4-31B-it.Q4_K_M` (19 GB) · `.env-DeepSeek-R1-Distill-Qwen-32B.Q8_0` (35 GB) · `.env-Nemotron-Cascade-2-30B.Q8_0` (34 GB) |
 | 64–96 GB VRAM / RAM | `.env-DeepSeek-R1-Distill-Llama-70B.Q4_K_M` (43 GB) · `.env-Nemotron-Nano-3-30B.Q8_0` (34 GB) · `.env-gemma-4-26B-A4B-it.F16` (51 GB) |
 | 128–192 GB VRAM / RAM | `.env-Nemotron-3-Super-120B.Q4_K` (70 GB) · `.env-gpt-oss-120b.MXFP4` (63 GB) · `.env-gemma-4-31B-it.F16` (61 GB) |
 | 192–256 GB unified memory | `.env-DeepSeek-R1.UD-IQ1_S` (185 GB) · `.env-DeepSeek-R1.UD-IQ2_XXS` (216 GB) · `.env-DeepSeek-R1.UD-Q2_K_XL` (250 GB) |

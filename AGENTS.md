@@ -20,14 +20,11 @@ There is also a Compose deployment path in `compose.yaml`. The base file uses `e
 | `llama-server` | OpenAI-compatible HTTP server |
 | `hf` | HuggingFace model downloader |
 
-**Windows** — installed via winget + pip:
-```powershell
-winget install ggml-org.llama.cpp
-winget install junegunn.fzf
-winget install Python.Python.3
-pip install huggingface_hub[cli]
+**Windows** — Docker is the recommended path (see `compose.yaml` and `GEMINI.md`). For the native `make` path, use WSL:
+```bash
+sudo apt update && sudo apt install git make
 ```
-`make` requires WSL on Windows: `sudo apt update && sudo apt install git make`
+Then install `llama-server`, `llama-cli`, and `hf` inside WSL (e.g. [Homebrew on Linux](https://docs.brew.sh/Homebrew-on-Linux) or build llama.cpp from source).
 
 **Docker** — no binaries required. See `compose.yaml` and `GEMINI.md`. GPU passthrough works on NVIDIA/AMD Linux only; Apple Silicon and Windows are CPU-only in Docker.
 
@@ -139,8 +136,8 @@ When adding a new `.env-*` profile, update these files to keep everything in syn
 4. **`VSCODE.md`** — add an entry to the `chatLanguageModels.json` snippet
 5. **`CURSOR.md`** — no edit needed; alias list links to `profiles/README.md` automatically
 6. **`CHANGELOG.md`** — add an entry under `[Unreleased] > Added`
-7. **`~/.config/opencode/opencode.json`** — add the alias to the live config
-8. **`~/Library/Application Support/Code - Insiders/User/chatLanguageModels.json`** — add the model entry
+7. **`~/.config/opencode/opencode.json`** — add the alias to the live config *(local only — not part of the PR)*
+8. **`~/Library/Application Support/Code - Insiders/User/chatLanguageModels.json`** — add the model entry *(local only — not part of the PR)*
 
 ## Bundled Profiles
 

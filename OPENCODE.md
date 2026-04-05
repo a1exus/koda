@@ -12,7 +12,7 @@ This guide explains how to use OpenCode with the local inference server provided
    This starts both the browser WebUI at `http://localhost:8080` and the OpenAI-compatible API at `http://localhost:8080/v1`.
 
 3. **Add the llama.cpp provider:**
-   Copy and paste the following snippet into the `provider` section of your `opencode.json` file. Ensure the `baseURL` points to your local server:
+   Copy and paste the following snippet into the `provider` section of your `opencode.json` file. Ensure the `baseURL` points to your local server. To generate a single model entry for any profile, run `make export-opencode ENV=<profile>`.
 
    ```json
    {

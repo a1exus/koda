@@ -29,8 +29,8 @@
    | `VSCODE.md` | Entry in the `chatLanguageModels.json` snippet |
    | `CURSOR.md` | *(alias list links to profiles/README.md — no edit needed)* |
    | `CHANGELOG.md` | Entry under `[Unreleased] > Added` |
-   | `~/.config/opencode/opencode.json` | Alias entry in the live config |
-   | `~/Library/Application Support/Code - Insiders/User/chatLanguageModels.json` | Model entry |
+   | `~/.config/opencode/opencode.json` | Alias entry in the live config *(local only — not part of the PR)* |
+   | `~/Library/Application Support/Code - Insiders/User/chatLanguageModels.json` | Model entry *(local only — not part of the PR)* |
 
 ## General Guidelines
 

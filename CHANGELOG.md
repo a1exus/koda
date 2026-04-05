@@ -8,6 +8,7 @@ and this project uses [Calendar Versioning](https://calver.org/) (`YYYY-MM-DD`).
 ## [Unreleased]
 
 ### Added
+- Added SVG logo (`assets/logo.svg`) — animated neural network mark with gradient wordmark; replaces plain text h1 in README
 - Added Nemotron-3-Nano-4B profile: `Q4_K_M` (2.84 GB) via official `nvidia/NVIDIA-Nemotron-3-Nano-4B-GGUF`
 - Added Nemotron-Cascade-2-30B profiles: `Q4_K_M` (24.73 GB) and `Q8_0` (33.59 GB) via `bartowski/nvidia_Nemotron-Cascade-2-30B-A3B-GGUF`
 - Added DeepSeek-R1 671B profiles: `UD-IQ1_S` (185 GB, 4 shards), `UD-IQ2_XXS` (216 GB, 5 shards), `UD-Q2_K_XL` (250 GB, 6 shards) via `unsloth/DeepSeek-R1-GGUF-UD`; `Q3_K_M` (319 GB, 9 shards) via `bartowski/DeepSeek-R1-GGUF`

@@ -37,7 +37,7 @@ docker compose --env-file .env --env-file profiles/.env-Qwen3.5-27B.Q4_K_M up
 
 > **Apple Silicon and Windows users:** the `Makefile` path is required to get GPU acceleration. Docker is fine for CPU-only use or quick testing.
 
-### 3. Volume Sharing & Image Overrides
+### 4. Volume Sharing & Image Overrides
 The `compose.yaml` mounts two key directories:
 - `/models`: Mapped to `${MODEL_DIR}` from your host.
 - `/root/.cache/huggingface`: Mapped to your host's default Hugging Face cache (`~/.cache/huggingface`).

@@ -13,7 +13,7 @@ To add your local server to Copilot Chat:
 1. **Start your local server:** Ensure you have a model running (e.g., `make serve ENV=profiles/.env-gemma-4-31B-it.Q4_K_M`).
    This exposes both the built-in WebUI at `http://localhost:8080` and the OpenAI-compatible API at `http://localhost:8080/v1`.
 2. **Configure `chatLanguageModels.json`:**
-   Open `~/.config/Code/User/chatLanguageModels.json` (or `Code - Insiders`) and add a `koda (Local)` provider with one entry per model alias:
+   Open `~/.config/Code/User/chatLanguageModels.json` (or `Code - Insiders`) and add a `koda (Local)` provider with one entry per model alias. To generate an entry for a single profile, run `make export-vscode ENV=<profile>`.
    ```json
    [
      {
