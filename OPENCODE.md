@@ -75,48 +75,7 @@ This guide explains how to use OpenCode with the local inference server provided
 
 ## Adding Playwright MCP (Browser Tools)
 
-OpenCode supports [MCP servers](https://modelcontextprotocol.io/) that give your local model access to external tools. [Playwright MCP](https://github.com/microsoft/playwright-mcp) (`@playwright/mcp`) adds browser automation — navigate pages, click elements, fill forms, take screenshots, and extract content.
-
-Add the `mcpServers` section to your `opencode.json` (alongside the existing `provider` section):
-
-```json
-{
-  "mcpServers": {
-    "playwright": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["@playwright/mcp"]
-    }
-  }
-}
-```
-
-This launches a headed Chromium browser. Common options you can append to `args`:
-
-| Argument | Effect |
-| :--- | :--- |
-| `--headless` | Run without a visible browser window |
-| `--browser chrome` | Use Chrome instead of bundled Chromium |
-| `--viewport-size 1280x720` | Set the browser viewport size |
-| `--caps vision` | Enable screenshot-based vision capabilities |
-
-Example with headless Chrome and vision:
-
-```json
-{
-  "mcpServers": {
-    "playwright": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["@playwright/mcp", "--headless", "--browser", "chrome", "--caps", "vision"]
-    }
-  }
-}
-```
-
-Once configured, restart OpenCode. Playwright tools (navigate, click, fill, snapshot, etc.) will be available to the model automatically.
-
-> **Note:** Requires Node.js 18+. On first run, `npx` downloads the `@playwright/mcp` package and its bundled browser (~200 MB).
+Playwright MCP adds browser automation (navigate, click, fill, screenshot, extract) to your local model. See [MCP-PLAYWRIGHT.md](./MCP-PLAYWRIGHT.md) for setup instructions — covers OpenCode, Cursor, and VS Code (Continue / Roo Code).
 
 ### Compatibility
 

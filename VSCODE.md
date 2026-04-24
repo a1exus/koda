@@ -83,6 +83,12 @@ Both support OpenAI-compatible backends. Point either one at `http://localhost:8
 
 ---
 
+## MCP (Browser Tools)
+
+Playwright MCP adds browser automation to your local model. See [MCP-PLAYWRIGHT.md](./MCP-PLAYWRIGHT.md) for Continue and Roo Code setup.
+
+---
+
 ## Manual Interaction
 
 You can also use the terminal inside VS Code to interact with the API:

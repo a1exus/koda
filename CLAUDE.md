@@ -68,4 +68,5 @@ Primary targets are Apple Silicon (macOS), NVIDIA (CUDA), and AMD (ROCm/OpenCL).
 | `CADDY.md` | HTTPS termination for native `make serve` (local/LAN without Tailscale). |
 | `TAILSCALE.md` | Guide for private access and multi-machine RPC pooling. |
 | `CONTRIBUTING.md` | How to add a model profile and pre-PR checklist. |
+| `MCP-PLAYWRIGHT.md` | Playwright MCP browser tools for OpenCode, Cursor, and VS Code. |
 | `CHANGELOG.md` | Version history (CalVer, Keep a Changelog format). |

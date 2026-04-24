@@ -184,6 +184,7 @@ Koda is **local-first** — your data never leaves your machine.
 | [**CURSOR.md**](./CURSOR.md) | Integration guide for Cursor (requires HTTPS — Traefik, Caddy, or Tailscale) |
 | [**CADDY.md**](./CADDY.md) | HTTPS termination for native `make serve` (Apple Silicon, Windows) |
 | [**TAILSCALE.md**](./TAILSCALE.md) | Private remote access and multi-machine RPC pooling |
+| [**MCP-PLAYWRIGHT.md**](./MCP-PLAYWRIGHT.md) | Playwright MCP browser tools for OpenCode, Cursor, and VS Code |
 
 ---
 
