@@ -33,6 +33,7 @@ This guide explains how to use OpenCode with the local inference server provided
            "qwen3.5-122b-a10b": { "name": "Qwen 3.5 122B-A10B (Local)" },
            "qwen3.5-397b-a17b": { "name": "Qwen 3.5 397B-A17B (Local)" },
            "qwen3.5-35b-a3b": { "name": "Qwen 3.5 35B-A3B (Local)" },
+           "qwen3.6-27b": { "name": "Qwen 3.6 27B (Local)" },
            "qwen3.6-35b-a3b": { "name": "Qwen 3.6 35B-A3B (Local)" },
            "deepseek-r1-distill-qwen-1.5b": { "name": "DeepSeek R1 Distill Qwen 1.5B (Local)" },
            "deepseek-r1-distill-qwen-7b": { "name": "DeepSeek R1 Distill Qwen 7B (Local)" },
@@ -71,6 +72,51 @@ This guide explains how to use OpenCode with the local inference server provided
 
 5. **Select the Model:**
    In the OpenCode interface, select **llama.cpp** as your provider and **Qwen 3.5 27B (Local)** as your model.
+
+## Adding Playwright MCP (Browser Tools)
+
+OpenCode supports [MCP servers](https://modelcontextprotocol.io/) that give your local model access to external tools. [Playwright MCP](https://github.com/microsoft/playwright-mcp) (`@playwright/mcp`) adds browser automation — navigate pages, click elements, fill forms, take screenshots, and extract content.
+
+Add the `mcpServers` section to your `opencode.json` (alongside the existing `provider` section):
+
+```json
+{
+  "mcpServers": {
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["@playwright/mcp"]
+    }
+  }
+}
+```
+
+This launches a headed Chromium browser. Common options you can append to `args`:
+
+| Argument | Effect |
+| :--- | :--- |
+| `--headless` | Run without a visible browser window |
+| `--browser chrome` | Use Chrome instead of bundled Chromium |
+| `--viewport-size 1280x720` | Set the browser viewport size |
+| `--caps vision` | Enable screenshot-based vision capabilities |
+
+Example with headless Chrome and vision:
+
+```json
+{
+  "mcpServers": {
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["@playwright/mcp", "--headless", "--browser", "chrome", "--caps", "vision"]
+    }
+  }
+}
+```
+
+Once configured, restart OpenCode. Playwright tools (navigate, click, fill, snapshot, etc.) will be available to the model automatically.
+
+> **Note:** Requires Node.js 18+. On first run, `npx` downloads the `@playwright/mcp` package and its bundled browser (~200 MB).
 
 ### Compatibility
 

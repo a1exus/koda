@@ -52,7 +52,7 @@ Primary targets are Apple Silicon (macOS), NVIDIA (CUDA), and AMD (ROCm/OpenCL).
 - **Docker Compose**: Uses a healthcheck to ensure the model is loaded before reporting "healthy". GPU passthrough works on NVIDIA/AMD Linux; Apple Silicon and Windows are CPU-only in Docker. Traefik integration is via `compose.traefik.yml` override — never add Traefik network/labels to `compose.yaml` directly.
 - **API key warning**: `make serve` warns if `HOST` is not `127.0.0.1` and `API_KEY` is empty.
 - **Multimodal**: Koda auto-detects `mmproj` files in `MODEL_DIR`. For multimodal profiles, `DOWNLOAD_INCLUDE` fetches both the model and mmproj in one `make download` call.
-- **Bundled profiles**: See `profiles/README.md` for the full catalog (Gemma 4, Qwen3.5, GPT-OSS, DeepSeek, Nemotron, Kimi-K2.5). Hardware tiers from 8 GB to ~584 GB are covered.
+- **Bundled profiles**: See `profiles/README.md` for the full catalog (Gemma 4, Qwen3.5, Qwen3.6, GPT-OSS, DeepSeek, Nemotron, GLM, MiniMax, Kimi-K2.5). Hardware tiers from 4 GB to ~584 GB are covered.
 
 ## Documentation Files
 

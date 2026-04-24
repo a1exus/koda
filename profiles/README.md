@@ -243,6 +243,18 @@ Official Alibaba flagship MoE instruct weights in GGUF via bartowski. Multimodal
 
 ### Qwen3.6 · Alibaba
 
+#### Qwen3.6-27B · Official (Dense, 27B)
+
+Official Alibaba weights in GGUF via bartowski. Multimodal — includes a vision encoder (`mmproj`) for image understanding. Hybrid architecture (Gated DeltaNet + Gated Attention), 262k native context extensible to 1M tokens. Reasoning with thinking modes, tool calling support.
+
+| Profile | Size | Format |
+| --- | --- | --- |
+| `.env-Qwen3.6-27B.Q4_K_M` | 17.53 GB | Q4_K_M |
+| `.env-Qwen3.6-27B.Q8_0` | 28.67 GB | Q8_0 |
+
+**ALIAS:** `qwen3.6-27b`
+**Sources:** [bartowski/Qwen_Qwen3.6-27B-GGUF](https://huggingface.co/bartowski/Qwen_Qwen3.6-27B-GGUF) · [Qwen/Qwen3.6-27B](https://huggingface.co/Qwen/Qwen3.6-27B)
+
 #### Qwen3.6-35B-A3B · Official (MoE, 35B total / 3B active)
 
 Official Alibaba weights in GGUF via bartowski. Multimodal — includes a vision encoder (`mmproj`) for image understanding. 262k native context, extensible to 1M tokens. Agentic coding focus with tool use and thinking preservation.
@@ -561,9 +573,9 @@ Requires extreme hardware — 192 GB minimum even for the smallest quant. All va
 | Any machine (4 GB+) | `.env-Qwen3.5-0.8B.Q8_0` (0.8 GB) · `.env-Qwen3.5-2B.Q4_K_M` (1.3 GB) · `.env-Qwen3.5-4B.Q4_K_M` (2.9 GB) |
 | Any machine (8 GB+) | `.env-gemma-4-E2B-it.Q8_0` (5 GB) · `.env-gemma-4-E4B-it.Q4_K_M` (5.3 GB) · `.env-Qwen3.5-4B.Q8_0` (4.5 GB) |
 | 8–16 GB VRAM / RAM | `.env-Nemotron-3-Nano-4B.Q4_K_M` (2.8 GB) · `.env-DeepSeek-R1-Distill-Qwen-1.5B.Q8_0` (1.9 GB) · `.env-DeepSeek-R1-Distill-Qwen-7B.Q4_K_M` (4.7 GB) · `.env-DeepSeek-R1-Distill-Llama-8B.Q4_K_M` (4.9 GB) · `.env-DeepSeek-R1-0528-Qwen3-8B.Q4_K_M` (5 GB) · `.env-Qwen3.5-9B-Qwen.Q4_K_M` (5.9 GB) |
-| 16–24 GB VRAM / RAM | `.env-GLM-4.7-Flash.Q4_K_M` (18 GB) · `.env-DeepSeek-R1-Distill-Qwen-14B.Q4_K_M` (9 GB) · `.env-gpt-oss-20b.MXFP4` (12 GB) · `.env-gemma-4-26B-A4B-it.Q4_K_M` (17 GB) |
+| 16–24 GB VRAM / RAM | `.env-GLM-4.7-Flash.Q4_K_M` (18 GB) · `.env-Qwen3.6-27B.Q4_K_M` (18 GB) · `.env-DeepSeek-R1-Distill-Qwen-14B.Q4_K_M` (9 GB) · `.env-gpt-oss-20b.MXFP4` (12 GB) · `.env-gemma-4-26B-A4B-it.Q4_K_M` (17 GB) |
 | 24–32 GB VRAM / RAM | `.env-GLM-4.7-Flash.Q8_0` (32 GB) · `.env-Nemotron-Cascade-2-30B.Q4_K_M` (25 GB) · `.env-Nemotron-Nano-3-30B.Q4_K_M` (25 GB) · `.env-DeepSeek-R1-Distill-Qwen-32B.Q4_K_M` (20 GB) · `.env-Qwen3.6-35B-A3B.Q4_K_M` (21 GB) |
-| 32–48 GB VRAM / RAM | `.env-Qwen3.5-27B.Q4_K_M` (17 GB) · `.env-gemma-4-31B-it.Q4_K_M` (19 GB) · `.env-DeepSeek-R1-Distill-Qwen-32B.Q8_0` (35 GB) · `.env-Nemotron-Cascade-2-30B.Q8_0` (34 GB) |
+| 32–48 GB VRAM / RAM | `.env-Qwen3.5-27B.Q4_K_M` (17 GB) · `.env-Qwen3.6-27B.Q8_0` (29 GB) · `.env-gemma-4-31B-it.Q4_K_M` (19 GB) · `.env-DeepSeek-R1-Distill-Qwen-32B.Q8_0` (35 GB) · `.env-Nemotron-Cascade-2-30B.Q8_0` (34 GB) |
 | 64–96 GB VRAM / RAM | `.env-GLM-4.7.IQ2_XXS` (89 GB) · `.env-DeepSeek-R1-Distill-Llama-70B.Q4_K_M` (43 GB) · `.env-MiniMax-M2.1.IQ2_XXS` (55 GB) · `.env-MiniMax-M2.7.IQ2_XXS` (61 GB) · `.env-gemma-4-26B-A4B-it.F16` (51 GB) · `.env-Qwen3.5-122B-A10B.IQ2_XXS` (34 GB) · `.env-Qwen3.5-122B-A10B.Q4_K_M` (75 GB) |
 | 128–192 GB VRAM / RAM | `.env-Nemotron-3-Super-120B.Q4_K` (70 GB) · `.env-gpt-oss-120b.MXFP4` (63 GB) · `.env-MiniMax-M2.1.Q4_K_M` (139 GB) · `.env-MiniMax-M2.7.Q4_K_M` (139 GB) · `.env-MiniMax-M2.1.Q6_K` (188 GB) · `.env-Qwen3.5-397B-A17B.IQ2_XXS` (107 GB) |
 | 192–256 GB unified memory | `.env-GLM-4.7.Q4_K_M` (219 GB) · `.env-DeepSeek-R1.UD-IQ1_S` (185 GB) · `.env-DeepSeek-R1.UD-IQ2_XXS` (216 GB) · `.env-GLM-5.1.UD-IQ1_M` (~206 GB) · `.env-GLM-5.1.UD-IQ2_XXS` (~221 GB) · `.env-DeepSeek-R1.UD-Q2_K_XL` (250 GB) · `.env-GLM-5.1.UD-Q2_K_XL` (~252 GB) · `.env-Qwen3.5-397B-A17B.Q4_K_M` (242 GB) |

@@ -151,7 +151,7 @@ Koda runs on any machine that can run llama.cpp. The limiting factor is always m
 | :--- | :--- | :--- |
 | **Any machine** | 1–8 GB | Ultra-small — Qwen3.5-0.8B (0.56 GB), Qwen3.5-2B (1.3 GB), Qwen3.5-4B (2.9 GB), DeepSeek-R1-Distill-Qwen-1.5B (1.1 GB) |
 | **Any modern laptop / desktop** | 8–16 GB | Small distills — Nemotron-3-Nano-4B (2.8 GB), DeepSeek-R1-Distill-Qwen-7B (4.7 GB), Gemma 4 E4B (5.3 GB), Qwen3.5-9B (5.9 GB) |
-| **Apple Silicon — M-series (base)** | 16–32 GB | Gemma 4 31B Q4, Qwen3.5-27B, DeepSeek-R1 distills up to 32B, GLM-4.7-Flash Q8 |
+| **Apple Silicon — M-series (base)** | 16–32 GB | Gemma 4 31B Q4, Qwen3.5-27B, Qwen3.6-27B, DeepSeek-R1 distills up to 32B, GLM-4.7-Flash Q8 |
 | **Apple Silicon — M-series Pro / Max** | 48–128 GB | Nemotron-3-Super-120B Q4, GPT-OSS 120B, MiniMax-M2.7/M2.1 IQ2_XXS, GLM-4.7 IQ2_XXS |
 | **[NVIDIA DGX Spark™](https://amzn.to/47ZeWqZ)** | **128 GB unified** | Full-quality frontier models — GLM-4.7 IQ2_XXS (89 GB), MiniMax-M2.1/M2.7 Q4_K_M (139 GB), Nemotron-3-Super-120B Q8 (129 GB). The sweet spot for single-machine frontier inference. |
 | **Apple Silicon — M-series Ultra** | 192 GB | DeepSeek-R1 671B UD-IQ1_S (185 GB), GLM-5.1 UD-IQ1_M (~206 GB) — largest single-chip footprint available |

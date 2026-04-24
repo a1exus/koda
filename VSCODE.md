@@ -32,6 +32,7 @@ To add your local server to Copilot Chat:
          { "id": "qwen3.5-122b-a10b", "name": "Qwen 3.5 122B-A10B", "url": "http://localhost:8080/v1", "model": "qwen3.5-122b-a10b", "toolCalling": true, "maxInputTokens": 131072, "maxOutputTokens": 8192 },
          { "id": "qwen3.5-397b-a17b", "name": "Qwen 3.5 397B-A17B", "url": "http://localhost:8080/v1", "model": "qwen3.5-397b-a17b", "toolCalling": true, "maxInputTokens": 131072, "maxOutputTokens": 8192 },
          { "id": "qwen3.5-35b-a3b", "name": "Qwen 3.5 35B-A3B", "url": "http://localhost:8080/v1", "model": "qwen3.5-35b-a3b", "toolCalling": true, "maxInputTokens": 131072, "maxOutputTokens": 8192 },
+         { "id": "qwen3.6-27b", "name": "Qwen 3.6 27B", "url": "http://localhost:8080/v1", "model": "qwen3.6-27b", "toolCalling": true, "maxInputTokens": 262144, "maxOutputTokens": 8192 },
          { "id": "qwen3.6-35b-a3b", "name": "Qwen 3.6 35B-A3B", "url": "http://localhost:8080/v1", "model": "qwen3.6-35b-a3b", "toolCalling": true, "maxInputTokens": 262144, "maxOutputTokens": 8192 },
          { "id": "gpt-oss-20b", "name": "GPT-OSS 20B", "url": "http://localhost:8080/v1", "model": "gpt-oss-20b", "toolCalling": true, "maxInputTokens": 131072, "maxOutputTokens": 8192 },
          { "id": "gpt-oss-120b", "name": "GPT-OSS 120B", "url": "http://localhost:8080/v1", "model": "gpt-oss-120b", "toolCalling": true, "maxInputTokens": 131072, "maxOutputTokens": 8192 },
