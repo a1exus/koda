@@ -2,6 +2,17 @@
 
 This project provides a standardized environment and set of commands for running GGUF models locally using `llama.cpp` with a built-in browser WebUI and an OpenAI-compatible API server.
 
+## 🤖 AI Agent Foundational Mandates
+
+When working in this codebase, you **must** adhere to these rules:
+
+1.  **Verify Environment:** Always run `make check` to ensure required binaries (`llama-server`, `llama-cli`, `hf`) are in the path.
+2.  **Verify Models:** Before proposing or executing `make serve` or `make chat`, run `make check-model ENV=...` to verify the model file is present.
+3.  **Use Profiles:** Never invoke `llama.cpp` binaries directly. Use `make` targets with `ENV=profiles/.env-<name>` to ensure all project-standard flags are applied.
+4.  **Stable Aliases:** Always use the `ALIAS` variable for external tool integrations (OpenCode, VS Code, etc.) to ensure configurations remain valid if the underlying model file/quantization changes.
+5.  **Profile Validation:** Run `sh scripts/validate-profiles.sh` after adding or modifying any model profile in the `profiles/` directory.
+6.  **Compose Integrity:** Never add Traefik-specific labels or networks to the base `compose.yaml`. Use the `compose.traefik.yml` override file.
+
 ## Docker Compose Usage
 
 Koda provides a containerized deployment path via `compose.yaml`.
@@ -53,8 +64,6 @@ docker compose -f compose.yaml -f compose.traefik.yml \
   --env-file profiles/.env-<model>.<quant> up -d
 ```
 
-Assumes Traefik is already running and its Docker network exists. All labels and the network join live in `compose.traefik.yml` — the base `compose.yaml` uses `expose` only and has no Traefik dependency.
-
 ## Smart Model Resolution
 
 The `Makefile` resolves model paths without triggering implicit downloads:
@@ -81,33 +90,32 @@ If the model isn't found in either location, `make serve`/`make chat` will fail 
 | `make export-vscode` | Prints VS Code configuration snippet for current profile. |
 | `make cache` | Lists the local Hugging Face model cache (`hf cache ls`). |
 
-### Common Overrides
+## Performance & Feature Overrides
 
 Overrides can be passed inline to any `make` target:
-- `HOST=0.0.0.0`: Bind to all interfaces (default) or `127.0.0.1`.
-- `PORT=8080`: Change the server port.
-- `CTX=0`: Use model's native context size (default).
-- `CTX=16384`: Set a specific context window size to save RAM.
-- `GPU_LAYERS=-1`: Offload as many layers as possible to GPU (default).
-- `METRICS=1`: Enable `llama-server` metrics.
-- `ALIAS=my-model`: Set the model ID reported by the OpenAI-compatible API.
-- `API_KEY=my-secret`: Set an API key for the server.
-- `TEMP=0.8`: Set sampling temperature (default 0.6).
-- `TOP_P=0.95`: Set top-p sampling (default 0.95).
-- `BATCH=512`: Set prompt batch size (default 512).
-- `UBATCH=512`: Set prompt micro-batch size (default 512).
-- `DRAFT_MODEL=/path/to/model`: Use a draft model for speculative decoding.
-- `EMBEDDINGS=1`: Enable embeddings support.
-- `CTX_SHIFT=1`: Enable context shifting.
-- `PROMPT_FORMAT=template`: Use an explicit chat template.
-- `CHAT_TPL=chatml`: Specify the template (default chatml) when using `PROMPT_FORMAT=template`.
-- `RPC=10.0.0.12:50052`: Pass a remote RPC backend through as `--rpc`.
-- `SERVER_EXTRA_ARGS='...'`: Append advanced `llama-server` flags.
-- `CHAT_EXTRA_ARGS='...'`: Append advanced `llama-cli` flags.
 
-## Development & Integrations
+| Variable | Default | Description |
+| :--- | :--- | :--- |
+| `CTX` | `0` | Context window size (`0` = model native) |
+| `GPU_LAYERS` | `-1` | Offload as many layers as possible to GPU |
+| `METRICS` | `0` | Set to `1` to enable `llama-server` metrics |
+| `ALIAS` | empty | Set the model ID reported by the OpenAI-compatible API |
+| `API_KEY` | empty | Set an API key for the server |
+| `TEMP` | `0.6` | Sampling temperature |
+| `TOP_P` | `0.95` | Top-p sampling |
+| `BATCH` | `512` | Prompt batch size |
+| `UBATCH` | `512` | Prompt micro-batch size |
+| `DRAFT_MODEL` | empty | Path to a draft model for speculative decoding |
+| `EMBEDDINGS` | empty | Set to `1` to enable embeddings support |
+| `CTX_SHIFT` | empty | Set to `1` to enable context shifting |
+| `DOWNLOAD_INCLUDE`| `$(MODEL_FILE)`| Download pattern for sharded models |
+| `SERVER_EXTRA_ARGS`| empty | Append advanced `llama-server` flags |
+| `CHAT_EXTRA_ARGS` | empty | Append advanced `llama-cli` flags |
 
-- **Adding Models:** Create `.env-<name>.<quant>` in the `profiles/` directory with `HF_REPO`, `MODEL_DIR`, `MODEL_FILE`, and an `ALIAS`.
+## Development & Validation
+
+- **Adding Models:** Create `.env-<name>.<quant>` in `profiles/` with `HF_REPO`, `MODEL_DIR`, `MODEL_FILE`, and an `ALIAS`.
+- **Validation:** Run `sh scripts/validate-profiles.sh` to check for missing fields or duplicate aliases.
 - **Multimodal Support:** If an `mmproj` file exists in the `MODEL_DIR`, Koda automatically detects and uses it.
 - **Model Identity:** Use the `ALIAS` variable to set a clean model ID (e.g., `qwen3.5-27b`) for API compatibility across different quants.
 - **Docker Memory:** Set `MEM_RESERVE=4g` (default) in `.env` to reserve memory for the container.
@@ -119,18 +127,12 @@ Overrides can be passed inline to any `make` target:
 - **Learning:**
   - [Bundled Profiles](./profiles/README.md)
 
-## Dependencies
-
-- `llama-server`, `llama-cli`, `hf` (huggingface-cli), `make`.
-- `fzf` or `gum` (optional, for `make select`).
-
 ## Runtime Defaults
 
 - `PROMPT_FORMAT=jinja` uses the GGUF model's embedded chat template by default.
 - `TEMP=0.6` and `TOP_P=0.95` are the default sampling parameters.
 - **Reasoning Models:** Output typically appears in `<think>...</think>` blocks.
 - `RPC` is empty by default and only applied when explicitly set.
-- `METRICS=0` keeps metrics off unless explicitly enabled.
 - `BATCH=512` and `UBATCH=512` are conservative server batching defaults.
 - `CTX=0` keeps the model's native context window unless explicitly overridden.
 - `GPU_LAYERS=-1` offloads all layers to GPU by default.

@@ -27,7 +27,7 @@ make export-vscode   ENV=.env-<model>.<quant>  # Print VS Code config snippet fo
 
 **External dependencies:** `llama-server`, `llama-cli`, `hf` (huggingface-cli), `fzf` or `gum` (optional, for `make select`)
 
-**Windows:** use `winget install ggml-org.llama.cpp`, `winget install Python.Python.3`, `pip install huggingface_hub[cli]`. `make` requires WSL: `sudo apt update && sudo apt install git make`.
+**Windows:** Docker is the recommended path (no local binaries needed). For the native `make` path, use WSL: `sudo apt update && sudo apt install git make`.
 
 **Docker:** `docker compose --env-file profiles/.env-<model>.<quant> up -d` — no local binaries needed. GPU works on NVIDIA/AMD Linux only; Apple Silicon and Windows are CPU-only in Docker. For Traefik: `docker compose -f compose.yaml -f compose.traefik.yml --env-file profiles/... up -d` (assumes Traefik is already running).
 
