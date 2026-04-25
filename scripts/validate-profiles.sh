@@ -1,15 +1,15 @@
 #!/bin/sh
-# Validates all profiles in profiles/ to ensure required fields are set
+# Validates all model profiles in models/ to ensure required fields are set
 # and ALIAS values are unique.
 # Exit code 0 = all good, 1 = one or more errors found.
 
-PROFILES_DIR="$(dirname "$0")/../profiles"
+MODELS_DIR="$(dirname "$0")/../models"
 REQUIRED_FIELDS="HF_REPO MODEL_DIR MODEL_FILE ALIAS"
 errors=0
 
 # Check required fields in each profile
-for profile in "$PROFILES_DIR"/.env-*; do
-  name=$(basename "$profile")
+for profile in $(find "$MODELS_DIR" -name '*.env' | sort); do
+  name=$(echo "$profile" | sed "s|^$MODELS_DIR/||")
   for field in $REQUIRED_FIELDS; do
     value=$(grep "^${field}=" "$profile" | cut -d'=' -f2-)
     if [ -z "$value" ]; then
@@ -20,14 +20,14 @@ for profile in "$PROFILES_DIR"/.env-*; do
 done
 
 # Check for duplicate ALIAS values
-aliases=$(grep -h "^ALIAS=" "$PROFILES_DIR"/.env-* | cut -d'=' -f2- | sort)
+aliases=$(find "$MODELS_DIR" -name '*.env' -exec grep -h "^ALIAS=" {} + | cut -d'=' -f2- | sort)
 duplicates=$(echo "$aliases" | uniq -d)
 if [ -n "$duplicates" ]; then
   echo "WARNING: Duplicate ALIAS values found (multiple profiles share the same alias):"
   for dup in $duplicates; do
     echo "  $dup"
-    grep -l "^ALIAS=$dup" "$PROFILES_DIR"/.env-* | while read -r f; do
-      echo "    $(basename "$f")"
+    find "$MODELS_DIR" -name '*.env' -exec grep -l "^ALIAS=$dup" {} + | while read -r f; do
+      echo "    $(echo "$f" | sed "s|^$MODELS_DIR/||")"
     done
   done
 fi
@@ -38,4 +38,4 @@ if [ "$errors" -gt 0 ]; then
   exit 1
 fi
 
-echo "All $(ls "$PROFILES_DIR"/.env-* | wc -l | tr -d ' ') profiles are valid."
+echo "All $(find "$MODELS_DIR" -name '*.env' | wc -l | tr -d ' ') profiles are valid."
