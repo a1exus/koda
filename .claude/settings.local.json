@@ -71,7 +71,25 @@
       "Bash(curl -sL \"https://huggingface.co/api/models/nvidia/NVIDIA-Nemotron-3-Nano-4B-GGUF\")",
       "Bash(curl -sL \"https://huggingface.co/api/models/nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-NVFP4\")",
       "Bash(curl -sL \"https://huggingface.co/api/models/nvidia/NVIDIA-Nemotron-3-Nano-4B-GGUF?blobs=true\")",
-      "Bash(find /Users/alexus/opt/koda -name *.md -type f)"
+      "Bash(find /Users/alexus/opt/koda -name *.md -type f)",
+      "Bash(find *)",
+      "WebFetch(domain:www.npmjs.com)",
+      "Bash(npm info *)",
+      "WebFetch(domain:playwright.dev)",
+      "Bash(npx @playwright/mcp --help)",
+      "Bash(sh *)",
+      "Bash(git stash *)",
+      "Bash(gh api *)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:hermes-agent.nousresearch.com)",
+      "Bash(python3 *)",
+      "Bash(git mv *)",
+      "Bash(git -C /Users/alexus/opt/koda status --short)",
+      "Bash(git -C /Users/alexus/opt/koda add -A)"
     ]
-  }
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "playwright"
+  ]
 }

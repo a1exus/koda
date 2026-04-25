@@ -65,6 +65,8 @@ Primary targets are Apple Silicon (macOS), NVIDIA (CUDA), and AMD (ROCm/OpenCL).
 | `OPENCODE.md` | Verified configuration guide for OpenCode. |
 | `VSCODE.md` | Integration guide for VS Code extensions. |
 | `CURSOR.md` | Integration guide for Cursor (HTTPS required — Caddy, Tailscale, or Traefik). |
+| `HERMES-AGENT.md` | Integration guide for Hermes Agent (CLI, messaging gateway). |
+| `PI-CODING-AGENT.md` | Integration guide for Pi Coding Agent. |
 | `CADDY.md` | HTTPS termination for native `make serve` (local/LAN without Tailscale). |
 | `TAILSCALE.md` | Guide for private access and multi-machine RPC pooling. |
 | `CONTRIBUTING.md` | How to add a model profile and pre-PR checklist. |

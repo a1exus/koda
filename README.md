@@ -4,7 +4,7 @@
 
 Run AI models on your own machine. Pick a model, run one command, get a chat interface and an API — no cloud, no accounts, no data leaving your device.
 
-Works with [OpenCode](./OPENCODE.md), [VS Code Copilot](./VSCODE.md), [Cursor](./CURSOR.md), and any OpenAI-compatible client.
+Works with [OpenCode](./OPENCODE.md), [VS Code Copilot](./VSCODE.md), [Cursor](./CURSOR.md), [Hermes Agent](./HERMES-AGENT.md), [Pi](./PI-CODING-AGENT.md), and any OpenAI-compatible client.
 
 <details>
 <summary>Technical overview</summary>
@@ -184,6 +184,8 @@ Koda is **local-first** — your data never leaves your machine.
 | [**CURSOR.md**](./CURSOR.md) | Integration guide for Cursor (requires HTTPS — Traefik, Caddy, or Tailscale) |
 | [**CADDY.md**](./CADDY.md) | HTTPS termination for native `make serve` (Apple Silicon, Windows) |
 | [**TAILSCALE.md**](./TAILSCALE.md) | Private remote access and multi-machine RPC pooling |
+| [**HERMES-AGENT.md**](./HERMES-AGENT.md) | Integration guide for [Hermes Agent](https://github.com/nousresearch/hermes-agent) (CLI, messaging gateway) |
+| [**PI-CODING-AGENT.md**](./PI-CODING-AGENT.md) | Integration guide for [Pi Coding Agent](https://github.com/badlogic/pi-mono) |
 | [**MCP-PLAYWRIGHT.md**](./MCP-PLAYWRIGHT.md) | Playwright MCP browser tools for OpenCode, Cursor, and VS Code |
 
 ---
