@@ -1,10 +1,18 @@
 -include .env
 
-# Handle model profiles in profiles/ directory
+# Handle model profiles in models/ directory
 ifdef ENV
   ifeq ($(wildcard $(ENV)),)
-    ifneq ($(wildcard profiles/$(ENV)),)
-      override ENV := profiles/$(ENV)
+    ifneq ($(wildcard models/$(ENV)),)
+      override ENV := models/$(ENV)
+    else
+      _MATCHES := $(shell find models -name '*.env' 2>/dev/null | grep -F '$(ENV)')
+      _MATCH_COUNT := $(words $(_MATCHES))
+      ifeq ($(_MATCH_COUNT),1)
+        override ENV := $(_MATCHES)
+      else ifneq ($(_MATCH_COUNT),0)
+        $(error Ambiguous ENV='$(ENV)' — matches: $(_MATCHES))
+      endif
     endif
   endif
   -include $(ENV)
@@ -12,13 +20,13 @@ endif
 
 ifneq ($(filter-out help check cache list select export-opencode export-vscode,$(or $(MAKECMDGOALS),help)),)
 ifndef HF_REPO
-$(error HF_REPO is not set. Example: make $(MAKECMDGOALS) ENV=.env-Qwen3.5-27B.Q4_K_M)
+$(error HF_REPO is not set. Example: make $(MAKECMDGOALS) ENV=bartowski/Qwen_Qwen3.5-27B-GGUF.Q4_K_M.env)
 endif
 ifndef MODEL_DIR
-$(error MODEL_DIR is not set. Example: make $(MAKECMDGOALS) ENV=.env-Qwen3.5-27B.Q4_K_M)
+$(error MODEL_DIR is not set. Example: make $(MAKECMDGOALS) ENV=bartowski/Qwen_Qwen3.5-27B-GGUF.Q4_K_M.env)
 endif
 ifndef MODEL_FILE
-$(error MODEL_FILE is not set. Example: make $(MAKECMDGOALS) ENV=.env-Qwen3.5-27B.Q4_K_M)
+$(error MODEL_FILE is not set. Example: make $(MAKECMDGOALS) ENV=bartowski/Qwen_Qwen3.5-27B-GGUF.Q4_K_M.env)
 endif
 endif
 
@@ -108,7 +116,7 @@ help:
 	@echo ""
 	@echo "Manage models:"
 	@echo "  download         Download model via hf CLI"
-	@echo "  list             List all available model profiles in profiles/"
+	@echo "  list             List all available models in models/"
 	@echo "  select           Interactively select and serve a profile (requires fzf or gum)"
 	@echo "  cache            Show what models are in the Hugging Face cache"
 	@echo ""
@@ -119,8 +127,8 @@ help:
 	@echo "  export-opencode  Print OpenCode configuration snippet for current profile"
 	@echo "  export-vscode    Print VS Code configuration snippet for current profile"
 	@echo ""
-	@echo "  ENV=<profile>  Profile to load, e.g. ENV=.env-gemma-4-31B-it.Q4_K_M"
-	@echo "                 Koda automatically prepends profiles/ if omitted."
+	@echo "  ENV=<profile>  Profile to load, e.g. ENV=ggml-org/gemma-4-31B-it-GGUF.Q4_K_M.env"
+	@echo "                 Koda automatically prepends models/ if omitted."
 
 check:
 	$(call require_cmd,llama-server,llama.cpp)
@@ -136,27 +144,34 @@ download:
 	  --local-dir $(EXP_MODEL_DIR)
 
 list:
-	@echo "Available model profiles in profiles/:"
+	@echo "Available models:"
 	@echo ""
-	@printf "%-40s %-20s\n" "PROFILE" "ALIAS"
-	@printf "%-40s %-20s\n" "-------" "-----"
-	@for f in profiles/.env-*; do \
+	@prev_org=""; \
+	for f in $$(find models -name '*.env' | sort); do \
+	  rel=$${f#models/}; \
+	  org=$${rel%%/*}; \
+	  if [ "$$org" != "$$prev_org" ]; then \
+	    [ -n "$$prev_org" ] && echo ""; \
+	    echo "$$org/"; \
+	    prev_org="$$org"; \
+	  fi; \
 	  alias=$$(grep "^ALIAS=" $$f | cut -d'=' -f2); \
-	  printf "%-40s %-20s\n" $${f#profiles/} "$$alias"; \
+	  name=$${rel#*/}; \
+	  printf "  %-60s %s\n" "$$name" "$$alias"; \
 	done
 
 select:
 	@if command -v fzf >/dev/null 2>&1; then \
-	  profile=$$(ls profiles/.env-* | xargs -n1 basename | fzf --header "Select a model profile" --preview "cat profiles/{}"); \
+	  profile=$$(find models -name '*.env' | sort | sed 's|^models/||' | fzf --header "Select a model" --preview "cat models/{}"); \
 	  if [ -n "$$profile" ]; then \
-	    $(MAKE) check-model ENV=$$profile || exit 1; \
-	    $(MAKE) serve ENV=$$profile; \
+	    $(MAKE) check-model ENV="$$profile" || exit 1; \
+	    $(MAKE) serve ENV="$$profile"; \
 	  fi; \
 	elif command -v gum >/dev/null 2>&1; then \
-	  profile=$$(ls profiles/.env-* | xargs -n1 basename | gum choose --header "Select a model profile"); \
+	  profile=$$(find models -name '*.env' | sort | sed 's|^models/||' | gum choose --header "Select a model"); \
 	  if [ -n "$$profile" ]; then \
-	    $(MAKE) check-model ENV=$$profile || exit 1; \
-	    $(MAKE) serve ENV=$$profile; \
+	    $(MAKE) check-model ENV="$$profile" || exit 1; \
+	    $(MAKE) serve ENV="$$profile"; \
 	  fi; \
 	else \
 	  echo "Error: fzf or gum is required for 'make select'."; \
