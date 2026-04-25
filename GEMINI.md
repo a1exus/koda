@@ -8,9 +8,9 @@ When working in this codebase, you **must** adhere to these rules:
 
 1.  **Verify Environment:** Always run `make check` to ensure required binaries (`llama-server`, `llama-cli`, `hf`) are in the path.
 2.  **Verify Models:** Before proposing or executing `make serve` or `make chat`, run `make check-model ENV=...` to verify the model file is present.
-3.  **Use Profiles:** Never invoke `llama.cpp` binaries directly. Use `make` targets with `ENV=profiles/.env-<name>` to ensure all project-standard flags are applied.
+3.  **Use Profiles:** Never invoke `llama.cpp` binaries directly. Use `make` targets with `ENV=models/<org>/<repo>.<quant>.env` to ensure all project-standard flags are applied.
 4.  **Stable Aliases:** Always use the `ALIAS` variable for external tool integrations (OpenCode, VS Code, etc.) to ensure configurations remain valid if the underlying model file/quantization changes.
-5.  **Profile Validation:** Run `sh scripts/validate-profiles.sh` after adding or modifying any model profile in the `profiles/` directory.
+5.  **Profile Validation:** Run `sh scripts/validate-profiles.sh` after adding or modifying any model profile in the `models/` directory.
 6.  **Compose Integrity:** Never add Traefik-specific labels or networks to the base `compose.yaml`. Use the `compose.traefik.yml` override file.
 
 ## Docker Compose Usage
@@ -25,16 +25,16 @@ docker compose up
 ```
 
 ### 2. Using Model Profiles
-To run a specific model profile via Docker Compose, use the `--env-file` flag. Since profiles are stored in the `profiles/` directory, include the path:
+To run a specific model profile via Docker Compose, use the `--env-file` flag. Since profiles are stored in the `models/` directory, include the path:
 
 ```bash
-docker compose --env-file profiles/.env-Qwen3.5-27B.Q4_K_M up
+docker compose --env-file models/bartowski/Qwen_Qwen3.5-27B-GGUF.Q4_K_M.env up
 ```
 
 Note that when using `--env-file`, Docker Compose replaces the default `.env` for variable interpolation. If you need variables from the base `.env` (like `LLAMA_CPP_IMAGE` or default `MODEL_DIR`), you should specify both:
 
 ```bash
-docker compose --env-file .env --env-file profiles/.env-Qwen3.5-27B.Q4_K_M up
+docker compose --env-file .env --env-file models/bartowski/Qwen_Qwen3.5-27B-GGUF.Q4_K_M.env up
 ```
 
 ### 3. GPU Support in Docker
@@ -61,7 +61,7 @@ You can override the container name or the image (e.g., for ROCm) via environmen
 
 ```bash
 docker compose -f compose.yaml -f compose.traefik.yml \
-  --env-file profiles/.env-<model>.<quant> up -d
+  --env-file models/<org>/<repo>.<quant>.env up -d
 ```
 
 ## Smart Model Resolution
@@ -74,14 +74,14 @@ If the model isn't found in either location, `make serve`/`make chat` will fail 
 
 ## Key Commands
 
-`make download`, `make serve`, and `make chat` require an `ENV` variable pointing to a model's profile. Koda automatically looks in the `profiles/` directory, so you can omit the path for convenience.
+`make download`, `make serve`, and `make chat` require an `ENV` variable pointing to a model's profile. Koda automatically looks in the `models/` directory, so you can omit the path for convenience.
 
 | Command | Description |
 | :--- | :--- |
 | `make download ENV=<file>` | Downloads the model file from HuggingFace. |
 | `make serve ENV=<file>` | Starts the built-in WebUI and OpenAI-compatible HTTP server. |
 | `make chat ENV=<file>` | Launches an interactive terminal chat session. |
-| `make list` | Lists all available model profiles in `profiles/`. |
+| `make list` | Lists all available model profiles in `models/`. |
 | `make select` | Interactively select a model profile (requires `fzf` or `gum`). |
 | `make check` | Verifies required binaries are installed and on `PATH`. |
 | `make check-model ENV=<file>` | Verifies the model file for the given `ENV` is present. |
@@ -114,7 +114,7 @@ Overrides can be passed inline to any `make` target:
 
 ## Development & Validation
 
-- **Adding Models:** Create `.env-<name>.<quant>` in `profiles/` with `HF_REPO`, `MODEL_DIR`, `MODEL_FILE`, and an `ALIAS`.
+- **Adding Models:** Create `<org>/<repo>.<quant>.env` in `models/` with `HF_REPO`, `MODEL_DIR`, `MODEL_FILE`, and an `ALIAS`.
 - **Validation:** Run `sh scripts/validate-profiles.sh` to check for missing fields or duplicate aliases.
 - **Multimodal Support:** If an `mmproj` file exists in the `MODEL_DIR`, Koda automatically detects and uses it.
 - **Model Identity:** Use the `ALIAS` variable to set a clean model ID (e.g., `qwen3.5-27b`) for API compatibility across different quants.
@@ -125,7 +125,7 @@ Overrides can be passed inline to any `make` target:
   - [VS Code](./VSCODE.md) (Continue, Roo Code)
   - [Cursor](./CURSOR.md) (requires HTTPS — see [CADDY.md](./CADDY.md) for native, [TAILSCALE.md](./TAILSCALE.md) for remote)
 - **Learning:**
-  - [Bundled Profiles](./profiles/README.md)
+  - [Bundled Profiles](./models/README.md)
 
 ## Runtime Defaults
 

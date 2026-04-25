@@ -24,6 +24,11 @@ and this project uses [Calendar Versioning](https://calver.org/) (`YYYY-MM-DD`).
 - Updated CURSOR.md: expanded reasoning models note to include GLM-4.7, GLM-5.1, MiniMax-M2.x
 - Added Qwen3.5-27B (Jackrong) profiles: `Q2_K` (10.12 GB) and `Q3_K_M` (13.29 GB) to cover 16–24 GB hardware tiers
 
+### Changed
+- Restructured `profiles/` → `models/` with org-based hierarchy: `models/<hf_org>/<hf_repo>.<quant>.env` (mirrors HuggingFace repo URLs)
+- Makefile: 3-step ENV resolution (exact path → `models/` prefix → fuzzy search), `make list` grouped by org, `make select` recursive
+- Updated all documentation for new `models/` paths
+
 ## [2026-04-05]
 
 ### Added

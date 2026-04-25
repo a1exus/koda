@@ -23,20 +23,20 @@ make smoke-test                              # Check the server is responding on
 make export-opencode ENV=.env-<model>.<quant>  # Print OpenCode config snippet for current profile
 make export-vscode   ENV=.env-<model>.<quant>  # Print VS Code config snippet for current profile
 ```
-*Note: Koda automatically prepends `profiles/` to the `ENV` path if not provided.*
+*Note: Koda automatically prepends `models/` to the `ENV` path if not provided.*
 
 **External dependencies:** `llama-server`, `llama-cli`, `hf` (huggingface-cli), `fzf` or `gum` (optional, for `make select`)
 
 **Windows:** Docker is the recommended path (no local binaries needed). For the native `make` path, use WSL: `sudo apt update && sudo apt install git make`.
 
-**Docker:** `docker compose --env-file profiles/.env-<model>.<quant> up -d` — no local binaries needed. GPU works on NVIDIA/AMD Linux only; Apple Silicon and Windows are CPU-only in Docker. For Traefik: `docker compose -f compose.yaml -f compose.traefik.yml --env-file profiles/... up -d` (assumes Traefik is already running).
+**Docker:** `docker compose --env-file models/<org>/<repo>.<quant>.env up -d` — no local binaries needed. GPU works on NVIDIA/AMD Linux only; Apple Silicon and Windows are CPU-only in Docker. For Traefik: `docker compose -f compose.yaml -f compose.traefik.yml --env-file models/... up -d` (assumes Traefik is already running).
 
 ## Architecture
 
 Three-layer configuration system:
 
 1. **`.env`** — Global defaults (`CTX=0`, `HOST=0.0.0.0`, `PORT=8080`, `GPU_LAYERS=-1`, etc.)
-2. **`profiles/.env-<model>.<quant>`** — Model-specific profiles defining `HF_REPO`, `MODEL_DIR`, `MODEL_FILE`, and `ALIAS`.
+2. **`models/<org>/<repo>.<quant>.env`** — Model-specific profiles defining `HF_REPO`, `MODEL_DIR`, `MODEL_FILE`, and `ALIAS`.
 3. **Inline overrides** — Command-line variable assignments override both layers.
 
 Primary targets are Apple Silicon (macOS), NVIDIA (CUDA), and AMD (ROCm/OpenCL).
@@ -52,14 +52,14 @@ Primary targets are Apple Silicon (macOS), NVIDIA (CUDA), and AMD (ROCm/OpenCL).
 - **Docker Compose**: Uses a healthcheck to ensure the model is loaded before reporting "healthy". GPU passthrough works on NVIDIA/AMD Linux; Apple Silicon and Windows are CPU-only in Docker. Traefik integration is via `compose.traefik.yml` override — never add Traefik network/labels to `compose.yaml` directly.
 - **API key warning**: `make serve` warns if `HOST` is not `127.0.0.1` and `API_KEY` is empty.
 - **Multimodal**: Koda auto-detects `mmproj` files in `MODEL_DIR`. For multimodal profiles, `DOWNLOAD_INCLUDE` fetches both the model and mmproj in one `make download` call.
-- **Bundled profiles**: See `profiles/README.md` for the full catalog (Gemma 4, Qwen3.5, Qwen3.6, GPT-OSS, DeepSeek, Nemotron, GLM, MiniMax, Kimi-K2.5). Hardware tiers from 4 GB to ~584 GB are covered.
+- **Bundled profiles**: See `models/README.md` for the full catalog (Gemma 4, Qwen3.5, Qwen3.6, GPT-OSS, DeepSeek, Nemotron, GLM, MiniMax, Kimi-K2.5). Hardware tiers from 4 GB to ~584 GB are covered.
 
 ## Documentation Files
 
 | File | Purpose |
 |------|---------|
 | `README.md` | Primary user guide, Quick Start, and TOC. |
-| `profiles/README.md` | Bundled model catalog and profile-specific notes. |
+| `models/README.md` | Bundled model catalog and profile-specific notes. |
 | `AGENTS.md` | Technical reference for developers and AI agents. |
 | `GEMINI.md` | Detailed Docker usage and agent-specific instructions. |
 | `OPENCODE.md` | Verified configuration guide for OpenCode. |

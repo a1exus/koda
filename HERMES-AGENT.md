@@ -22,7 +22,7 @@ Then run `hermes setup` for the first-time wizard, or configure manually below.
 ### 1. Start your local server
 
 ```bash
-make serve ENV=profiles/.env-Qwen3.5-27B.Q4_K_M
+make serve ENV=models/bartowski/Qwen_Qwen3.5-27B-GGUF.Q4_K_M.env
 ```
 
 This starts both the browser WebUI at `http://localhost:8080` and the OpenAI-compatible API at `http://localhost:8080/v1`.
@@ -91,7 +91,7 @@ When you swap `make serve` profiles, update the model name to match:
 
 ```bash
 # Terminal 1: switch the server
-make serve ENV=profiles/.env-gemma-4-31B-it.Q4_K_M
+make serve ENV=models/ggml-org/gemma-4-31B-it-GGUF.Q4_K_M.env
 
 # Terminal 2: update Hermes (or use /model in the chat)
 hermes config set model.model gemma-4-31b-it
@@ -117,7 +117,7 @@ See [MCP-PLAYWRIGHT.md](./MCP-PLAYWRIGHT.md) for the full Playwright setup guide
 To use Hermes Agent from another machine on your network, start Koda with `HOST=0.0.0.0`:
 
 ```bash
-make serve ENV=profiles/.env-Qwen3.5-27B.Q4_K_M HOST=0.0.0.0
+make serve ENV=models/bartowski/Qwen_Qwen3.5-27B-GGUF.Q4_K_M.env HOST=0.0.0.0
 ```
 
 Then point Hermes at the remote IP:

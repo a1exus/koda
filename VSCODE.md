@@ -10,7 +10,7 @@ GitHub Copilot Chat supports local LLMs through the **["Bring Your Own Model" (B
 
 To add your local server to Copilot Chat:
 
-1. **Start your local server:** Ensure you have a model running (e.g., `make serve ENV=profiles/.env-gemma-4-31B-it.Q4_K_M`).
+1. **Start your local server:** Ensure you have a model running (e.g., `make serve ENV=models/ggml-org/gemma-4-31B-it-GGUF.Q4_K_M.env`).
    This exposes both the built-in WebUI at `http://localhost:8080` and the OpenAI-compatible API at `http://localhost:8080/v1`.
 2. **Configure `chatLanguageModels.json`:**
    Open `~/.config/Code/User/chatLanguageModels.json` (or `Code - Insiders`) and add a `koda (Local)` provider with one entry per model alias. To generate an entry for a single profile, run `make export-vscode ENV=<profile>`.
@@ -59,7 +59,7 @@ To add your local server to Copilot Chat:
      }
    ]
    ```
-   See [profiles/README.md](./profiles/README.md) for the full list of available aliases.
+   See [models/README.md](./models/README.md) for the full list of available aliases.
 3. **Select the Model in Chat:**
    - Open the **Copilot Chat** panel (`Cmd+Shift+I`).
    - Click on the model name at the top and select any **koda (Local)** model.

@@ -7,7 +7,7 @@ This guide explains how to use OpenCode with the local inference server provided
 1. **Start your local server:**
    In your terminal, run the following command to start the model you want to use:
    ```bash
-   make serve ENV=profiles/.env-Qwen3.5-27B.Q4_K_M
+   make serve ENV=models/bartowski/Qwen_Qwen3.5-27B-GGUF.Q4_K_M.env
    ```
    This starts both the browser WebUI at `http://localhost:8080` and the OpenAI-compatible API at `http://localhost:8080/v1`.
 

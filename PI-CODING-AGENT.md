@@ -19,7 +19,7 @@ npm install -g @mariozechner/pi-coding-agent
 ### 1. Start your local server
 
 ```bash
-make serve ENV=profiles/.env-Qwen3.5-27B.Q4_K_M
+make serve ENV=models/bartowski/Qwen_Qwen3.5-27B-GGUF.Q4_K_M.env
 ```
 
 This starts both the browser WebUI at `http://localhost:8080` and the OpenAI-compatible API at `http://localhost:8080/v1`.

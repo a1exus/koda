@@ -36,7 +36,7 @@ sudo apt update && sudo apt install caddy
 
 First, start your model server:
 ```bash
-make serve ENV=profiles/.env-gemma-4-31B-it.Q4_K_M
+make serve ENV=models/ggml-org/gemma-4-31B-it-GGUF.Q4_K_M.env
 ```
 
 Then start Caddy in front of it. Choose the `--from` address based on where your client is:

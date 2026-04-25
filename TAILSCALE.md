@@ -82,7 +82,7 @@ Prefer MagicDNS hostnames for stable addressing.
 If you only want private access inside your tailnet, the simplest path is:
 
 ```bash
-make serve ENV=profiles/.env-gpt-oss-20b.MXFP4 HOST=127.0.0.1
+make serve ENV=models/ggml-org/gpt-oss-20b-GGUF.MXFP4.env HOST=127.0.0.1
 tailscale serve 8080
 ```
 
@@ -104,13 +104,13 @@ Source:
 Koda exposes `llama.cpp` RPC via the `RPC=` variable:
 
 ```bash
-make serve ENV=profiles/.env-gpt-oss-120b.MXFP4 RPC=linux-4090-1:50052
+make serve ENV=models/ggml-org/gpt-oss-120b-GGUF.MXFP4.env RPC=linux-4090-1:50052
 ```
 
 or:
 
 ```bash
-make chat ENV=profiles/.env-gpt-oss-120b.MXFP4 RPC=linux-4090-1:50052
+make chat ENV=models/ggml-org/gpt-oss-120b-GGUF.MXFP4.env RPC=linux-4090-1:50052
 ```
 
 For multiple workers, pass the exact `--rpc` value that your installed `llama.cpp` build expects.
@@ -118,7 +118,7 @@ For multiple workers, pass the exact `--rpc` value that your installed `llama.cp
 Example shape:
 
 ```bash
-make serve ENV=profiles/.env-gpt-oss-120b.MXFP4 RPC=linux-4090-1:50052,linux-4090-2:50052
+make serve ENV=models/ggml-org/gpt-oss-120b-GGUF.MXFP4.env RPC=linux-4090-1:50052,linux-4090-2:50052
 ```
 
 Important caveat:
@@ -165,7 +165,7 @@ Sources:
 Example:
 
 ```bash
-make serve ENV=profiles/.env-gpt-oss-120b.MXFP4 \
+make serve ENV=models/ggml-org/gpt-oss-120b-GGUF.MXFP4.env \
   RPC=linux-4090-1:50052,linux-4090-2:50052 \
   METRICS=1
 ```

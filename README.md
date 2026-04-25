@@ -9,7 +9,7 @@ Works with [OpenCode](./OPENCODE.md), [VS Code Copilot](./VSCODE.md), [Cursor](.
 <details>
 <summary>Technical overview</summary>
 
-Koda is a thin Makefile orchestration layer over [llama.cpp](https://github.com/ggml-org/llama.cpp). It manages a three-layer configuration system (`.env` defaults → `profiles/.env-<model>.<quant>` → inline overrides) and resolves model paths without triggering implicit downloads — checking `MODEL_DIR` first, then falling back to the Hugging Face cache via `find`.
+Koda is a thin Makefile orchestration layer over [llama.cpp](https://github.com/ggml-org/llama.cpp). It manages a three-layer configuration system (`.env` defaults → `models/<org>/<repo>.<quant>.env` → inline overrides) and resolves model paths without triggering implicit downloads — checking `MODEL_DIR` first, then falling back to the Hugging Face cache via `find`.
 
 `make serve` starts `llama-server`, which exposes both a built-in browser WebUI at `http://localhost:8080` and an OpenAI-compatible HTTP API at `http://localhost:8080/v1`. The `ALIAS` variable pins a stable model ID for external tool compatibility regardless of quantization swap.
 
@@ -52,7 +52,7 @@ Then install `llama.cpp` and `huggingface-cli` inside WSL (e.g. via [Homebrew on
 <a name="docker"></a>
 **Docker (no local binaries needed)**
 ```bash
-docker compose --env-file profiles/.env-Qwen3.5-27B.Q4_K_M up -d
+docker compose --env-file models/bartowski/Qwen_Qwen3.5-27B-GGUF.Q4_K_M.env up -d
 ```
 See [Docker Compose](#-docker-compose) for GPU support details.
 
@@ -69,11 +69,11 @@ make check
 
 ### 4. Download & Serve
 
-Pick a model profile from [profiles/README.md](./profiles/README.md), then:
+Pick a model profile from [models/README.md](./models/README.md), then:
 
 ```bash
-make download ENV=profiles/.env-Qwen3.5-27B.Q4_K_M
-make serve    ENV=profiles/.env-Qwen3.5-27B.Q4_K_M
+make download ENV=models/bartowski/Qwen_Qwen3.5-27B-GGUF.Q4_K_M.env
+make serve    ENV=models/bartowski/Qwen_Qwen3.5-27B-GGUF.Q4_K_M.env
 ```
 
 Your server is now live:
@@ -88,14 +88,14 @@ Your server is now live:
 
 ## 🛠️ Key Workflows
 
-Every command requires an `ENV` file pointing to a model profile in `profiles/`. Koda prepends `profiles/` automatically, so `ENV=.env-gemma-4-31B-it.Q4_K_M` works.
+Every command requires an `ENV` file pointing to a model profile in `models/`. Koda prepends `models/` automatically, so `ENV=ggml-org/gemma-4-31B-it-GGUF.Q4_K_M.env` works.
 
 | Command | What it does |
 | :--- | :--- |
 | `make serve` | Starts the **WebUI** and **OpenAI-compatible API** server |
 | `make chat` | Launches an **interactive terminal session** with the model |
 | `make download` | Fetches model weights from Hugging Face using `hf` |
-| `make list` | Lists all available model profiles in `profiles/` |
+| `make list` | Lists all available model profiles in `models/` |
 | `make select` | Interactively select a model profile (requires `fzf` or `gum`) |
 | `make cache` | Shows what models are in the local Hugging Face cache |
 | `make check` | Verifies required binaries are installed and on `PATH` |
@@ -107,13 +107,13 @@ Pass variables inline to any `make` target:
 
 ```bash
 # Change port and restrict context window size
-make serve ENV=profiles/.env-Qwen3.5-27B.Q4_K_M PORT=9090 CTX=8192
+make serve ENV=models/bartowski/Qwen_Qwen3.5-27B-GGUF.Q4_K_M.env PORT=9090 CTX=8192
 
 # Require an API key and expose metrics
-make serve ENV=profiles/.env-Qwen3.5-27B.Q4_K_M API_KEY=my-secret METRICS=1
+make serve ENV=models/bartowski/Qwen_Qwen3.5-27B-GGUF.Q4_K_M.env API_KEY=my-secret METRICS=1
 
 # Speculative decoding with a draft model
-make serve ENV=profiles/.env-Qwen3.5-27B.Q4_K_M DRAFT_MODEL=./draft.gguf
+make serve ENV=models/bartowski/Qwen_Qwen3.5-27B-GGUF.Q4_K_M.env DRAFT_MODEL=./draft.gguf
 ```
 
 See [AGENTS.md](./AGENTS.md) for the full list of supported variables.
@@ -125,7 +125,7 @@ See [AGENTS.md](./AGENTS.md) for the full list of supported variables.
 The Docker path requires only Docker — no `make`, no `brew`, no local binaries. The official `ghcr.io/ggml-org/llama.cpp` image is used.
 
 ```bash
-docker compose --env-file profiles/.env-Qwen3.5-27B.Q4_K_M up -d
+docker compose --env-file models/bartowski/Qwen_Qwen3.5-27B-GGUF.Q4_K_M.env up -d
 ```
 
 ### GPU Support in Docker
@@ -159,7 +159,7 @@ Koda runs on any machine that can run llama.cpp. The limiting factor is always m
 
 > **Note on NVIDIA DGX Spark:** The GB10 Grace Blackwell chip integrates CPU and GPU into 128 GB of shared memory — the same unified memory advantage that makes Apple Silicon compelling, but with Blackwell GPU compute. Ideal for running GLM-4.7-class models at full quality on a single desktop. [Available on Amazon](https://amzn.to/47ZeWqZ).
 
-See [profiles/README.md](./profiles/README.md#recommended-starting-points) for the full hardware-tier breakdown with specific profile recommendations.
+See [models/README.md](./models/README.md#recommended-starting-points) for the full hardware-tier breakdown with specific profile recommendations.
 
 ---
 
@@ -176,7 +176,7 @@ Koda is **local-first** — your data never leaves your machine.
 
 | File | Purpose |
 | :--- | :--- |
-| [**profiles/README.md**](./profiles/README.md) | Catalog of bundled models, download links, and hardware requirements |
+| [**models/README.md**](./models/README.md) | Catalog of bundled models, download links, and hardware requirements |
 | [**AGENTS.md**](./AGENTS.md) | Technical reference for developers and AI agents — all variables, targets, and behaviors |
 | [**GEMINI.md**](./GEMINI.md) | Full Docker Compose usage, volume sharing, GPU config, and override reference |
 | [**OPENCODE.md**](./OPENCODE.md) | Integration guide for [OpenCode](https://opencode.ai) |

@@ -26,7 +26,7 @@ Cursor does not use a plain JSON config file — all model settings are managed 
 
 1. **Start your local server:**
    ```bash
-   make serve ENV=profiles/.env-gemma-4-31B-it.Q4_K_M
+   make serve ENV=models/ggml-org/gemma-4-31B-it-GGUF.Q4_K_M.env
    ```
 
 2. **Open Cursor Settings:**
@@ -45,7 +45,7 @@ Repeat for each model you want available in Cursor. The model name must exactly 
 
 ## Available Model Aliases
 
-See [profiles/README.md](./profiles/README.md#api-identity-aliases) for the full alias list, model sizes, and hardware requirements.
+See [models/README.md](./models/README.md#api-identity-aliases) for the full alias list, model sizes, and hardware requirements.
 
 ---
 

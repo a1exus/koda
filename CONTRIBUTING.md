@@ -2,7 +2,7 @@
 
 ## Adding a Model Profile
 
-1. Create `profiles/.env-<ModelName>.<Quant>` with these required fields:
+1. Create `models/<hf-org>/<hf-repo-name>.<Quant>.env` with these required fields:
 
    ```bash
    # https://huggingface.co/<original-model>
@@ -16,18 +16,18 @@
 2. Verify the profile resolves correctly:
 
    ```bash
-   make check-model ENV=profiles/.env-<ModelName>.<Quant>
+   make check-model ENV=models/<hf-org>/<hf-repo-name>.<Quant>.env
    ```
 
 3. Update all of the following (see the full checklist in [AGENTS.md](./AGENTS.md#adding-a-new-model-profile)):
 
    | File | What to add |
    | :--- | :--- |
-   | `profiles/README.md` | Model subsection with variant table, ALIAS, and Sources |
+   | `models/README.md` | Model subsection with variant table, ALIAS, and Sources |
    | `AGENTS.md` | Row in the Bundled Profiles table |
    | `OPENCODE.md` | Entry in the `models` block |
    | `VSCODE.md` | Entry in the `chatLanguageModels.json` snippet |
-   | `CURSOR.md` | *(alias list links to profiles/README.md — no edit needed)* |
+   | `CURSOR.md` | *(alias list links to models/README.md — no edit needed)* |
    | `CHANGELOG.md` | Entry under `[Unreleased] > Added` |
    | `~/.config/opencode/opencode.json` | Alias entry in the live config *(local only — not part of the PR)* |
    | `~/Library/Application Support/Code - Insiders/User/chatLanguageModels.json` | Model entry *(local only — not part of the PR)* |
