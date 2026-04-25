@@ -143,7 +143,7 @@ Restart VS Code. Playwright tools will be available to Roo Code automatically.
 
 ### Compatibility
 
-Any OpenAI-compatible client can use `http://localhost:8080/v1` with any non-empty API key. See [README.md](./README.md#-quick-start) for server defaults and override options.
+Any OpenAI-compatible client can use `http://localhost:8080/v1` with any non-empty API key. See [README.md](../../../README.md#-quick-start) for server defaults and override options.
 ```
 
 - [ ] **Step 2: Commit**
@@ -171,7 +171,7 @@ Playwright MCP adds browser automation (navigate, click, fill, screenshot, extra
 
 ### Compatibility
 
-Any OpenAI-compatible client can use `http://localhost:8080/v1` with any non-empty API key. See [README.md](./README.md#-quick-start) for server defaults and override options.
+Any OpenAI-compatible client can use `http://localhost:8080/v1` with any non-empty API key. See [README.md](../../../README.md#-quick-start) for server defaults and override options.
 ```
 
 - [ ] **Step 2: Commit**
