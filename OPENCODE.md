@@ -45,6 +45,7 @@ This guide explains how to use OpenCode with the local inference server provided
            "deepseek-r1": { "name": "DeepSeek R1 671B (Local)" },
            "deepseek-r1-0528": { "name": "DeepSeek R1 0528 671B (Local)" },
            "kimi-k2.5": { "name": "Kimi K2.5 (Local)" },
+           "kimi-k2.6": { "name": "Kimi K2.6 (Local)" },
            "gpt-oss-20b": { "name": "GPT-OSS 20B (Local)" },
            "gpt-oss-120b": { "name": "GPT-OSS 120B (Local)" },
            "gemma-4-e2b-it": { "name": "Gemma 4 E2B Instruct (Local)" },

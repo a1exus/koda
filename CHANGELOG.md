@@ -10,6 +10,7 @@ and this project uses [Calendar Versioning](https://calver.org/) (`YYYY-MM-DD`).
 ### Added
 - Added `MCP-PLAYWRIGHT.md` — standalone Playwright MCP guide with per-client configuration for OpenCode, Cursor, and VS Code (Continue / Roo Code); replaces inline section previously in `OPENCODE.md`
 - Added Qwen3.6-27B profiles: `Q4_K_M` (17.53 GB), `Q8_0` (28.67 GB) via `bartowski/Qwen_Qwen3.6-27B-GGUF`; dense 27B, multimodal (mmproj), hybrid Gated DeltaNet + Gated Attention architecture, 262k native context (1M with YaRN), reasoning with thinking modes, tool calling
+- Added Kimi-K2.6 profile: `Q4_X` (~584 GB, 14 shards) via `AesSedai/Kimi-K2.6-GGUF`; 1T MoE (32B active), multimodal (MoonViT mmproj), 256k context, reasoning with thinking mode, agentic coding successor to K2.5
 - Added Qwen3.6-35B-A3B profiles: `Q4_K_M` (21.39 GB), `Q8_0` (36.91 GB) via `bartowski/Qwen_Qwen3.6-35B-A3B-GGUF`; MoE (3B active), multimodal (mmproj), 262k native context, agentic coding focus
 - Added Recommended Hardware section to README with hardware-tier table (DGX Spark, Apple Silicon, multi-GPU)
 - Added GLM-4.7-Flash profiles: `Q4_K_M` (18.47 GB), `Q8_0` (31.84 GB) via `bartowski/zai-org_GLM-4.7-Flash-GGUF`; 30B-A3B MoE, 202k context, reasoning model

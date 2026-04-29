@@ -566,6 +566,20 @@ Requires extreme hardware — 192 GB minimum even for the smallest quant. All va
 
 ---
 
+### Kimi-K2.6 · Moonshot AI
+
+1T-parameter MoE (32B activated), 256k native context. Successor to K2.5 — adds native multimodal support (MoonViT vision encoder, 400M), thinking mode with reasoning, and stronger agentic coding. Supports agent swarm orchestration (up to 300 sub-agents). GGUFs from AesSedai.
+
+| Model | Size | Format |
+| --- | --- | --- |
+| `AesSedai/Kimi-K2.6-GGUF.Q4_X.env` | ~584 GB (14 shards) | Q4_X |
+
+**ALIAS:** `kimi-k2.6`
+**Sampling:** `TEMP=1.0`
+**Sources:** [AesSedai/Kimi-K2.6-GGUF](https://huggingface.co/AesSedai/Kimi-K2.6-GGUF) · [moonshotai/Kimi-K2.6](https://huggingface.co/moonshotai/Kimi-K2.6)
+
+---
+
 ## Recommended Starting Points
 
 | Hardware | Recommended models |
@@ -580,7 +594,7 @@ Requires extreme hardware — 192 GB minimum even for the smallest quant. All va
 | 128–192 GB VRAM / RAM | `ggml-org/Nemotron-3-Super-120B-GGUF.Q4_K.env` (70 GB) · `ggml-org/gpt-oss-120b-GGUF.MXFP4.env` (63 GB) · `bartowski/MiniMaxAI_MiniMax-M2.1-GGUF.Q4_K_M.env` (139 GB) · `bartowski/MiniMaxAI_MiniMax-M2.7-GGUF.Q4_K_M.env` (139 GB) · `bartowski/MiniMaxAI_MiniMax-M2.1-GGUF.Q6_K.env` (188 GB) · `bartowski/Qwen_Qwen3.5-397B-A17B-GGUF.IQ2_XXS.env` (107 GB) |
 | 192–256 GB unified memory | `bartowski/zai-org_GLM-4.7-GGUF.Q4_K_M.env` (219 GB) · `unsloth/DeepSeek-R1-GGUF-UD.UD-IQ1_S.env` (185 GB) · `unsloth/DeepSeek-R1-GGUF-UD.UD-IQ2_XXS.env` (216 GB) · `unsloth/GLM-5.1-GGUF.UD-IQ1_M.env` (~206 GB) · `unsloth/GLM-5.1-GGUF.UD-IQ2_XXS.env` (~221 GB) · `unsloth/DeepSeek-R1-GGUF-UD.UD-Q2_K_XL.env` (250 GB) · `unsloth/GLM-5.1-GGUF.UD-Q2_K_XL.env` (~252 GB) · `bartowski/Qwen_Qwen3.5-397B-A17B-GGUF.Q4_K_M.env` (242 GB) |
 | 320 GB+ / multi-GPU | `bartowski/DeepSeek-R1-GGUF.Q3_K_M.env` (319 GB) |
-| Multi-machine / extreme scale | `AesSedai/Kimi-K2.5-GGUF.Q4_X.env` (~584 GB) |
+| Multi-machine / extreme scale | `AesSedai/Kimi-K2.5-GGUF.Q4_X.env` (~584 GB) · `AesSedai/Kimi-K2.6-GGUF.Q4_X.env` (~584 GB) |
 
 ---
 

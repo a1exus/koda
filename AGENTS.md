@@ -202,3 +202,4 @@ Full catalog with sizes and hardware notes lives in `models/README.md`. Summary:
 | `unsloth/GLM-5.1-GGUF.UD-IQ2_XXS.env` | `unsloth/GLM-5.1-GGUF` | ~221 GB | 6 shards, recommended minimum quality |
 | `unsloth/GLM-5.1-GGUF.UD-Q2_K_XL.env` | `unsloth/GLM-5.1-GGUF` | ~252 GB | 7 shards, best quality under 256 GB |
 | `AesSedai/Kimi-K2.5-GGUF.Q4_X.env` | `AesSedai/Kimi-K2.5-GGUF` | ~584 GB | 14 shards, extreme scale |
+| `AesSedai/Kimi-K2.6-GGUF.Q4_X.env` | `AesSedai/Kimi-K2.6-GGUF` | ~584 GB | 14 shards, multimodal (mmproj), reasoning |
