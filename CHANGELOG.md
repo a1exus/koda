@@ -29,6 +29,7 @@ and this project uses [Calendar Versioning](https://calver.org/) (`YYYY-MM-DD`).
 - Added Qwen3.5-27B (Jackrong) profiles: `Q2_K` (10.12 GB) and `Q3_K_M` (13.29 GB) to cover 16–24 GB hardware tiers
 
 ### Changed
+- Updated Recommended Starting Points table in `models/README.md`: added 15 profiles across 8 hardware tiers — Jackrong Q2_K/Q3_K_M (8–16 GB), unsloth/HauhauCS Qwen3.6-27B Q4/Q8 (16–48 GB), unsloth Qwen3.6-35B-A3B UD-Q4/Q8 (24–48 GB), unsloth Nemotron-Super-120B Q4/Q8 (64–192 GB), MiniMax-M2.7 Q6_K (192–256 GB), lmstudio-community Nemotron-Nano-30B F16 (64–96 GB), lmstudio-community DeepSeek-R1-0528 (~409 GB, 320 GB+)
 - Restructured `profiles/` → `models/` with org-based hierarchy: `models/<hf_org>/<hf_repo>.<quant>.env` (mirrors HuggingFace repo URLs)
 - Makefile: 3-step ENV resolution (exact path → `models/` prefix → fuzzy search), `make list` grouped by org, `make select` recursive
 - Updated all documentation for new `models/` paths
