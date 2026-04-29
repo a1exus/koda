@@ -245,7 +245,7 @@ Official Alibaba flagship MoE instruct weights in GGUF via bartowski. Multimodal
 
 #### Qwen3.6-27B · Official (Dense, 27B)
 
-Official Alibaba weights in GGUF via bartowski. Multimodal — includes a vision encoder (`mmproj`) for image understanding. Hybrid architecture (Gated DeltaNet + Gated Attention), 262k native context extensible to 1M tokens. Reasoning with thinking modes, tool calling support.
+Official Alibaba weights in GGUF via bartowski (imatrix-calibrated). Multimodal — includes a vision encoder (`mmproj`) for image understanding. Hybrid architecture (Gated DeltaNet + Gated Attention), 262k native context extensible to 1M tokens. Reasoning with thinking modes, tool calling support.
 
 | Model | Size | Format |
 | --- | --- | --- |
@@ -255,9 +255,35 @@ Official Alibaba weights in GGUF via bartowski. Multimodal — includes a vision
 **ALIAS:** `qwen3.6-27b`
 **Sources:** [bartowski/Qwen_Qwen3.6-27B-GGUF](https://huggingface.co/bartowski/Qwen_Qwen3.6-27B-GGUF) · [Qwen/Qwen3.6-27B](https://huggingface.co/Qwen/Qwen3.6-27B)
 
+#### Qwen3.6-27B · Unsloth Dynamic
+
+Official Alibaba weights in GGUF via Unsloth Dynamic 2.0. Multimodal (mmproj). Unsloth Dynamic quants use per-layer mixed precision for better quality at equivalent size.
+
+| Model | Size | Format |
+| --- | --- | --- |
+| `unsloth/Qwen3.6-27B-GGUF.UD-Q4_K_XL.env` | 17.6 GB | UD-Q4_K_XL |
+| `unsloth/Qwen3.6-27B-GGUF.Q8_0.env` | 28.6 GB | Q8_0 |
+
+**ALIAS:** `qwen3.6-27b`
+**Sources:** [unsloth/Qwen3.6-27B-GGUF](https://huggingface.co/unsloth/Qwen3.6-27B-GGUF) · [Qwen/Qwen3.6-27B](https://huggingface.co/Qwen/Qwen3.6-27B)
+
+#### Qwen3.6-27B · HauhauCS Uncensored
+
+Uncensored GGUF conversion by HauhauCS using K_P ("Perfect") quants — imatrix-calibrated, quality equivalent to ~1–2 quant levels higher at modest size overhead. Includes mmproj for multimodal support.
+
+| Model | Size | Format |
+| --- | --- | --- |
+| `HauhauCS/Qwen3.6-27B-Uncensored-HauhauCS-Aggressive.Q4_K_P.env` | 17.5 GB | Q4_K_P |
+| `HauhauCS/Qwen3.6-27B-Uncensored-HauhauCS-Aggressive.Q8_K_P.env` | 32 GB | Q8_K_P |
+
+**ALIAS:** `qwen3.6-27b`
+**Source:** [HauhauCS/Qwen3.6-27B-Uncensored-HauhauCS-Aggressive](https://huggingface.co/HauhauCS/Qwen3.6-27B-Uncensored-HauhauCS-Aggressive)
+
+> All three Qwen3.6-27B variants share the alias `qwen3.6-27b`. Only serve one at a time.
+
 #### Qwen3.6-35B-A3B · Official (MoE, 35B total / 3B active)
 
-Official Alibaba weights in GGUF via bartowski. Multimodal — includes a vision encoder (`mmproj`) for image understanding. 262k native context, extensible to 1M tokens. Agentic coding focus with tool use and thinking preservation.
+Official Alibaba weights in GGUF via bartowski (imatrix-calibrated). Multimodal (mmproj). 262k native context, extensible to 1M tokens. Agentic coding focus with tool use and thinking preservation.
 
 | Model | Size | Format |
 | --- | --- | --- |
@@ -267,6 +293,20 @@ Official Alibaba weights in GGUF via bartowski. Multimodal — includes a vision
 **ALIAS:** `qwen3.6-35b-a3b`
 **Sources:** [bartowski/Qwen_Qwen3.6-35B-A3B-GGUF](https://huggingface.co/bartowski/Qwen_Qwen3.6-35B-A3B-GGUF) · [Qwen/Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B)
 
+#### Qwen3.6-35B-A3B · Unsloth Dynamic (MoE, 35B total / 3B active)
+
+Official Alibaba weights in GGUF via Unsloth Dynamic 2.0. Multimodal (mmproj). Unsloth Dynamic quants use per-layer mixed precision for SOTA quality at equivalent size.
+
+| Model | Size | Format |
+| --- | --- | --- |
+| `unsloth/Qwen3.6-35B-A3B-GGUF.UD-Q4_K_M.env` | 22.1 GB | UD-Q4_K_M |
+| `unsloth/Qwen3.6-35B-A3B-GGUF.Q8_0.env` | 36.9 GB | Q8_0 |
+
+**ALIAS:** `qwen3.6-35b-a3b`
+**Sources:** [unsloth/Qwen3.6-35B-A3B-GGUF](https://huggingface.co/unsloth/Qwen3.6-35B-A3B-GGUF) · [Qwen/Qwen3.6-35B-A3B](https://huggingface.co/Qwen/Qwen3.6-35B-A3B)
+
+> Both Qwen3.6-35B-A3B variants share the alias `qwen3.6-35b-a3b`. Only serve one at a time.
+>
 > **FP8 variant:** `Qwen/Qwen3.6-35B-A3B-FP8` is a safetensors FP8 format for vLLM/SGLang — not compatible with llama.cpp. Use the GGUF models above.
 
 ---

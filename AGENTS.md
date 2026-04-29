@@ -157,7 +157,10 @@ Full catalog with sizes and hardware notes lives in `models/README.md`. Summary:
 | `HauhauCS/Qwen3.5-35B-A3B-Uncensored-HauhauCS-Aggressive-GGUF.Q4_K_M.env` / `Q8_0.env` | `HauhauCS/Qwen3.5-35B-A3B-Uncensored-HauhauCS-Aggressive` | ~20–37 GB | MoE, multimodal (mmproj) |
 | `unsloth/Qwen3.5-35B-A3B-GGUF.Q4_K_M.env` / `Q8_0.env` | `unsloth/Qwen3.5-35B-A3B-GGUF` | 22–37 GB | MoE, official Qwen weights |
 | `bartowski/Qwen_Qwen3.6-27B-GGUF.Q4_K_M.env` / `Q8_0.env` | `bartowski/Qwen_Qwen3.6-27B-GGUF` | 17.53–28.67 GB | Multimodal (mmproj), hybrid arch, 262k ctx |
+| `unsloth/Qwen3.6-27B-GGUF.UD-Q4_K_XL.env` / `Q8_0.env` | `unsloth/Qwen3.6-27B-GGUF` | 17.6–28.6 GB | Unsloth Dynamic, multimodal (mmproj) |
+| `HauhauCS/Qwen3.6-27B-Uncensored-HauhauCS-Aggressive.Q4_K_P.env` / `Q8_K_P.env` | `HauhauCS/Qwen3.6-27B-Uncensored-HauhauCS-Aggressive` | 17.5–32 GB | Uncensored, K_P quants, multimodal (mmproj) |
 | `bartowski/Qwen_Qwen3.6-35B-A3B-GGUF.Q4_K_M.env` / `Q8_0.env` | `bartowski/Qwen_Qwen3.6-35B-A3B-GGUF` | 21.39–36.91 GB | MoE, multimodal (mmproj), 262k ctx |
+| `unsloth/Qwen3.6-35B-A3B-GGUF.UD-Q4_K_M.env` / `Q8_0.env` | `unsloth/Qwen3.6-35B-A3B-GGUF` | 22.1–36.9 GB | MoE, Unsloth Dynamic, multimodal (mmproj) |
 | `bartowski/Qwen_Qwen3.5-122B-A10B-GGUF.IQ2_XXS.env` | `bartowski/Qwen_Qwen3.5-122B-A10B-GGUF` | 33.80 GB | MoE, multimodal (mmproj) |
 | `bartowski/Qwen_Qwen3.5-122B-A10B-GGUF.Q4_K_M.env` | `bartowski/Qwen_Qwen3.5-122B-A10B-GGUF` | 74.99 GB (2 shards) | MoE, multimodal (mmproj) |
 | `bartowski/Qwen_Qwen3.5-397B-A17B-GGUF.IQ2_XXS.env` | `bartowski/Qwen_Qwen3.5-397B-A17B-GGUF` | 106.57 GB (3 shards) | MoE, multimodal (mmproj) |

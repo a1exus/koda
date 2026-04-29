@@ -10,6 +10,9 @@ and this project uses [Calendar Versioning](https://calver.org/) (`YYYY-MM-DD`).
 ### Added
 - Added `MCP-PLAYWRIGHT.md` — standalone Playwright MCP guide with per-client configuration for OpenCode, Cursor, and VS Code (Continue / Roo Code); replaces inline section previously in `OPENCODE.md`
 - Added Qwen3.6-27B profiles: `Q4_K_M` (17.53 GB), `Q8_0` (28.67 GB) via `bartowski/Qwen_Qwen3.6-27B-GGUF`; dense 27B, multimodal (mmproj), hybrid Gated DeltaNet + Gated Attention architecture, 262k native context (1M with YaRN), reasoning with thinking modes, tool calling
+- Added Qwen3.6-27B Unsloth Dynamic profiles: `UD-Q4_K_XL` (17.6 GB), `Q8_0` (28.6 GB) via `unsloth/Qwen3.6-27B-GGUF`; multimodal (mmproj), UD-2.0 per-layer mixed precision
+- Added Qwen3.6-27B HauhauCS Uncensored profiles: `Q4_K_P` (17.5 GB), `Q8_K_P` (32 GB) via `HauhauCS/Qwen3.6-27B-Uncensored-HauhauCS-Aggressive`; K_P imatrix quants, multimodal (mmproj)
+- Added Qwen3.6-35B-A3B Unsloth Dynamic profiles: `UD-Q4_K_M` (22.1 GB), `Q8_0` (36.9 GB) via `unsloth/Qwen3.6-35B-A3B-GGUF`; MoE, multimodal (mmproj), UD-2.0 per-layer mixed precision
 - Added Kimi-K2.6 profile: `Q4_X` (~584 GB, 14 shards) via `AesSedai/Kimi-K2.6-GGUF`; 1T MoE (32B active), multimodal (MoonViT mmproj), 256k context, reasoning with thinking mode, agentic coding successor to K2.5
 - Added Qwen3.6-35B-A3B profiles: `Q4_K_M` (21.39 GB), `Q8_0` (36.91 GB) via `bartowski/Qwen_Qwen3.6-35B-A3B-GGUF`; MoE (3B active), multimodal (mmproj), 262k native context, agentic coding focus
 - Added Recommended Hardware section to README with hardware-tier table (DGX Spark, Apple Silicon, multi-GPU)
